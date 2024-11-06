@@ -1,9 +1,11 @@
+'use client';
+
 import { useState } from 'react';
+
 import {
   DeleteCustomerAddressMutation,
   DeleteCustomerAddressMutationVariables,
 } from '@/common';
-
 import { deleteCustomerAddress } from '@/common/api/services';
 
 interface UseDeleteAddressState {
