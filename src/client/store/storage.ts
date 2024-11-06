@@ -1,53 +1,57 @@
-import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
-
-// Define the Storage type interface
-type Storage = {
+interface PersistStorage {
   getItem(key: string): Promise<string | null>;
   setItem(key: string, value: string): Promise<void>;
   removeItem(key: string): Promise<void>;
-};
+}
 
-// Function to create a no-op storage
-const createNoopStorage = (): Storage => {
-  return {
-    getItem(_key) {
+// Create a no-op storage for environments without localStorage
+const createNoopStorage = (): PersistStorage => ({
+  getItem(_key: string): Promise<null> {
+    return Promise.resolve(null);
+  },
+  setItem(_key: string, _value: string): Promise<void> {
+    return Promise.resolve();
+  },
+  removeItem(_key: string): Promise<void> {
+    return Promise.resolve();
+  },
+});
+
+// Create a storage adapter that wraps localStorage
+const createLocalStorageAdapter = (storage: Storage): PersistStorage => ({
+  async getItem(key: string): Promise<string | null> {
+    try {
+      const item = storage.getItem(key);
+      return Promise.resolve(item);
+    } catch (err) {
+      console.error('Error reading from storage:', err);
       return Promise.resolve(null);
-    },
-    setItem(_key, _value) {
+    }
+  },
+  async setItem(key: string, value: string): Promise<void> {
+    try {
+      storage.setItem(key, value);
       return Promise.resolve();
-    },
-    removeItem(_key) {
+    } catch (err) {
+      console.error('Error writing to storage:', err);
       return Promise.resolve();
-    },
-  };
-};
+    }
+  },
+  async removeItem(key: string): Promise<void> {
+    try {
+      storage.removeItem(key);
+      return Promise.resolve();
+    } catch (err) {
+      console.error('Error removing from storage:', err);
+      return Promise.resolve();
+    }
+  },
+});
 
-// Create a storage instance based on the environment
-const storageInstance: Storage = (() => {
-  if (typeof window !== 'undefined') {
-    // Client-side: Wrap storage methods to return Promises
-    return {
-      getItem(key: string): Promise<string | null> {
-        return new Promise((resolve) => {
-          resolve(storage.getItem(key)); // Synchronous call wrapped in Promise
-        });
-      },
-      setItem(key: string, value: string): Promise<void> {
-        return new Promise((resolve) => {
-          storage.setItem(key, value); // Synchronous call wrapped in Promise
-          resolve();
-        });
-      },
-      removeItem(key: string): Promise<void> {
-        return new Promise((resolve) => {
-          storage.removeItem(key); // Synchronous call wrapped in Promise
-          resolve();
-        });
-      },
-    };
-  }
-  // Server-side: Return the no-op storage
-  return createNoopStorage();
-})();
+// Initialize storage based on environment
+const storage: PersistStorage =
+  typeof window !== 'undefined'
+    ? createLocalStorageAdapter(window.localStorage)
+    : createNoopStorage();
 
-export default storageInstance;
+export default storage;
