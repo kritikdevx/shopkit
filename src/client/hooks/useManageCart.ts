@@ -35,7 +35,7 @@ export default function useManageCart() {
 
       let updatedCart = cart;
       if (cart) {
-        const { cartLinesAdd } = await addToCart({
+        const cartLinesAdd = await addToCart({
           variables: {
             cartId: cart.id,
             lines: [
@@ -48,7 +48,7 @@ export default function useManageCart() {
         });
         updatedCart = cartLinesAdd.cart;
       } else {
-        const { cartCreate } = await createCart({
+        const cartCreate = await createCart({
           variables: {
             input: {
               lines: [
@@ -85,7 +85,7 @@ export default function useManageCart() {
     try {
       setState({ loading: true, success: '', error: '' });
 
-      const { cartLinesUpdate } = await updateCart({
+      const cartLinesUpdate = await updateCart({
         variables: {
           cartId: cart?.id as string,
           lines: [
@@ -118,7 +118,7 @@ export default function useManageCart() {
   const handleRemoveFromCart = async (lineId: string) => {
     try {
       setState({ loading: true, success: '', error: '' });
-      const { cartLinesRemove } = await removeFromCart({
+      const cartLinesRemove = await removeFromCart({
         variables: {
           cartId: cart?.id as string,
           lineIds: [lineId],

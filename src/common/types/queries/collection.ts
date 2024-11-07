@@ -50,8 +50,18 @@ export interface ListCollectionsQuery {
   };
 }
 
-export interface GetCollectionQuery extends Collection {}
+export interface GetCollectionByIdQuery {
+  collection: Collection;
+}
 
-export interface ListCollectionProductsQuery {
+export interface GetCollectionByHandleQuery {
+  collectionByHandle: Collection;
+}
+
+export interface ListCollectionProductsByIdQuery {
   collection: CollectionProducts;
+}
+
+export interface ListCollectionProductsByHandleQuery {
+  collectionByHandle: CollectionProducts;
 }

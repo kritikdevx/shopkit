@@ -27,7 +27,7 @@ export default function useCollectionProducts() {
     try {
       setState((prev) => ({ ...prev, loading: true, error: null }));
 
-      const { collection } = await listCollectionProducts({ variables });
+      const collection = await listCollectionProducts({ variables });
 
       setState((prev) => ({ ...prev, collection }));
     } catch (error) {

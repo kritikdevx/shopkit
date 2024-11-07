@@ -32,10 +32,9 @@ const useUpdateDefaultAddress = () => {
     setState({ loading: true, error: '', success: '', data: null });
 
     try {
-      const { customerDefaultAddressUpdate } =
-        await updateCustomerDefaultAddress({
-          variables,
-        });
+      const customerDefaultAddressUpdate = await updateCustomerDefaultAddress({
+        variables,
+      });
 
       setState((prev) => ({
         ...prev,

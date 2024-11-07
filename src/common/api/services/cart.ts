@@ -53,7 +53,7 @@ export async function createCart({
     query: createCartMutation,
     variables,
     options,
-  });
+  }).then((data) => data.cartCreate);
 }
 
 /**
@@ -74,7 +74,7 @@ export async function addToCart({
     query: cartLinesAddMutation,
     variables,
     options,
-  });
+  }).then((data) => data.cartLinesAdd);
 }
 
 /**
@@ -98,7 +98,7 @@ export async function updateCart({
     query: cartLinesUpdateMutation,
     variables,
     options,
-  });
+  }).then((data) => data.cartLinesUpdate);
 }
 
 /**
@@ -122,5 +122,5 @@ export async function removeFromCart({
     query: cartLinesRemoveMutation,
     variables,
     options,
-  });
+  }).then((data) => data.cartLinesRemove);
 }

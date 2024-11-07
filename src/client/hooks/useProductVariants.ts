@@ -37,11 +37,11 @@ export default function useProducts() {
     try {
       setState((prev) => ({ ...prev, loading: true, error: null }));
 
-      const { product } = await listProductVariants({
+      const productVariants = await listProductVariants({
         variables,
       });
 
-      setState((prev) => ({ ...prev, variants: product.variants }));
+      setState((prev) => ({ ...prev, variants: productVariants.variants }));
     } catch (error) {
       setState((prev) => ({ ...prev, error: (error as Error).message }));
     } finally {

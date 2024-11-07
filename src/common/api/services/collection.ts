@@ -2,12 +2,14 @@ import {
   ShopifyRequest,
   ListCollectionsQuery,
   ListCollectionsQueryVariables,
-  GetCollectionQuery,
+  GetCollectionByIdQuery,
+  GetCollectionByHandleQuery,
   GetCollectionByHandleQueryVariables,
   GetCollectionByIdQueryVariables,
   GetCollectionQueryVariables,
   ListCollectionProductsQueryVariables,
-  ListCollectionProductsQuery,
+  ListCollectionProductsByIdQuery,
+  ListCollectionProductsByHandleQuery,
   ListCollectionProductsByIdQueryVariables,
   ListCollectionProductsByHandleQueryVariables,
 } from '@/common/types';
@@ -68,11 +70,11 @@ export async function getCollectionById({
   variables: GetCollectionByIdQueryVariables;
   options?: ShopifyRequest;
 }) {
-  return shopifyFetch<GetCollectionQuery, GetCollectionByIdQueryVariables>({
+  return shopifyFetch<GetCollectionByIdQuery, GetCollectionByIdQueryVariables>({
     query: getCollectionByIdQuery,
     variables,
     options,
-  });
+  }).then((data) => data.collection);
 }
 
 /**
@@ -95,11 +97,14 @@ export async function getCollectionByHandle({
   variables: GetCollectionByHandleQueryVariables;
   options?: ShopifyRequest;
 }) {
-  return shopifyFetch<GetCollectionQuery, GetCollectionByHandleQueryVariables>({
+  return shopifyFetch<
+    GetCollectionByHandleQuery,
+    GetCollectionByHandleQueryVariables
+  >({
     query: getCollectionByHandleQuery,
     variables,
     options,
-  });
+  }).then((data) => data.collectionByHandle);
 }
 
 /**
@@ -153,13 +158,13 @@ export async function listCollectionProductsById({
   options?: ShopifyRequest;
 }) {
   return shopifyFetch<
-    ListCollectionProductsQuery,
+    ListCollectionProductsByIdQuery,
     ListCollectionProductsByIdQueryVariables
   >({
     query: listCollectionProductsByIdQuery,
     variables,
     options,
-  });
+  }).then((data) => data.collection);
 }
 
 /**
@@ -184,13 +189,13 @@ export async function listCollectionProductsByHandle({
   options?: ShopifyRequest;
 }) {
   return shopifyFetch<
-    ListCollectionProductsQuery,
+    ListCollectionProductsByHandleQuery,
     ListCollectionProductsByHandleQueryVariables
   >({
     query: listCollectionProductsByHandleQuery,
     variables,
     options,
-  });
+  }).then((data) => data.collectionByHandle);
 }
 
 /**

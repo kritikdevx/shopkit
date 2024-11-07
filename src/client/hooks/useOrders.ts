@@ -37,9 +37,9 @@ export default function useOrders() {
     try {
       setState((prev) => ({ ...prev, loading: true, error: null }));
 
-      const { customer } = await listOrders({ variables });
+      const { orders } = await listOrders({ variables });
 
-      setState((prev) => ({ ...prev, orders: customer.orders }));
+      setState((prev) => ({ ...prev, orders }));
     } catch (error) {
       setState((prev) => ({ ...prev, error: (error as Error).message }));
     } finally {

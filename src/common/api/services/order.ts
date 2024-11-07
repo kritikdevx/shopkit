@@ -24,5 +24,5 @@ export async function listOrders({
     query: listOrdersQuery,
     options,
     variables,
-  });
+  }).then((res) => res.customer);
 }

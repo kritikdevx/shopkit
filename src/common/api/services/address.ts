@@ -38,7 +38,7 @@ export async function listCustomerAddresses({
     query: listAddressesQuery,
     options,
     variables,
-  });
+  }).then((data) => data.customer);
 }
 
 /**
@@ -61,7 +61,7 @@ export async function createCustomerAddress({
     query: createCustomerAddressMutation,
     variables,
     options,
-  });
+  }).then((data) => data.customerAddressCreate);
 }
 
 /**
@@ -84,7 +84,7 @@ export async function updateCustomerAddress({
     query: updateCustomerAddressMutation,
     variables,
     options,
-  });
+  }).then((data) => data.customerAddressUpdate);
 }
 
 /**
@@ -108,7 +108,7 @@ export async function deleteCustomerAddress({
     query: deleteCustomerAddressMutation,
     variables,
     options,
-  });
+  }).then((data) => data.customerAddressDelete);
 }
 
 /**
@@ -131,5 +131,5 @@ export async function updateCustomerDefaultAddress({
     query: updateCustomerDefaultAddressMutation,
     variables,
     options,
-  });
+  }).then((data) => data.customerDefaultAddressUpdate);
 }

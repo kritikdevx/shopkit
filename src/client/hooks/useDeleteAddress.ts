@@ -29,7 +29,7 @@ const useDeleteAddress = () => {
     setState({ loading: true, error: '', success: '', data: null });
 
     try {
-      const { customerAddressDelete } = await deleteCustomerAddress({
+      const customerAddressDelete = await deleteCustomerAddress({
         variables,
       });
 

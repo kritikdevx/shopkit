@@ -27,7 +27,7 @@ export default function useCartProduct({ line }: { line: CartLine }) {
   const handleRemoveFromCart = async () => {
     try {
       setState({ loading: true, success: '', error: '' });
-      const { cartLinesRemove } = await removeFromCart({
+      const cartLinesRemove = await removeFromCart({
         variables: {
           cartId: cart?.id as string,
           lineIds: [line.id],
@@ -55,7 +55,7 @@ export default function useCartProduct({ line }: { line: CartLine }) {
   const handleUpdateCart = async (quantity: number) => {
     try {
       setState({ loading: true, success: '', error: '' });
-      const { cartLinesUpdate } = await updateCart({
+      const cartLinesUpdate = await updateCart({
         variables: {
           cartId: cart?.id as string,
           lines: [

@@ -3,7 +3,8 @@ import {
   ListProductsQuery,
   ListProductsQueryVariables,
   GetProductByIdQueryVariables,
-  GetProductQuery,
+  GetProductByIdQuery,
+  GetProductByHandleQuery,
   GetProductByHandleQueryVariables,
   GetProductQueryVariables,
   ListProductVariantsQueryVariables,
@@ -66,11 +67,11 @@ export async function getProductById({
   variables: GetProductByIdQueryVariables;
   options?: ShopifyRequest;
 }) {
-  return shopifyFetch<GetProductQuery, GetProductByIdQueryVariables>({
+  return shopifyFetch<GetProductByIdQuery, GetProductByIdQueryVariables>({
     query: getProductByIdQuery,
     variables,
     options,
-  });
+  }).then((res) => res.product);
 }
 
 /**
@@ -93,11 +94,14 @@ export async function getProductByHandle({
   variables: GetProductByHandleQueryVariables;
   options?: ShopifyRequest;
 }) {
-  return shopifyFetch<GetProductQuery, GetProductByHandleQueryVariables>({
+  return shopifyFetch<
+    GetProductByHandleQuery,
+    GetProductByHandleQueryVariables
+  >({
     query: getProductByHandleQuery,
     variables,
     options,
-  });
+  }).then((res) => res.productByHandle);
 }
 
 /**
@@ -157,7 +161,7 @@ export async function listProductVariants({
       query: listProductVariantsByIdQuery,
       variables,
       options,
-    });
+    }).then((res) => res.productVariants);
   } else if ('productHandle' in variables) {
     return shopifyFetch<
       ListProductVariantsQuery,
@@ -166,7 +170,7 @@ export async function listProductVariants({
       query: listProductVariantsByHandleQuery,
       variables,
       options,
-    });
+    }).then((res) => res.productVariants);
   } else {
     throw new Error('productId or productHandle must be provided');
   }

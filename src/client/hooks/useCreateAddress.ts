@@ -29,7 +29,7 @@ const useCreateAddress = () => {
     setState({ loading: true, error: '', success: '', data: null });
 
     try {
-      const { customerAddressCreate } = await createCustomerAddress({
+      const customerAddressCreate = await createCustomerAddress({
         variables,
       });
 

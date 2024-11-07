@@ -75,10 +75,16 @@ export interface ListProductsQuery {
   };
 }
 
-export interface GetProductQuery extends Product {}
+export interface GetProductByIdQuery {
+  product: Product;
+}
+
+export interface GetProductByHandleQuery {
+  productByHandle: Product;
+}
 
 export interface ListProductVariantsQuery {
-  product: {
+  productVariants: {
     variants: {
       edges: Array<Edge<ProductVariant>>;
       pageInfo: PageInfo;

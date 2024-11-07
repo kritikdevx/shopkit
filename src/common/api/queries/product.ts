@@ -90,7 +90,7 @@ export const listProductVariantsByIdQuery = /* GraphQL */ `
 
 export const listProductVariantsByHandleQuery = /* GraphQL */ `
   query ListProductVariants(
-    $productId: ID
+    $productHandle: ID
     $first: Int
     $last: Int
     $after: String
@@ -98,7 +98,7 @@ export const listProductVariantsByHandleQuery = /* GraphQL */ `
     $reverse: Boolean
     $sortKey: ProductVariantSortKeys
   ) {
-    productVariants(id: $productId) {
+    productVariants(id: $productHandle) {
       variants(
         first: $first
         last: $last

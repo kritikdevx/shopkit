@@ -29,7 +29,7 @@ const useUpdateAddress = () => {
     setState({ loading: true, error: '', success: '', data: null });
 
     try {
-      const { customerAddressUpdate } = await updateCustomerAddress({
+      const customerAddressUpdate = await updateCustomerAddress({
         variables,
       });
 
