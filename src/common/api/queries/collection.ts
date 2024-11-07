@@ -4,9 +4,9 @@ import productFragment from '../fragments/product';
 export const listCollectionsQuery = /* GraphQL */ `
   query ListCollections(
     $query: String
-    $first: Int!
     $after: String
     $before: String
+    $first: Int
     $last: Int
     $sortKey: CollectionSortKeys
     $reverse: Boolean
@@ -44,6 +44,47 @@ export const getCollectionByIdQuery = /* GraphQL */ `
   ${collectionFragment}
 `;
 
+export const getCollectionByIdWithMetafieldsQuery = /* GraphQL */ `
+  query GetCollection($id: ID!, $metafields: [HasMetafieldsIdentifier!]!) {
+    collection(id: $id) {
+      ...collection
+      metafields(identifiers: $metafields) {
+        createdAt
+        description
+        id
+        key
+        namespace
+        type
+        updatedAt
+        value
+      }
+    }
+  }
+  ${collectionFragment}
+`;
+
+export const getCollectionByHandleWithMetafieldsQuery = /* GraphQL */ `
+  query GetCollectionByHandle(
+    $handle: String!
+    $metafields: [HasMetafieldsIdentifier!]!
+  ) {
+    collection(handle: $handle) {
+      ...collection
+      metafields(identifiers: $metafields) {
+        createdAt
+        description
+        id
+        key
+        namespace
+        type
+        updatedAt
+        value
+      }
+    }
+  }
+  ${collectionFragment}
+`;
+
 export const getCollectionByHandleQuery = /* GraphQL */ `
   query GetCollectionByHandle($handle: String!) {
     collection(handle: $handle) {
@@ -57,13 +98,13 @@ export const listCollectionProductsByIdQuery = /* GraphQL */ `
   query ListCollectionProducts(
     $collectionId: ID!
     $query: String
-    $first: Int!
+    $first: Int
     $after: String
     $before: String
     $last: Int
     $sortKey: ProductSortKeys
     $reverse: Boolean
-    $filters: ProductFiltersInput
+    $filters: [ProductFilter!]
   ) {
     collection(id: $collectionId) {
       id
@@ -96,9 +137,9 @@ export const listCollectionProductsByIdQuery = /* GraphQL */ `
 
 export const listCollectionProductsByHandleQuery = /* GraphQL */ `
   query ListCollectionProductsByHandle(
-    $handle: String!
+    $collectionHandle: String!
     $query: String
-    $first: Int!
+    $first: Int
     $after: String
     $before: String
     $last: Int
@@ -106,7 +147,7 @@ export const listCollectionProductsByHandleQuery = /* GraphQL */ `
     $reverse: Boolean
     $filters: ProductFiltersInput
   ) {
-    collection(handle: $handle) {
+    collection(handle: $collectionHandle) {
       id
       handle
       products(

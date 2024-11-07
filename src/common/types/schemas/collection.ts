@@ -1,4 +1,5 @@
 import { Connection, Image, SEO } from './common';
+import { Metafield } from './metafield';
 import { Product } from './product';
 
 export interface Collection {
@@ -9,6 +10,8 @@ export interface Collection {
   image: Image | null;
   seo: SEO;
   updatedAt: string;
+  // XXX: Revisit
+  metafields?: Metafield[] | null;
 }
 
 export interface CollectionProducts extends Partial<Collection> {

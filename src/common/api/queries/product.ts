@@ -4,10 +4,10 @@ import productVariantFragment from '../fragments/product-variant';
 export const listProductsQuery = /* GraphQL */ `
   query ListProducts(
     $query: String
-    $first: Int!
+    $first: Int
+    $last: Int
     $after: String
     $before: String
-    $last: Int
     $sortKey: ProductSortKeys
     $reverse: Boolean
   ) {
@@ -35,10 +35,51 @@ export const listProductsQuery = /* GraphQL */ `
   ${productFragment}
 `;
 
+export const getProductByIdWithMetafieldsQuery = /* GraphQL */ `
+  query GetProduct($id: ID!, $metafields: [HasMetafieldsIdentifier!]!) {
+    product(id: $id) {
+      ...product
+      metafields(identifiers: $metafields) {
+        createdAt
+        description
+        id
+        key
+        namespace
+        type
+        updatedAt
+        value
+      }
+    }
+  }
+  ${productFragment}
+`;
+
 export const getProductByIdQuery = /* GraphQL */ `
   query GetProduct($id: ID!) {
     product(id: $id) {
       ...product
+    }
+  }
+  ${productFragment}
+`;
+
+export const getProductByHandleWithMetafieldsQuery = /* GraphQL */ `
+  query GetProductByHandle(
+    $handle: String!
+    $metafields: [HasMetafieldsIdentifier!]!
+  ) {
+    product(handle: $handle) {
+      ...product
+      metafields(identifiers: $metafields) {
+        createdAt
+        description
+        id
+        key
+        namespace
+        type
+        updatedAt
+        value
+      }
     }
   }
   ${productFragment}

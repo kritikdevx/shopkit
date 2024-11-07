@@ -4,3 +4,4 @@ export * from './product';
 export * from './collection';
 export * from './order';
 export * from './address';
+export * from './metafield';

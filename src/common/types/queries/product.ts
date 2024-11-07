@@ -1,4 +1,10 @@
-import { Edge, PageInfo, Product, ProductVariant } from '../schemas';
+import {
+  Edge,
+  HasMetafieldsIdentifier,
+  PageInfo,
+  Product,
+  ProductVariant,
+} from '../schemas';
 
 export type ProductSortKeys =
   | 'PRODUCT_TYPE'
@@ -18,17 +24,10 @@ export type ProductVariantSortKeys =
   | 'ID'
   | 'RELEVANCE';
 
-export type MetafieldsInput = {
-  identifiers: Array<{
-    key: string;
-    namespace?: string;
-  }>;
-};
-
 // Variables
 
 export interface ListProductsQueryVariables {
-  first: number;
+  first?: number;
   last?: number;
   after?: string;
   before?: string;
@@ -39,10 +38,12 @@ export interface ListProductsQueryVariables {
 
 export interface GetProductByIdQueryVariables {
   id: string;
+  metafields?: HasMetafieldsIdentifier[];
 }
 
 export interface GetProductByHandleQueryVariables {
   handle: string;
+  metafields?: HasMetafieldsIdentifier[];
 }
 
 export type GetProductQueryVariables =

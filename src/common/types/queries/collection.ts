@@ -1,23 +1,19 @@
-import { Collection, CollectionProducts, Edge, PageInfo } from '../schemas';
+import {
+  Collection,
+  CollectionProducts,
+  Edge,
+  HasMetafieldsIdentifier,
+  PageInfo,
+  ProductFiltersInput,
+} from '../schemas';
 import { ListProductsQueryVariables } from './product';
 
 export type CollectionSortKeys = 'ID' | 'TITLE' | 'UPDATED_AT' | 'RELEVANCE';
 
-interface ProductFiltersInput {
-  available: Boolean;
-  price: PriceRangeInput;
-  productMetafield: MetafieldFilter;
-  productType?: string;
-  productVendor?: string;
-  tag?: string;
-  variantMetafield?: MetafieldFilter;
-  variantOption?: VariantOptionFilter;
-}
-
 // Variables
 
 export interface ListCollectionsQueryVariables {
-  first: number;
+  first?: number;
   last?: number;
   after?: string;
   before?: string;
@@ -26,28 +22,14 @@ export interface ListCollectionsQueryVariables {
   sortKey?: CollectionSortKeys;
 }
 
-interface PriceRangeInput {
-  max: number;
-  min: number;
-}
-
-interface MetafieldFilter {
-  key: string;
-  namespace: string;
-  value: string;
-}
-
-interface VariantOptionFilter {
-  name: string;
-  value: string;
-}
-
 export interface GetCollectionByIdQueryVariables {
   id: string;
+  metafields?: HasMetafieldsIdentifier[];
 }
 
 export interface GetCollectionByHandleQueryVariables {
   handle: string;
+  metafields?: HasMetafieldsIdentifier[];
 }
 
 export type GetCollectionQueryVariables =

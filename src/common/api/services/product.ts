@@ -14,6 +14,7 @@ import { shopifyFetch } from '../fetch';
 import {
   getProductByHandleQuery,
   getProductByIdQuery,
+  getProductByIdWithMetafieldsQuery,
   listProductsQuery,
   listProductVariantsByHandleQuery,
   listProductVariantsByIdQuery,
@@ -66,11 +67,19 @@ export async function getProductById({
   variables: GetProductByIdQueryVariables;
   options?: ShopifyRequest;
 }) {
-  return shopifyFetch<GetProductQuery, GetProductByIdQueryVariables>({
-    query: getProductByIdQuery,
-    variables,
-    options,
-  }).then((res) => res.product);
+  if (variables.metafields) {
+    return shopifyFetch<GetProductQuery, GetProductByIdQueryVariables>({
+      query: getProductByIdWithMetafieldsQuery,
+      variables,
+      options,
+    }).then((res) => res.product);
+  } else {
+    return shopifyFetch<GetProductQuery, GetProductByIdQueryVariables>({
+      query: getProductByIdQuery,
+      variables,
+      options,
+    }).then((res) => res.product);
+  }
 }
 
 /**
@@ -93,11 +102,19 @@ export async function getProductByHandle({
   variables: GetProductByHandleQueryVariables;
   options?: ShopifyRequest;
 }) {
-  return shopifyFetch<GetProductQuery, GetProductByHandleQueryVariables>({
-    query: getProductByHandleQuery,
-    variables,
-    options,
-  }).then((res) => res.product);
+  if (variables.metafields) {
+    return shopifyFetch<GetProductQuery, GetProductByHandleQueryVariables>({
+      query: getProductByIdWithMetafieldsQuery,
+      variables,
+      options,
+    }).then((res) => res.product);
+  } else {
+    return shopifyFetch<GetProductQuery, GetProductByHandleQueryVariables>({
+      query: getProductByHandleQuery,
+      variables,
+      options,
+    }).then((res) => res.product);
+  }
 }
 
 /**

@@ -19,6 +19,8 @@ import {
   getCollectionByHandleQuery,
   listCollectionProductsByIdQuery,
   listCollectionProductsByHandleQuery,
+  getCollectionByIdWithMetafieldsQuery,
+  getCollectionByHandleWithMetafieldsQuery,
 } from '../queries/collection';
 
 /**
@@ -68,11 +70,19 @@ export async function getCollectionById({
   variables: GetCollectionByIdQueryVariables;
   options?: ShopifyRequest;
 }) {
-  return shopifyFetch<GetCollectionQuery, GetCollectionByIdQueryVariables>({
-    query: getCollectionByIdQuery,
-    variables,
-    options,
-  }).then((data) => data.collection);
+  if (variables.metafields) {
+    return shopifyFetch<GetCollectionQuery, GetCollectionByIdQueryVariables>({
+      query: getCollectionByIdWithMetafieldsQuery,
+      variables,
+      options,
+    }).then((res) => res.collection);
+  } else {
+    return shopifyFetch<GetCollectionQuery, GetCollectionByIdQueryVariables>({
+      query: getCollectionByIdQuery,
+      variables,
+      options,
+    }).then((res) => res.collection);
+  }
 }
 
 /**
@@ -95,11 +105,25 @@ export async function getCollectionByHandle({
   variables: GetCollectionByHandleQueryVariables;
   options?: ShopifyRequest;
 }) {
-  return shopifyFetch<GetCollectionQuery, GetCollectionByHandleQueryVariables>({
-    query: getCollectionByHandleQuery,
-    variables,
-    options,
-  }).then((data) => data.collection);
+  if (variables.metafields) {
+    return shopifyFetch<
+      GetCollectionQuery,
+      GetCollectionByHandleQueryVariables
+    >({
+      query: getCollectionByHandleWithMetafieldsQuery,
+      variables,
+      options,
+    }).then((res) => res.collection);
+  } else {
+    return shopifyFetch<
+      GetCollectionQuery,
+      GetCollectionByHandleQueryVariables
+    >({
+      query: getCollectionByHandleQuery,
+      variables,
+      options,
+    }).then((res) => res.collection);
+  }
 }
 
 /**

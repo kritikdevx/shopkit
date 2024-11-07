@@ -38,7 +38,8 @@
     "changeset:add": "changeset add",
     "changeset:version": "changeset version",
     "changeset:beta": "changeset pre enter beta",
-    "changeset:release": "npm run build && changeset publish"
+    "changeset:release": "npm run build && changeset publish",
+    "watch": "tsc --watch --preserveWatchOutput"
   },
   "peerDependencies": {
     "react": ">=18.0.0",

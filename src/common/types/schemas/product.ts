@@ -1,4 +1,32 @@
 import { Connection, Image, Money, SEO } from './common';
+import { Metafield } from './metafield';
+
+export interface ProductFiltersInput {
+  available: Boolean;
+  price: PriceRangeInput;
+  productMetafield: MetafieldFilter;
+  productType?: string;
+  productVendor?: string;
+  tag?: string;
+  variantMetafield?: MetafieldFilter;
+  variantOption?: VariantOptionFilter;
+}
+
+interface PriceRangeInput {
+  max: number;
+  min: number;
+}
+
+interface MetafieldFilter {
+  key: string;
+  namespace: string;
+  value: string;
+}
+
+interface VariantOptionFilter {
+  name: string;
+  value: string;
+}
 
 export interface ProductOption {
   id: string;
@@ -58,4 +86,6 @@ export interface Product {
   seo: SEO;
   tags: string[];
   updatedAt: string;
+  // XXX: Revisit
+  metafields?: Metafield[] | null;
 }
