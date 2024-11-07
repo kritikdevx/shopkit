@@ -1,3 +1,5 @@
+import { Image } from './common';
+
 export interface HasMetafieldsIdentifier {
   key: string;
   namespace?: string;
@@ -12,4 +14,7 @@ export interface Metafield {
   type: string;
   updatedAt: string;
   value: string;
+  reference: {
+    image: Image;
+  } | null;
 }

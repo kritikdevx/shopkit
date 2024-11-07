@@ -48,6 +48,14 @@ export const getProductByIdWithMetafieldsQuery = /* GraphQL */ `
         type
         updatedAt
         value
+        reference {
+          ... on MediaImage {
+            image {
+              url
+              altText
+            }
+          }
+        }
       }
     }
   }
@@ -79,6 +87,14 @@ export const getProductByHandleWithMetafieldsQuery = /* GraphQL */ `
         type
         updatedAt
         value
+        reference {
+          ... on MediaImage {
+            image {
+              url
+              altText
+            }
+          }
+        }
       }
     }
   }

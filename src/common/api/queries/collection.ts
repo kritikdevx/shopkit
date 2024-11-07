@@ -57,6 +57,16 @@ export const getCollectionByIdWithMetafieldsQuery = /* GraphQL */ `
         type
         updatedAt
         value
+        reference {
+          ... on MediaImage {
+            image {
+              url
+              altText
+              width
+              height
+            }
+          }
+        }
       }
     }
   }
@@ -79,6 +89,16 @@ export const getCollectionByHandleWithMetafieldsQuery = /* GraphQL */ `
         type
         updatedAt
         value
+        reference {
+          ... on MediaImage {
+            image {
+              url
+              altText
+              width
+              height
+            }
+          }
+        }
       }
     }
   }
@@ -138,20 +158,18 @@ export const listCollectionProductsByIdQuery = /* GraphQL */ `
 export const listCollectionProductsByHandleQuery = /* GraphQL */ `
   query ListCollectionProductsByHandle(
     $collectionHandle: String!
-    $query: String
     $first: Int
     $after: String
     $before: String
     $last: Int
-    $sortKey: ProductSortKeys
+    $sortKey: ProductCollectionSortKeys
     $reverse: Boolean
-    $filters: ProductFiltersInput
+    $filters: [ProductFilter!]
   ) {
     collection(handle: $collectionHandle) {
       id
       handle
       products(
-        query: $query
         first: $first
         after: $after
         before: $before

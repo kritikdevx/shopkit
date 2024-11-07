@@ -10,6 +10,17 @@ import { ListProductsQueryVariables } from './product';
 
 export type CollectionSortKeys = 'ID' | 'TITLE' | 'UPDATED_AT' | 'RELEVANCE';
 
+export type ProductCollectionSortKeys =
+  | 'TITLE'
+  | 'PRICE'
+  | 'ID'
+  | 'TITLE'
+  | 'CREATED'
+  | 'BEST_SELLING'
+  | 'RELEVANCE'
+  | 'MANUAL'
+  | 'COLLECTION_DEFAULT';
+
 // Variables
 
 export interface ListCollectionsQueryVariables {
@@ -37,15 +48,17 @@ export type GetCollectionQueryVariables =
   | GetCollectionByHandleQueryVariables;
 
 export interface ListCollectionProductsByIdQueryVariables
-  extends ListProductsQueryVariables {
+  extends Omit<ListProductsQueryVariables, 'sortKey' | 'query'> {
   collectionId: string;
-  filters?: ProductFiltersInput;
+  filters?: [ProductFiltersInput];
+  sortKey?: ProductCollectionSortKeys;
 }
 
 export interface ListCollectionProductsByHandleQueryVariables
-  extends ListProductsQueryVariables {
+  extends Omit<ListProductsQueryVariables, 'sortKey' | 'query'> {
   collectionHandle: string;
-  filters?: ProductFiltersInput;
+  filters?: [ProductFiltersInput];
+  sortKey?: ProductCollectionSortKeys;
 }
 
 export type ListCollectionProductsQueryVariables =
