@@ -46,7 +46,7 @@ export const getCollectionByIdQuery = /* GraphQL */ `
 
 export const getCollectionByHandleQuery = /* GraphQL */ `
   query GetCollectionByHandle($handle: String!) {
-    collectionByHandle(handle: $handle) {
+    collection(handle: $handle) {
       ...collection
     }
   }
@@ -106,7 +106,7 @@ export const listCollectionProductsByHandleQuery = /* GraphQL */ `
     $reverse: Boolean
     $filters: ProductFiltersInput
   ) {
-    collectionByHandle(handle: $handle) {
+    collection(handle: $handle) {
       id
       handle
       products(

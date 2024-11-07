@@ -3,8 +3,7 @@ import {
   ListProductsQuery,
   ListProductsQueryVariables,
   GetProductByIdQueryVariables,
-  GetProductByIdQuery,
-  GetProductByHandleQuery,
+  GetProductQuery,
   GetProductByHandleQueryVariables,
   GetProductQueryVariables,
   ListProductVariantsQueryVariables,
@@ -67,7 +66,7 @@ export async function getProductById({
   variables: GetProductByIdQueryVariables;
   options?: ShopifyRequest;
 }) {
-  return shopifyFetch<GetProductByIdQuery, GetProductByIdQueryVariables>({
+  return shopifyFetch<GetProductQuery, GetProductByIdQueryVariables>({
     query: getProductByIdQuery,
     variables,
     options,
@@ -94,14 +93,11 @@ export async function getProductByHandle({
   variables: GetProductByHandleQueryVariables;
   options?: ShopifyRequest;
 }) {
-  return shopifyFetch<
-    GetProductByHandleQuery,
-    GetProductByHandleQueryVariables
-  >({
+  return shopifyFetch<GetProductQuery, GetProductByHandleQueryVariables>({
     query: getProductByHandleQuery,
     variables,
     options,
-  }).then((res) => res.productByHandle);
+  }).then((res) => res.product);
 }
 
 /**

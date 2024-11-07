@@ -82,12 +82,8 @@ export interface ListProductsQuery {
   };
 }
 
-export interface GetProductByIdQuery {
+export interface GetProductQuery {
   product: Product;
-}
-
-export interface GetProductByHandleQuery {
-  productByHandle: Product;
 }
 
 export interface ListProductVariantsQuery {

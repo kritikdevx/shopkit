@@ -46,7 +46,7 @@ export const getProductByIdQuery = /* GraphQL */ `
 
 export const getProductByHandleQuery = /* GraphQL */ `
   query GetProductByHandle($handle: String!) {
-    productByHandle(handle: $handle) {
+    product(handle: $handle) {
       ...product
     }
   }

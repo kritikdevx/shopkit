@@ -2,14 +2,12 @@ import {
   ShopifyRequest,
   ListCollectionsQuery,
   ListCollectionsQueryVariables,
-  GetCollectionByIdQuery,
-  GetCollectionByHandleQuery,
+  GetCollectionQuery,
   GetCollectionByHandleQueryVariables,
   GetCollectionByIdQueryVariables,
   GetCollectionQueryVariables,
   ListCollectionProductsQueryVariables,
-  ListCollectionProductsByIdQuery,
-  ListCollectionProductsByHandleQuery,
+  ListCollectionProductsQuery,
   ListCollectionProductsByIdQueryVariables,
   ListCollectionProductsByHandleQueryVariables,
 } from '@/common/types';
@@ -70,7 +68,7 @@ export async function getCollectionById({
   variables: GetCollectionByIdQueryVariables;
   options?: ShopifyRequest;
 }) {
-  return shopifyFetch<GetCollectionByIdQuery, GetCollectionByIdQueryVariables>({
+  return shopifyFetch<GetCollectionQuery, GetCollectionByIdQueryVariables>({
     query: getCollectionByIdQuery,
     variables,
     options,
@@ -97,14 +95,11 @@ export async function getCollectionByHandle({
   variables: GetCollectionByHandleQueryVariables;
   options?: ShopifyRequest;
 }) {
-  return shopifyFetch<
-    GetCollectionByHandleQuery,
-    GetCollectionByHandleQueryVariables
-  >({
+  return shopifyFetch<GetCollectionQuery, GetCollectionByHandleQueryVariables>({
     query: getCollectionByHandleQuery,
     variables,
     options,
-  }).then((data) => data.collectionByHandle);
+  }).then((data) => data.collection);
 }
 
 /**
@@ -158,7 +153,7 @@ export async function listCollectionProductsById({
   options?: ShopifyRequest;
 }) {
   return shopifyFetch<
-    ListCollectionProductsByIdQuery,
+    ListCollectionProductsQuery,
     ListCollectionProductsByIdQueryVariables
   >({
     query: listCollectionProductsByIdQuery,
@@ -189,13 +184,13 @@ export async function listCollectionProductsByHandle({
   options?: ShopifyRequest;
 }) {
   return shopifyFetch<
-    ListCollectionProductsByHandleQuery,
+    ListCollectionProductsQuery,
     ListCollectionProductsByHandleQueryVariables
   >({
     query: listCollectionProductsByHandleQuery,
     variables,
     options,
-  }).then((data) => data.collectionByHandle);
+  }).then((data) => data.collection);
 }
 
 /**
