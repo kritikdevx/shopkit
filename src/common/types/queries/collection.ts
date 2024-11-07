@@ -3,6 +3,17 @@ import { ListProductsQueryVariables } from './product';
 
 export type CollectionSortKeys = 'ID' | 'TITLE' | 'UPDATED_AT' | 'RELEVANCE';
 
+interface ProductFiltersInput {
+  available: Boolean;
+  price: PriceRangeInput;
+  productMetafield: MetafieldFilter;
+  productType?: string;
+  productVendor?: string;
+  tag?: string;
+  variantMetafield?: MetafieldFilter;
+  variantOption?: VariantOptionFilter;
+}
+
 // Variables
 
 export interface ListCollectionsQueryVariables {
@@ -13,6 +24,22 @@ export interface ListCollectionsQueryVariables {
   reverse?: boolean;
   query?: string;
   sortKey?: CollectionSortKeys;
+}
+
+interface PriceRangeInput {
+  max: number;
+  min: number;
+}
+
+interface MetafieldFilter {
+  key: string;
+  namespace: string;
+  value: string;
+}
+
+interface VariantOptionFilter {
+  name: string;
+  value: string;
 }
 
 export interface GetCollectionByIdQueryVariables {
@@ -30,11 +57,13 @@ export type GetCollectionQueryVariables =
 export interface ListCollectionProductsByIdQueryVariables
   extends ListProductsQueryVariables {
   collectionId: string;
+  filters?: ProductFiltersInput;
 }
 
 export interface ListCollectionProductsByHandleQueryVariables
   extends ListProductsQueryVariables {
   collectionHandle: string;
+  filters?: ProductFiltersInput;
 }
 
 export type ListCollectionProductsQueryVariables =

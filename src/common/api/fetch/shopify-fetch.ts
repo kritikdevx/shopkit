@@ -104,7 +104,7 @@ export async function shopifyAdminFetch<T, V>({
     };
 
     const response = await fetch(
-      `https://${config.domain}/api/${config.apiVersion}/graphql.json`,
+      `https://${config.domain}/admin/api/${config.apiVersion}/graphql.json`,
       fetchOptions,
     );
 

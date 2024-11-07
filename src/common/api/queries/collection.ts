@@ -63,6 +63,7 @@ export const listCollectionProductsByIdQuery = /* GraphQL */ `
     $last: Int
     $sortKey: ProductSortKeys
     $reverse: Boolean
+    $filters: ProductFiltersInput
   ) {
     collection(id: $collectionId) {
       id
@@ -75,6 +76,7 @@ export const listCollectionProductsByIdQuery = /* GraphQL */ `
         last: $last
         sortKey: $sortKey
         reverse: $reverse
+        filters: $filters
       ) {
         pageInfo {
           hasNextPage
@@ -102,6 +104,7 @@ export const listCollectionProductsByHandleQuery = /* GraphQL */ `
     $last: Int
     $sortKey: ProductSortKeys
     $reverse: Boolean
+    $filters: ProductFiltersInput
   ) {
     collectionByHandle(handle: $handle) {
       id
@@ -114,6 +117,7 @@ export const listCollectionProductsByHandleQuery = /* GraphQL */ `
         last: $last
         sortKey: $sortKey
         reverse: $reverse
+        filters: $filters
       ) {
         pageInfo {
           hasNextPage

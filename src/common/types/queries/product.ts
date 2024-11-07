@@ -18,6 +18,13 @@ export type ProductVariantSortKeys =
   | 'ID'
   | 'RELEVANCE';
 
+export type MetafieldsInput = {
+  identifiers: Array<{
+    key: string;
+    namespace?: string;
+  }>;
+};
+
 // Variables
 
 export interface ListProductsQueryVariables {

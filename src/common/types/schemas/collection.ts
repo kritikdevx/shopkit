@@ -11,6 +11,6 @@ export interface Collection {
   updatedAt: string;
 }
 
-export interface CollectionProducts extends Collection {
+export interface CollectionProducts extends Partial<Collection> {
   products: Connection<Product>;
 }
