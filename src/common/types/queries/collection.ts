@@ -52,6 +52,7 @@ export interface ListCollectionProductsByIdQueryVariables
   collectionId: string;
   filters?: [ProductFiltersInput];
   sortKey?: ProductCollectionSortKeys;
+  metafields?: HasMetafieldsIdentifier[];
 }
 
 export interface ListCollectionProductsByHandleQueryVariables
@@ -59,6 +60,7 @@ export interface ListCollectionProductsByHandleQueryVariables
   collectionHandle: string;
   filters?: [ProductFiltersInput];
   sortKey?: ProductCollectionSortKeys;
+  metafields?: HasMetafieldsIdentifier[];
 }
 
 export type ListCollectionProductsQueryVariables =

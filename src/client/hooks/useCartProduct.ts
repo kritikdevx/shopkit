@@ -55,11 +55,13 @@ export default function useCartProduct({ line }: { line: CartLine }) {
   const handleUpdateCart = async (quantity: number) => {
     try {
       setState({ loading: true, success: '', error: '' });
+
       const cartLinesUpdate = await updateCart({
         variables: {
           cartId: cart?.id as string,
           lines: [
             {
+              id: line.id,
               merchandiseId: line.merchandise.id,
               quantity,
             },

@@ -12,4 +12,5 @@ export { default as useCreateAddress } from './hooks/useCreateAddress';
 export { default as useUpdateAddress } from './hooks/useUpdateAddress';
 export { default as useDeleteAddress } from './hooks/useDeleteAddress';
 export { default as useUpdateDefaultAddress } from './hooks/useUpdateDefaultAddress';
-export { default as useManageCart } from './hooks/useManageCart';
+export { default as useCartAction } from './hooks/useCartAction';
+export { default as useCartProduct } from './hooks/useCartProduct';

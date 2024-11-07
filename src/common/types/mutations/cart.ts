@@ -1,12 +1,15 @@
-import { AttributeInput, Cart, CartLineInput } from '../schemas';
+import {
+  AttributeInput,
+  Cart,
+  CartLineInput,
+  CartLineUpdateInput,
+} from '../schemas';
 
 // Variables
 
 export interface CreateCartMutationVariables {
-  input: {
-    lines?: CartLineInput[];
-    attributes?: AttributeInput[];
-  };
+  lineItems?: CartLineInput[];
+  attributes?: AttributeInput[];
 }
 
 export interface CartLinesAddMutationVariables {
@@ -21,7 +24,7 @@ export interface CartLinesRemoveMutationVariables {
 
 export interface CartLinesUpdateMutationVariables {
   cartId: string;
-  lines: CartLineInput[];
+  lines: CartLineUpdateInput[];
 }
 
 // Mutations

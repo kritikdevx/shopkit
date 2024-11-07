@@ -29,9 +29,7 @@ export function* getCartSaga(action: {
 export function* createCartSaga(action: { type: string }): Generator {
   try {
     const { cartCreate } = (yield call(createCart, {
-      variables: {
-        input: {},
-      },
+      variables: {},
     })) as CreateCartMutation;
 
     yield put(getCartSuccess(cartCreate.cart));

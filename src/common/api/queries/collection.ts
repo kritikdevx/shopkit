@@ -155,6 +155,66 @@ export const listCollectionProductsByIdQuery = /* GraphQL */ `
   ${productFragment}
 `;
 
+export const listCollectionProductsByIdWithMetafieldsQuery = /* GraphQL */ `
+  query ListCollectionProducts(
+    $collectionHandle: String!
+    $first: Int
+    $after: String
+    $before: String
+    $last: Int
+    $sortKey: ProductCollectionSortKeys
+    $reverse: Boolean
+    $filters: [ProductFilter!]
+    $metafields: [HasMetafieldsIdentifier!]!
+  ) {
+    collection(handle: $collectionHandle) {
+      id
+      handle
+      products(
+        first: $first
+        after: $after
+        before: $before
+        last: $last
+        sortKey: $sortKey
+        reverse: $reverse
+        filters: $filters
+      ) {
+        pageInfo {
+          hasNextPage
+          hasPreviousPage
+        }
+        edges {
+          cursor
+          node {
+            ...product
+            metafields(identifiers: $metafields) {
+              createdAt
+              description
+              id
+              key
+              namespace
+              type
+              updatedAt
+              value
+              reference {
+                ... on MediaImage {
+                  image {
+                    url
+                    altText
+                    width
+                    height
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  ${productFragment}
+`;
+
 export const listCollectionProductsByHandleQuery = /* GraphQL */ `
   query ListCollectionProductsByHandle(
     $collectionHandle: String!
@@ -186,6 +246,66 @@ export const listCollectionProductsByHandleQuery = /* GraphQL */ `
           cursor
           node {
             ...product
+          }
+        }
+      }
+    }
+  }
+  ${productFragment}
+`;
+
+export const listCollectionProductsByHandleWithMetafieldsQuery = /* GraphQL */ `
+  query ListCollectionProductsByHandle(
+    $collectionHandle: String!
+    $first: Int
+    $after: String
+    $before: String
+    $last: Int
+    $sortKey: ProductCollectionSortKeys
+    $reverse: Boolean
+    $filters: [ProductFilter!]
+    $metafields: [HasMetafieldsIdentifier!]!
+  ) {
+    collection(handle: $collectionHandle) {
+      id
+      handle
+      products(
+        first: $first
+        after: $after
+        before: $before
+        last: $last
+        sortKey: $sortKey
+        reverse: $reverse
+        filters: $filters
+      ) {
+        pageInfo {
+          hasNextPage
+          hasPreviousPage
+        }
+        edges {
+          cursor
+          node {
+            ...product
+            metafields(identifiers: $metafields) {
+              createdAt
+              description
+              id
+              key
+              namespace
+              type
+              updatedAt
+              value
+              reference {
+                ... on MediaImage {
+                  image {
+                    url
+                    altText
+                    width
+                    height
+                  }
+                }
+              }
+            }
           }
         }
       }

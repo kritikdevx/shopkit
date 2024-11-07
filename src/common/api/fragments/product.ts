@@ -32,6 +32,7 @@ const productFragment = /* GraphQL */ `
           title
           weight
           availableForSale
+          quantityAvailable
           selectedOptions {
             name
             value

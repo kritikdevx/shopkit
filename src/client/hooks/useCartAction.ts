@@ -13,15 +13,15 @@ import {
 import { useAppDispatch, useAppSelector } from '../store';
 import { setCart } from '../store/slices/cart.slice';
 
-interface UseManageCartState {
+interface UseCartActionState {
   loading: boolean;
   success: string;
   error: string;
 }
 
-export default function useManageCart() {
+export default function useCartAction() {
   const dispatch = useAppDispatch();
-  const [state, setState] = useState<UseManageCartState>({
+  const [state, setState] = useState<UseCartActionState>({
     loading: false,
     success: '',
     error: '',
@@ -34,23 +34,31 @@ export default function useManageCart() {
       setState({ loading: true, success: '', error: '' });
 
       let updatedCart = cart;
+      // If the cart already exists, check if the product is already in the cart
       if (cart) {
-        const cartLinesAdd = await addToCart({
-          variables: {
-            cartId: cart.id,
-            lines: [
-              {
-                merchandiseId: id,
-                quantity,
-              },
-            ],
-          },
-        });
-        updatedCart = cartLinesAdd.cart;
-      } else {
-        const cartCreate = await createCart({
-          variables: {
-            input: {
+        const line = cart.lines.edges.find(
+          (edge) => edge.node.merchandise.id === id,
+        )?.node;
+
+        // If the product is already in the cart, update the quantity
+        if (line) {
+          const cartLinesUpdate = await updateCart({
+            variables: {
+              cartId: cart.id,
+              lines: [
+                {
+                  id: line.id,
+                  quantity: line.quantity + quantity,
+                },
+              ],
+            },
+          });
+          updatedCart = cartLinesUpdate.cart;
+        } else {
+          // If the product is not in the cart, add it
+          const cartLinesAdd = await addToCart({
+            variables: {
+              cartId: cart.id,
               lines: [
                 {
                   merchandiseId: id,
@@ -58,6 +66,19 @@ export default function useManageCart() {
                 },
               ],
             },
+          });
+          updatedCart = cartLinesAdd.cart;
+        }
+      } else {
+        // If the cart does not exist, create a new cart
+        const cartCreate = await createCart({
+          variables: {
+            lineItems: [
+              {
+                merchandiseId: id,
+                quantity,
+              },
+            ],
           },
         });
         updatedCart = cartCreate.cart;
@@ -90,7 +111,7 @@ export default function useManageCart() {
           cartId: cart?.id as string,
           lines: [
             {
-              merchandiseId: line.merchandise.id,
+              id: line.id,
               quantity,
             },
           ],

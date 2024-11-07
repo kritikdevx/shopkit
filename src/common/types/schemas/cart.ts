@@ -11,6 +11,13 @@ export interface CartLineInput {
   quantity: number;
 }
 
+export interface CartLineUpdateInput {
+  id: string;
+  quantity?: number;
+  merchandiseId?: string;
+  sellingPlanId?: string;
+}
+
 export interface CartLine {
   id: string;
   quantity: number;

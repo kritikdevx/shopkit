@@ -21,6 +21,8 @@ import {
   listCollectionProductsByHandleQuery,
   getCollectionByIdWithMetafieldsQuery,
   getCollectionByHandleWithMetafieldsQuery,
+  listCollectionProductsByIdWithMetafieldsQuery,
+  listCollectionProductsByHandleWithMetafieldsQuery,
 } from '../queries/collection';
 
 /**
@@ -176,14 +178,25 @@ export async function listCollectionProductsById({
   variables: ListCollectionProductsByIdQueryVariables;
   options?: ShopifyRequest;
 }) {
-  return shopifyFetch<
-    ListCollectionProductsQuery,
-    ListCollectionProductsByIdQueryVariables
-  >({
-    query: listCollectionProductsByIdQuery,
-    variables,
-    options,
-  }).then((data) => data.collection);
+  if (variables.metafields) {
+    return shopifyFetch<
+      ListCollectionProductsQuery,
+      ListCollectionProductsByIdQueryVariables
+    >({
+      query: listCollectionProductsByIdWithMetafieldsQuery,
+      variables,
+      options,
+    }).then((data) => data.collection);
+  } else {
+    return shopifyFetch<
+      ListCollectionProductsQuery,
+      ListCollectionProductsByIdQueryVariables
+    >({
+      query: listCollectionProductsByIdQuery,
+      variables,
+      options,
+    }).then((data) => data.collection);
+  }
 }
 
 /**
@@ -207,14 +220,25 @@ export async function listCollectionProductsByHandle({
   variables: ListCollectionProductsByHandleQueryVariables;
   options?: ShopifyRequest;
 }) {
-  return shopifyFetch<
-    ListCollectionProductsQuery,
-    ListCollectionProductsByHandleQueryVariables
-  >({
-    query: listCollectionProductsByHandleQuery,
-    variables,
-    options,
-  }).then((data) => data.collection);
+  if (variables.metafields) {
+    return shopifyFetch<
+      ListCollectionProductsQuery,
+      ListCollectionProductsByHandleQueryVariables
+    >({
+      query: listCollectionProductsByHandleWithMetafieldsQuery,
+      variables,
+      options,
+    }).then((data) => data.collection);
+  } else {
+    return shopifyFetch<
+      ListCollectionProductsQuery,
+      ListCollectionProductsByHandleQueryVariables
+    >({
+      query: listCollectionProductsByHandleQuery,
+      variables,
+      options,
+    }).then((data) => data.collection);
+  }
 }
 
 /**
