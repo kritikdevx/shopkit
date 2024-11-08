@@ -87,5 +87,5 @@ export interface Product {
   tags: string[];
   updatedAt: string;
   // XXX: Revisit
-  metafields?: Metafield[] | null;
+  metafields?: Metafield[] | [null];
 }

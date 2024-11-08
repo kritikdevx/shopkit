@@ -6,7 +6,10 @@ import {
   UpdateCustomerAddressMutation,
   UpdateCustomerAddressMutationVariables,
 } from '@/common';
-import { updateCustomerAddress } from '@/common/api/services';
+import {
+  updateCustomerAddress,
+  updateCustomerDefaultAddress,
+} from '@/common/api/services';
 
 interface UserUpdateAddressState {
   loading: boolean;
@@ -25,6 +28,7 @@ const useUpdateAddress = () => {
 
   const handleUpdateAddress = async (
     variables: UpdateCustomerAddressMutationVariables,
+    isDefault?: boolean,
   ) => {
     setState({ loading: true, error: '', success: '', data: null });
 
@@ -32,6 +36,15 @@ const useUpdateAddress = () => {
       const customerAddressUpdate = await updateCustomerAddress({
         variables,
       });
+
+      if (isDefault) {
+        await updateCustomerDefaultAddress({
+          variables: {
+            addressId: customerAddressUpdate.customerAddress.id,
+            customerAccessToken: variables.customerAccessToken,
+          },
+        });
+      }
 
       setState((prev) => ({ ...prev, data: customerAddressUpdate }));
     } catch (error) {

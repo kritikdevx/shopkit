@@ -4,6 +4,7 @@ import { ListAddressesQueryVariables } from '@/common';
 
 import { useAppDispatch, useAppSelector } from '../store';
 import { addressActions } from '../store/actions/address.action';
+import { useCallback } from 'react';
 
 export default function useAddresses() {
   const dispatch = useAppDispatch();
@@ -12,9 +13,12 @@ export default function useAddresses() {
   );
 
   // TODO: Need to revisit
-  const fetchAddresses = (variables: ListAddressesQueryVariables) => {
-    dispatch(addressActions.startListAddressesRequest(variables));
-  };
+  const fetchAddresses = useCallback(
+    (variables: ListAddressesQueryVariables) => {
+      dispatch(addressActions.startListAddressesRequest(variables));
+    },
+    [dispatch],
+  );
 
   return {
     addresses,

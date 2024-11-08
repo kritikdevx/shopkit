@@ -14,11 +14,9 @@ export function* listAddressesSaga(action: {
   payload: ListAddressesQueryVariables;
 }): Generator {
   try {
-    const {
-      customer: { addresses, defaultAddress },
-    } = (yield call(listCustomerAddresses, {
+    const { addresses, defaultAddress } = (yield call(listCustomerAddresses, {
       variables: action.payload,
-    })) as ListAddressesQuery;
+    })) as ListAddressesQuery['customer'];
 
     yield put(
       listAddressesSuccess({

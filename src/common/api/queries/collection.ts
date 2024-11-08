@@ -1,4 +1,5 @@
 import collectionFragment from '../fragments/collection';
+import metafieldFragment from '../fragments/metafield';
 import productFragment from '../fragments/product';
 
 export const listCollectionsQuery = /* GraphQL */ `
@@ -49,27 +50,11 @@ export const getCollectionByIdWithMetafieldsQuery = /* GraphQL */ `
     collection(id: $id) {
       ...collection
       metafields(identifiers: $metafields) {
-        createdAt
-        description
-        id
-        key
-        namespace
-        type
-        updatedAt
-        value
-        reference {
-          ... on MediaImage {
-            image {
-              url
-              altText
-              width
-              height
-            }
-          }
-        }
+        ...metafield
       }
     }
   }
+  ${metafieldFragment}
   ${collectionFragment}
 `;
 
@@ -81,27 +66,11 @@ export const getCollectionByHandleWithMetafieldsQuery = /* GraphQL */ `
     collection(handle: $handle) {
       ...collection
       metafields(identifiers: $metafields) {
-        createdAt
-        description
-        id
-        key
-        namespace
-        type
-        updatedAt
-        value
-        reference {
-          ... on MediaImage {
-            image {
-              url
-              altText
-              width
-              height
-            }
-          }
-        }
+        ...metafield
       }
     }
   }
+  ${metafieldFragment}
   ${collectionFragment}
 `;
 
@@ -188,30 +157,14 @@ export const listCollectionProductsByIdWithMetafieldsQuery = /* GraphQL */ `
           node {
             ...product
             metafields(identifiers: $metafields) {
-              createdAt
-              description
-              id
-              key
-              namespace
-              type
-              updatedAt
-              value
-              reference {
-                ... on MediaImage {
-                  image {
-                    url
-                    altText
-                    width
-                    height
-                  }
-                }
-              }
+              ...metafield
             }
           }
         }
       }
     }
   }
+  ${metafieldFragment}
   ${productFragment}
 `;
 
@@ -287,29 +240,13 @@ export const listCollectionProductsByHandleWithMetafieldsQuery = /* GraphQL */ `
           node {
             ...product
             metafields(identifiers: $metafields) {
-              createdAt
-              description
-              id
-              key
-              namespace
-              type
-              updatedAt
-              value
-              reference {
-                ... on MediaImage {
-                  image {
-                    url
-                    altText
-                    width
-                    height
-                  }
-                }
-              }
+              ...metafield
             }
           }
         }
       }
     }
   }
+  ${metafieldFragment}
   ${productFragment}
 `;

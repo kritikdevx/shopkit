@@ -1,3 +1,4 @@
+import metafieldFragment from '../fragments/metafield';
 import productFragment from '../fragments/product';
 import productVariantFragment from '../fragments/product-variant';
 
@@ -40,25 +41,11 @@ export const getProductByIdWithMetafieldsQuery = /* GraphQL */ `
     product(id: $id) {
       ...product
       metafields(identifiers: $metafields) {
-        createdAt
-        description
-        id
-        key
-        namespace
-        type
-        updatedAt
-        value
-        reference {
-          ... on MediaImage {
-            image {
-              url
-              altText
-            }
-          }
-        }
+        ...metafield
       }
     }
   }
+  ${metafieldFragment}
   ${productFragment}
 `;
 
@@ -79,25 +66,11 @@ export const getProductByHandleWithMetafieldsQuery = /* GraphQL */ `
     product(handle: $handle) {
       ...product
       metafields(identifiers: $metafields) {
-        createdAt
-        description
-        id
-        key
-        namespace
-        type
-        updatedAt
-        value
-        reference {
-          ... on MediaImage {
-            image {
-              url
-              altText
-            }
-          }
-        }
+        ...metafield
       }
     }
   }
+  ${metafieldFragment}
   ${productFragment}
 `;
 

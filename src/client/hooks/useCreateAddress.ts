@@ -6,7 +6,11 @@ import {
   CreateCustomerAddressMutation,
   CreateCustomerAddressMutationVariables,
 } from '@/common';
-import { createCustomerAddress } from '@/common/api/services';
+import {
+  createCustomerAddress,
+  updateCustomerDefaultAddress,
+} from '@/common/api/services';
+import { useAppDispatch } from '../store';
 
 interface UserCreateAddressState {
   loading: boolean;
@@ -16,6 +20,8 @@ interface UserCreateAddressState {
 }
 
 const useCreateAddress = () => {
+  const dispatch = useAppDispatch();
+
   const [state, setState] = useState<UserCreateAddressState & {}>({
     loading: false,
     error: '',
@@ -25,15 +31,25 @@ const useCreateAddress = () => {
 
   const handleCreateAddress = async (
     variables: CreateCustomerAddressMutationVariables,
+    isDefault?: boolean,
   ) => {
     setState({ loading: true, error: '', success: '', data: null });
 
     try {
-      const customerAddressCreate = await createCustomerAddress({
+      const createdAddress = await createCustomerAddress({
         variables,
       });
 
-      setState((prev) => ({ ...prev, data: customerAddressCreate }));
+      if (isDefault) {
+        await updateCustomerDefaultAddress({
+          variables: {
+            addressId: createdAddress.customerAddress.id,
+            customerAccessToken: variables.customerAccessToken,
+          },
+        });
+      }
+
+      setState((prev) => ({ ...prev, data: createdAddress }));
     } catch (error) {
       setState((prev) => ({
         ...prev,

@@ -11,7 +11,7 @@ export interface Collection {
   seo: SEO;
   updatedAt: string;
   // XXX: Revisit
-  metafields?: Metafield[] | null;
+  metafields?: Metafield[] | [null];
 }
 
 export interface CollectionProducts extends Partial<Collection> {
