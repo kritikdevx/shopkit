@@ -39,8 +39,15 @@ const useCreateAddress = () => {
       const createdAddress = await createCustomerAddress({
         variables,
       });
+      const alreadyTaken = createdAddress.customerUserErrors.find(
+        (error) => error.code === 'TAKEN',
+      );
 
-      if (isDefault) {
+      if (alreadyTaken) {
+        throw new Error('Address already exists');
+      }
+
+      if (isDefault && createdAddress.customerAddress !== null) {
         await updateCustomerDefaultAddress({
           variables: {
             addressId: createdAddress.customerAddress.id,

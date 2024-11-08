@@ -13,6 +13,7 @@ import {
 import { shopifyFetch } from '../fetch';
 import {
   getProductByHandleQuery,
+  getProductByHandleWithMetafieldsQuery,
   getProductByIdQuery,
   getProductByIdWithMetafieldsQuery,
   listProductsQuery,
@@ -44,7 +45,7 @@ export async function listProducts({
     query: listProductsQuery,
     variables,
     options,
-  });
+  }).then((res) => res.products);
 }
 
 /**
@@ -104,7 +105,7 @@ export async function getProductByHandle({
 }) {
   if (variables.metafields) {
     return shopifyFetch<GetProductQuery, GetProductByHandleQueryVariables>({
-      query: getProductByIdWithMetafieldsQuery,
+      query: getProductByHandleWithMetafieldsQuery,
       variables,
       options,
     }).then((res) => res.product);

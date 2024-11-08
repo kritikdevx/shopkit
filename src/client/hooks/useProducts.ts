@@ -35,7 +35,7 @@ export default function useProducts() {
     try {
       setState((prev) => ({ ...prev, loading: true, error: null }));
 
-      const { products } = await listProducts({
+      const products = await listProducts({
         variables,
       });
 

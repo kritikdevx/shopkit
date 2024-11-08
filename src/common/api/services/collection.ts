@@ -49,7 +49,7 @@ export async function listCollections({
     query: listCollectionsQuery,
     variables,
     options,
-  });
+  }).then((res) => res.collections);
 }
 
 /**

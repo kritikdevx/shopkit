@@ -35,7 +35,7 @@ export default function useCollections() {
     try {
       setState((prev) => ({ ...prev, loading: true, error: null }));
 
-      const { collections } = await listCollections({
+      const collections = await listCollections({
         variables,
       });
 
