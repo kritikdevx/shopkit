@@ -40,12 +40,13 @@ const orderFragment = /* GraphQL */ `
             title
             weight
             weightUnit
+            selectedOptions {
+              name
+              value
+            }
             product {
+              title
               createdAt
-              description
-              descriptionHtml
-              encodedVariantAvailability
-              encodedVariantExistence
               handle
               id
               featuredImage {
@@ -54,7 +55,21 @@ const orderFragment = /* GraphQL */ `
                 originalSrc
                 id
                 src
+                url
                 width
+              }
+              images(first: 1) {
+                edges {
+                  node {
+                    altText
+                    height
+                    originalSrc
+                    id
+                    src
+                    url
+                    width
+                  }
+                }
               }
             }
           }

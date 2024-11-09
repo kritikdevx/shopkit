@@ -1,5 +1,11 @@
 # shopkit
 
+## 1.0.5
+
+### Patch Changes
+
+- Update order query and types
+
 ## 1.0.4
 
 ### Patch Changes

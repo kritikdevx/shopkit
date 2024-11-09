@@ -8,6 +8,7 @@ export interface Image {
   width: number;
   height: number;
   altText: string | null;
+  src: string;
 }
 
 export interface SEO {
