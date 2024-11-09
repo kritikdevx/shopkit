@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
 import { GetProductQueryVariables, Product } from '@/common';
 import { getProduct } from '@/common/api/services';
@@ -20,7 +20,9 @@ export default function useProduct() {
     product: null,
   });
 
-  async function fetchProduct(variables: GetProductQueryVariables) {
+  const fetchProduct = useCallback(async function fetchProduct(
+    variables: GetProductQueryVariables,
+  ) {
     try {
       setState((prev) => ({ ...prev, loading: true, error: null }));
 
@@ -34,7 +36,7 @@ export default function useProduct() {
     } finally {
       setState((prev) => ({ ...prev, loading: false }));
     }
-  }
+  }, []);
 
   return {
     ...state,

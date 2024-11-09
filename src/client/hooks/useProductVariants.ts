@@ -8,7 +8,7 @@ import {
 } from '@/common';
 import { listProductVariants } from '@/common/api/services';
 
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
 interface UseProductVariantsState {
   loading: boolean;
@@ -31,23 +31,24 @@ export default function useProducts() {
     },
   });
 
-  const fetchProductVariants = async (
-    variables: ListProductVariantsQueryVariables,
-  ) => {
-    try {
-      setState((prev) => ({ ...prev, loading: true, error: null }));
+  const fetchProductVariants = useCallback(
+    async (variables: ListProductVariantsQueryVariables) => {
+      try {
+        setState((prev) => ({ ...prev, loading: true, error: null }));
 
-      const productVariants = await listProductVariants({
-        variables,
-      });
+        const productVariants = await listProductVariants({
+          variables,
+        });
 
-      setState((prev) => ({ ...prev, variants: productVariants.variants }));
-    } catch (error) {
-      setState((prev) => ({ ...prev, error: (error as Error).message }));
-    } finally {
-      setState((prev) => ({ ...prev, loading: false }));
-    }
-  };
+        setState((prev) => ({ ...prev, variants: productVariants.variants }));
+      } catch (error) {
+        setState((prev) => ({ ...prev, error: (error as Error).message }));
+      } finally {
+        setState((prev) => ({ ...prev, loading: false }));
+      }
+    },
+    [],
+  );
 
   return {
     ...state,

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
 import {
   Connection,
@@ -33,19 +33,22 @@ export default function useOrders() {
     },
   });
 
-  async function fetchOrders(variables: ListOrdersQueryVariables) {
-    try {
-      setState((prev) => ({ ...prev, loading: true, error: null }));
+  const fetchOrders = useCallback(
+    async (variables: ListOrdersQueryVariables) => {
+      try {
+        setState((prev) => ({ ...prev, loading: true, error: null }));
 
-      const { orders } = await listOrders({ variables });
+        const { orders } = await listOrders({ variables });
 
-      setState((prev) => ({ ...prev, orders }));
-    } catch (error) {
-      setState((prev) => ({ ...prev, error: (error as Error).message }));
-    } finally {
-      setState((prev) => ({ ...prev, loading: false }));
-    }
-  }
+        setState((prev) => ({ ...prev, orders }));
+      } catch (error) {
+        setState((prev) => ({ ...prev, error: (error as Error).message }));
+      } finally {
+        setState((prev) => ({ ...prev, loading: false }));
+      }
+    },
+    [],
+  );
 
   return {
     ...state,

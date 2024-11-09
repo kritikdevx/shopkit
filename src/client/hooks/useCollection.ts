@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
 import { GetCollectionQueryVariables, Collection } from '@/common';
 import { getCollection } from '@/common/api/services';
@@ -18,7 +18,9 @@ export default function useCollection() {
     collection: null,
   });
 
-  async function fetchCollection(variables: GetCollectionQueryVariables) {
+  const fetchCollection = useCallback(async function fetchCollection(
+    variables: GetCollectionQueryVariables,
+  ) {
     try {
       setState((prev) => ({ ...prev, loading: true, error: null }));
 
@@ -32,7 +34,7 @@ export default function useCollection() {
     } finally {
       setState((prev) => ({ ...prev, loading: false }));
     }
-  }
+  }, []);
 
   return { ...state, fetchCollection };
 }

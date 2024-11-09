@@ -2,9 +2,9 @@ import { Connection, Image, Money, SEO } from './common';
 import { Metafield } from './metafield';
 
 export interface ProductFiltersInput {
-  available: Boolean;
-  price: PriceRangeInput;
-  productMetafield: MetafieldFilter;
+  available?: Boolean;
+  price?: PriceRangeInput;
+  productMetafield?: MetafieldFilter;
   productType?: string;
   productVendor?: string;
   tag?: string;
@@ -56,6 +56,7 @@ export interface ProductVariant {
     referenceUnit: string | null;
     referenceValue: number;
   } | null;
+  product: Product;
   taxable: boolean;
   quantityAvailable: number;
   quantityRule: {

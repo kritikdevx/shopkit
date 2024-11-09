@@ -8,7 +8,7 @@ import {
 } from '@/common';
 import { listCollections } from '@/common/api/services';
 
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
 interface UseCollectionsState {
   loading: boolean;
@@ -31,21 +31,24 @@ export default function useCollections() {
     },
   });
 
-  const fetchCollections = async (variables: ListCollectionsQueryVariables) => {
-    try {
-      setState((prev) => ({ ...prev, loading: true, error: null }));
+  const fetchCollections = useCallback(
+    async (variables: ListCollectionsQueryVariables) => {
+      try {
+        setState((prev) => ({ ...prev, loading: true, error: null }));
 
-      const collections = await listCollections({
-        variables,
-      });
+        const collections = await listCollections({
+          variables,
+        });
 
-      setState((prev) => ({ ...prev, collections }));
-    } catch (error) {
-      setState((prev) => ({ ...prev, error: (error as Error).message }));
-    } finally {
-      setState((prev) => ({ ...prev, loading: false }));
-    }
-  };
+        setState((prev) => ({ ...prev, collections }));
+      } catch (error) {
+        setState((prev) => ({ ...prev, error: (error as Error).message }));
+      } finally {
+        setState((prev) => ({ ...prev, loading: false }));
+      }
+    },
+    [],
+  );
 
   return {
     ...state,

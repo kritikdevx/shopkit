@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
 import {
   CollectionProducts,
@@ -21,21 +21,22 @@ export default function useCollectionProducts() {
     collection: null,
   });
 
-  async function fetchCollectionProducts(
-    variables: ListCollectionProductsQueryVariables,
-  ) {
-    try {
-      setState((prev) => ({ ...prev, loading: true, error: null }));
+  const fetchCollectionProducts = useCallback(
+    async (variables: ListCollectionProductsQueryVariables) => {
+      try {
+        setState((prev) => ({ ...prev, loading: true, error: null }));
 
-      const collection = await listCollectionProducts({ variables });
+        const collection = await listCollectionProducts({ variables });
 
-      setState((prev) => ({ ...prev, collection }));
-    } catch (error) {
-      setState((prev) => ({ ...prev, error: (error as Error).message }));
-    } finally {
-      setState((prev) => ({ ...prev, loading: false }));
-    }
-  }
+        setState((prev) => ({ ...prev, collection }));
+      } catch (error) {
+        setState((prev) => ({ ...prev, error: (error as Error).message }));
+      } finally {
+        setState((prev) => ({ ...prev, loading: false }));
+      }
+    },
+    [],
+  );
 
   return { ...state, fetchCollectionProducts };
 }
