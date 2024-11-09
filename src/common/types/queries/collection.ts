@@ -58,7 +58,7 @@ export interface ListCollectionProductsByIdQueryVariables
 export interface ListCollectionProductsByHandleQueryVariables
   extends Omit<ListProductsQueryVariables, 'sortKey' | 'query'> {
   collectionHandle: string;
-  filters?: [ProductFiltersInput];
+  filters?: ProductFiltersInput[];
   sortKey?: ProductCollectionSortKeys;
   metafields?: HasMetafieldsIdentifier[];
 }

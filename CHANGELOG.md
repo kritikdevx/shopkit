@@ -1,5 +1,11 @@
 # shopkit
 
+## 1.0.4
+
+### Patch Changes
+
+- Update the types for collection product filters
+
 ## 1.0.3
 
 ### Patch Changes
