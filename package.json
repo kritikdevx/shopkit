@@ -1,9 +1,14 @@
 {
   "name": "shopkit",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "files": [
     "dist"
   ],
+  "private": false,
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
