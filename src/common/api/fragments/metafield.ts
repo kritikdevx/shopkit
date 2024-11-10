@@ -18,6 +18,25 @@ const metafieldFragment = /* GraphQL */ `
         }
       }
     }
+    references(first: 10) {
+      edges {
+        node {
+          ...product
+          ... on MediaImage {
+            image {
+              url
+              altText
+              width
+              height
+            }
+          }
+        }
+      }
+      pageInfo {
+        hasNextPage
+        hasPreviousPage
+      }
+    }
   }
 `;
 
