@@ -1,5 +1,3 @@
-import imageFragment from './image';
-
 const productVariantFragment = /* GraphQL */ `
   fragment productVariant on ProductVariant {
     id
@@ -41,7 +39,6 @@ const productVariantFragment = /* GraphQL */ `
       minimum
     }
   }
-  ${imageFragment}
 `;
 
 export default productVariantFragment;

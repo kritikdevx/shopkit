@@ -17,13 +17,13 @@ const metafieldFragment = /* GraphQL */ `
           height
         }
       }
+      ... on Product {
+        ...product
+      }
     }
     references(first: 10) {
       edges {
         node {
-          product {
-            ...product
-          }
           ... on MediaImage {
             image {
               url
@@ -31,6 +31,9 @@ const metafieldFragment = /* GraphQL */ `
               width
               height
             }
+          }
+          ... on Product {
+            ...product
           }
         }
       }

@@ -1,6 +1,3 @@
-import imageFragment from './image';
-import seoFragment from './seo';
-
 const collectionFragment = /* GraphQL */ `
   fragment collection on Collection {
     id
@@ -15,8 +12,6 @@ const collectionFragment = /* GraphQL */ `
     }
     updatedAt
   }
-  ${seoFragment}
-  ${imageFragment}
 `;
 
 export default collectionFragment;

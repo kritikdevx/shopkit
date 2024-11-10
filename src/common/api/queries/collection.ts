@@ -1,6 +1,8 @@
 import collectionFragment from '../fragments/collection';
+import imageFragment from '../fragments/image';
 import metafieldFragment from '../fragments/metafield';
 import productFragment from '../fragments/product';
+import seoFragment from '../fragments/seo';
 
 export const listCollectionsQuery = /* GraphQL */ `
   query ListCollections(
@@ -33,6 +35,8 @@ export const listCollectionsQuery = /* GraphQL */ `
       }
     }
   }
+  ${imageFragment}
+  ${seoFragment}
   ${collectionFragment}
 `;
 
@@ -42,6 +46,8 @@ export const getCollectionByIdQuery = /* GraphQL */ `
       ...collection
     }
   }
+  ${imageFragment}
+  ${seoFragment}
   ${collectionFragment}
 `;
 
@@ -54,6 +60,8 @@ export const getCollectionByIdWithMetafieldsQuery = /* GraphQL */ `
       }
     }
   }
+  ${imageFragment}
+  ${seoFragment}
   ${metafieldFragment}
   ${productFragment}
   ${collectionFragment}
@@ -71,6 +79,8 @@ export const getCollectionByHandleWithMetafieldsQuery = /* GraphQL */ `
       }
     }
   }
+  ${imageFragment}
+  ${seoFragment}
   ${metafieldFragment}
   ${productFragment}
   ${collectionFragment}
@@ -82,6 +92,8 @@ export const getCollectionByHandleQuery = /* GraphQL */ `
       ...collection
     }
   }
+  ${imageFragment}
+  ${seoFragment}
   ${collectionFragment}
 `;
 
@@ -123,6 +135,8 @@ export const listCollectionProductsByIdQuery = /* GraphQL */ `
       }
     }
   }
+  ${imageFragment}
+  ${seoFragment}
   ${productFragment}
 `;
 
@@ -166,6 +180,8 @@ export const listCollectionProductsByIdWithMetafieldsQuery = /* GraphQL */ `
       }
     }
   }
+  ${imageFragment}
+  ${seoFragment}
   ${metafieldFragment}
   ${productFragment}
 `;
@@ -206,6 +222,8 @@ export const listCollectionProductsByHandleQuery = /* GraphQL */ `
       }
     }
   }
+  ${imageFragment}
+  ${seoFragment}
   ${productFragment}
 `;
 
@@ -249,6 +267,8 @@ export const listCollectionProductsByHandleWithMetafieldsQuery = /* GraphQL */ `
       }
     }
   }
+  ${imageFragment}
+  ${seoFragment}
   ${metafieldFragment}
   ${productFragment}
 `;

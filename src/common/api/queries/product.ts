@@ -1,6 +1,8 @@
+import imageFragment from '../fragments/image';
 import metafieldFragment from '../fragments/metafield';
 import productFragment from '../fragments/product';
 import productVariantFragment from '../fragments/product-variant';
+import seoFragment from '../fragments/seo';
 
 export const listProductsQuery = /* GraphQL */ `
   query ListProducts(
@@ -33,6 +35,8 @@ export const listProductsQuery = /* GraphQL */ `
       }
     }
   }
+  ${seoFragment}
+  ${imageFragment}
   ${productFragment}
 `;
 
@@ -45,6 +49,8 @@ export const getProductByIdWithMetafieldsQuery = /* GraphQL */ `
       }
     }
   }
+  ${seoFragment}
+  ${imageFragment}
   ${metafieldFragment}
   ${productFragment}
 `;
@@ -55,6 +61,8 @@ export const getProductByIdQuery = /* GraphQL */ `
       ...product
     }
   }
+  ${seoFragment}
+  ${imageFragment}
   ${productFragment}
 `;
 
@@ -70,6 +78,8 @@ export const getProductByHandleWithMetafieldsQuery = /* GraphQL */ `
       }
     }
   }
+  ${seoFragment}
+  ${imageFragment}
   ${metafieldFragment}
   ${productFragment}
 `;
@@ -115,6 +125,7 @@ export const listProductVariantsByIdQuery = /* GraphQL */ `
       }
     }
   }
+  ${imageFragment}
   ${productVariantFragment}
 `;
 
@@ -150,5 +161,6 @@ export const listProductVariantsByHandleQuery = /* GraphQL */ `
       }
     }
   }
+  ${imageFragment}
   ${productVariantFragment}
 `;

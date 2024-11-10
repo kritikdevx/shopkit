@@ -1,5 +1,11 @@
 # shopkit
 
+## 1.0.10
+
+### Patch Changes
+
+- fix queries, mutation and fragments
+
 ## 1.0.9
 
 ### Patch Changes
