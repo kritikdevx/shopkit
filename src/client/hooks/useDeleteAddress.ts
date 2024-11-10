@@ -33,12 +33,17 @@ const useDeleteAddress = () => {
         variables,
       });
 
-      setState((prev) => ({ ...prev, data: customerAddressDelete }));
+      setState((prev) => ({
+        ...prev,
+        data: customerAddressDelete,
+        success: 'Address deleted successfully',
+      }));
     } catch (error) {
       setState((prev) => ({
         ...prev,
         error: (error as Error).message,
         data: null,
+        success: '',
       }));
     } finally {
       setState((prev) => ({ ...prev, loading: false }));

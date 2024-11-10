@@ -1,10 +1,10 @@
 'use client';
 
+import { useCallback } from 'react';
 import { ListAddressesQueryVariables } from '@/common';
 
 import { useAppDispatch, useAppSelector } from '../store';
 import { addressActions } from '../store/actions/address.action';
-import { useCallback } from 'react';
 
 export default function useAddresses() {
   const dispatch = useAppDispatch();

@@ -46,12 +46,17 @@ const useUpdateAddress = () => {
         });
       }
 
-      setState((prev) => ({ ...prev, data: customerAddressUpdate }));
+      setState((prev) => ({
+        ...prev,
+        data: customerAddressUpdate,
+        success: 'Address updated successfully',
+      }));
     } catch (error) {
       setState((prev) => ({
         ...prev,
         error: (error as Error).message,
         data: null,
+        success: '',
       }));
     } finally {
       setState((prev) => ({ ...prev, loading: false }));

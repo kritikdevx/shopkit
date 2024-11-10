@@ -56,12 +56,17 @@ const useCreateAddress = () => {
         });
       }
 
-      setState((prev) => ({ ...prev, data: createdAddress }));
+      setState((prev) => ({
+        ...prev,
+        data: createdAddress,
+        success: 'Address created successfully',
+      }));
     } catch (error) {
       setState((prev) => ({
         ...prev,
         error: (error as Error).message,
         data: null,
+        success: '',
       }));
     } finally {
       setState((prev) => ({ ...prev, loading: false }));

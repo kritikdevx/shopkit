@@ -46,6 +46,7 @@ const useUpdateDefaultAddress = () => {
         ...prev,
         error: (error as Error).message,
         data: null,
+        success: '',
       }));
     } finally {
       setState((prev) => ({ ...prev, loading: false }));
