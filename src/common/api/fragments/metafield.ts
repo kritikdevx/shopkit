@@ -21,7 +21,9 @@ const metafieldFragment = /* GraphQL */ `
     references(first: 10) {
       edges {
         node {
-          ...product
+          product {
+            ...product
+          }
           ... on MediaImage {
             image {
               url
