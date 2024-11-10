@@ -55,6 +55,7 @@ export const getCollectionByIdWithMetafieldsQuery = /* GraphQL */ `
     }
   }
   ${metafieldFragment}
+  ${productFragment}
   ${collectionFragment}
 `;
 
@@ -71,6 +72,7 @@ export const getCollectionByHandleWithMetafieldsQuery = /* GraphQL */ `
     }
   }
   ${metafieldFragment}
+  ${productFragment}
   ${collectionFragment}
 `;
 
