@@ -30,6 +30,10 @@ export async function shopifyAdminFetch<T, V>({
   try {
     const config = ShopKit.getConfig();
 
+    if (!config.adminAccessToken) {
+      throw new ShopifyError('Admin access token is required');
+    }
+
     const headers: HeadersInit = {
       'Content-Type': 'application/json',
       'X-Shopify-Access-Token': config.adminAccessToken,

@@ -1,6 +1,6 @@
 import { ShopKitConfig } from '../types';
 
-class ConfigurationError extends Error {
+export class ConfigurationError extends Error {
   constructor(message: string) {
     super(message);
     this.name = 'CONFIGURATION_ERROR';
@@ -75,8 +75,10 @@ export class ShopKitModule {
       throw new ConfigurationError('Storefront access token is required');
     }
 
-    if (!config.adminAccessToken || config.adminAccessToken.trim() === '') {
-      throw new ConfigurationError('Admin access token is required');
+    if (config.adminAccessToken && config.adminAccessToken.trim() === '') {
+      throw new ConfigurationError(
+        'Admin access token should not be empty if provided',
+      );
     }
 
     if (config.judgeme) {

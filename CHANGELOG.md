@@ -1,5 +1,11 @@
 # shopkit
 
+## 1.0.13
+
+### Patch Changes
+
+- made admin access token optional
+
 ## 1.0.12
 
 ### Patch Changes
