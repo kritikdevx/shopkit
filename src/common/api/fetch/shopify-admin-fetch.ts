@@ -16,7 +16,7 @@ export class ShopifyError extends Error {
   }
 }
 
-export async function shopifyFetch<T, V>({
+export async function shopifyAdminFetch<T, V>({
   query,
   variables,
   options = {},
@@ -32,7 +32,7 @@ export async function shopifyFetch<T, V>({
 
     const headers: HeadersInit = {
       'Content-Type': 'application/json',
-      'X-Shopify-Storefront-Access-Token': config.storefrontAccessToken,
+      'X-Shopify-Access-Token': config.adminAccessToken,
       ...customHeaders,
     };
 
@@ -44,7 +44,7 @@ export async function shopifyFetch<T, V>({
     };
 
     const response = await fetch(
-      `https://${config.domain}/api/${config.apiVersion}/graphql.json`,
+      `https://${config.domain}/admin/api/${config.apiVersion}/graphql.json`,
       fetchOptions,
     );
 

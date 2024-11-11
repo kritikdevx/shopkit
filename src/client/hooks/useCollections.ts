@@ -12,7 +12,7 @@ import { useCallback, useState } from 'react';
 
 interface UseCollectionsState {
   loading: boolean;
-  error: string | null;
+  error: string;
   collections: Connection<Collection> & {
     pageInfo: PageInfo;
   };
@@ -21,7 +21,7 @@ interface UseCollectionsState {
 export default function useCollections() {
   const [state, setState] = useState<UseCollectionsState>({
     loading: false,
-    error: null,
+    error: '',
     collections: {
       edges: [],
       pageInfo: {
@@ -34,13 +34,13 @@ export default function useCollections() {
   const fetchCollections = useCallback(
     async (variables: ListCollectionsQueryVariables) => {
       try {
-        setState((prev) => ({ ...prev, loading: true, error: null }));
+        setState((prev) => ({ ...prev, loading: true, error: '' }));
 
         const collections = await listCollections({
           variables,
         });
 
-        setState((prev) => ({ ...prev, collections }));
+        setState((prev) => ({ ...prev, collections, error: '' }));
       } catch (error) {
         setState((prev) => ({ ...prev, error: (error as Error).message }));
       } finally {

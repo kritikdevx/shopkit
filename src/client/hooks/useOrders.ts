@@ -12,7 +12,7 @@ import { listOrders } from '@/common/api/services';
 
 interface UseOrdersState {
   loading: boolean;
-  error: string | null;
+  error: string;
   orders: Connection<Order> & {
     pageInfo: PageInfo;
     totalCount: number;
@@ -22,7 +22,7 @@ interface UseOrdersState {
 export default function useOrders() {
   const [state, setState] = useState<UseOrdersState>({
     loading: false,
-    error: null,
+    error: '',
     orders: {
       edges: [],
       pageInfo: {
@@ -36,11 +36,11 @@ export default function useOrders() {
   const fetchOrders = useCallback(
     async (variables: ListOrdersQueryVariables) => {
       try {
-        setState((prev) => ({ ...prev, loading: true, error: null }));
+        setState((prev) => ({ ...prev, loading: true, error: '' }));
 
         const { orders } = await listOrders({ variables });
 
-        setState((prev) => ({ ...prev, orders }));
+        setState((prev) => ({ ...prev, orders, error: '' }));
       } catch (error) {
         setState((prev) => ({ ...prev, error: (error as Error).message }));
       } finally {

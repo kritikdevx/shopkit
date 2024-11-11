@@ -31,3 +31,5 @@ export {
 } from '@/common/api/services/address';
 
 export { listOrders } from '@/common/api/services/order';
+
+export { getMenu } from '@/common/api/services/menu';

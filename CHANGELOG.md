@@ -1,5 +1,11 @@
 # shopkit
 
+## 1.0.12
+
+### Patch Changes
+
+- update all the hooks error type and menu fetching function
+
 ## 1.0.11
 
 ### Patch Changes

@@ -12,3 +12,5 @@ const menuFragment = /* GraphQL */ `
     }
   }
 `;
+
+export default menuFragment;

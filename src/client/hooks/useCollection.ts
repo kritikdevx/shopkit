@@ -7,14 +7,14 @@ import { getCollection } from '@/common/api/services';
 
 interface UseCollectionState {
   loading: boolean;
-  error: string | null;
+  error: string;
   collection: Collection | null;
 }
 
 export default function useCollection() {
   const [state, setState] = useState<UseCollectionState>({
     loading: false,
-    error: null,
+    error: '',
     collection: null,
   });
 
@@ -22,13 +22,13 @@ export default function useCollection() {
     variables: GetCollectionQueryVariables,
   ) {
     try {
-      setState((prev) => ({ ...prev, loading: true, error: null }));
+      setState((prev) => ({ ...prev, loading: true, error: '' }));
 
       const collection = await getCollection({
         variables,
       });
 
-      setState((prev) => ({ ...prev, collection }));
+      setState((prev) => ({ ...prev, collection, error: '' }));
     } catch (error) {
       setState((prev) => ({ ...prev, error: (error as Error).message }));
     } finally {

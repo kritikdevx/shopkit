@@ -1,30 +1,66 @@
 'use client';
 
-import { useCallback } from 'react';
-import { ListAddressesQueryVariables } from '@/common';
+import { useCallback, useState } from 'react';
+import {
+  Address,
+  Connection,
+  ListAddressesQueryVariables,
+  PageInfo,
+} from '@/common';
+import { listCustomerAddresses } from '@/server';
 
-import { useAppDispatch, useAppSelector } from '../store';
-import { addressActions } from '../store/actions/address.action';
+interface UseAddressesState {
+  loading: boolean;
+  error: string;
+  addresses: Connection<Address> & {
+    pageInfo: PageInfo;
+  };
+  defaultAddress: Address | null;
+}
 
 export default function useAddresses() {
-  const dispatch = useAppDispatch();
-  const { addresses, defaultAddress, loading, error } = useAppSelector(
-    (state) => state.address,
-  );
-
-  // TODO: Need to revisit
-  const fetchAddresses = useCallback(
-    (variables: ListAddressesQueryVariables) => {
-      dispatch(addressActions.startListAddressesRequest(variables));
+  const [state, setState] = useState<UseAddressesState>({
+    loading: false,
+    error: '',
+    addresses: {
+      edges: [],
+      pageInfo: {
+        hasNextPage: false,
+        hasPreviousPage: false,
+      },
     },
-    [dispatch],
+    defaultAddress: null,
+  });
+
+  const fetchAddresses = useCallback(
+    async (variables: ListAddressesQueryVariables) => {
+      try {
+        setState((prev) => ({ ...prev, loading: true, error: '' }));
+
+        const { addresses, defaultAddress } = await listCustomerAddresses({
+          variables,
+        });
+
+        setState((prev) => ({
+          ...prev,
+          addresses,
+          defaultAddress,
+          error: '',
+        }));
+      } catch (error) {
+        setState((prev) => ({
+          ...prev,
+          error: (error as Error).message,
+        }));
+      } finally {
+        setState((prev) => ({ ...prev, loading: false }));
+      }
+    },
+    [],
   );
 
   return {
-    addresses,
-    defaultAddress,
-    loading,
-    error,
+    ...state,
     fetchAddresses,
   };
 }
