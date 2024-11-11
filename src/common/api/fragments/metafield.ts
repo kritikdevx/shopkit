@@ -20,6 +20,17 @@ const metafieldFragment = /* GraphQL */ `
       ... on Product {
         ...product
       }
+      ... on Metaobject {
+        id
+        handle
+        type
+        updatedAt
+        fields {
+          key
+          type
+          value
+        }
+      }
     }
     references(first: 10) {
       edges {
@@ -34,6 +45,17 @@ const metafieldFragment = /* GraphQL */ `
           }
           ... on Product {
             ...product
+          }
+          ... on Metaobject {
+            id
+            handle
+            type
+            updatedAt
+            fields {
+              key
+              type
+              value
+            }
           }
         }
       }

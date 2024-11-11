@@ -6,6 +6,18 @@ export interface HasMetafieldsIdentifier {
   namespace?: string;
 }
 
+export interface MetaObject {
+  id: string;
+  handle: string;
+  type: string;
+  updatedAt: string;
+  fields: {
+    key: string;
+    type: string;
+    value: string;
+  }[];
+}
+
 export interface Metafield {
   createdAt: string;
   description: string;
@@ -17,6 +29,8 @@ export interface Metafield {
   value: string;
   reference: {
     image: Image;
+    product: Product;
+    metaobject: MetaObject;
   } | null;
-  references: Connection<Product | Image> | null;
+  references: Connection<Product | Image | MetaObject> | null;
 }

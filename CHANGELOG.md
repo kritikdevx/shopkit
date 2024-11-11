@@ -1,5 +1,11 @@
 # shopkit
 
+## 1.0.11
+
+### Patch Changes
+
+- add metaobject to query and types
+
 ## 1.0.10
 
 ### Patch Changes
