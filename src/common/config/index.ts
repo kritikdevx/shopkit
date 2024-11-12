@@ -81,22 +81,6 @@ export class ShopKitModule {
       );
     }
 
-    if (config.judgeme) {
-      if (
-        !config.judgeme.privateToken ||
-        config.judgeme.privateToken.trim() === ''
-      ) {
-        throw new ConfigurationError('Judge.me private token is required');
-      }
-
-      if (
-        !config.judgeme.publicToken ||
-        config.judgeme.publicToken.trim() === ''
-      ) {
-        throw new ConfigurationError('Judge.me public token is required');
-      }
-    }
-
     return Object.freeze(config);
   }
 }

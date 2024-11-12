@@ -1,5 +1,11 @@
 # shopkit
 
+## 1.0.14
+
+### Patch Changes
+
+- update menu query remove integrations for now
+
 ## 1.0.13
 
 ### Patch Changes

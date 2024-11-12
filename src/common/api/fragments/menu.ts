@@ -3,12 +3,20 @@ const menuFragment = /* GraphQL */ `
     id
     handle
     title
-    updatedAt
     items {
       id
       title
       url
-      order
+      items {
+        id
+        title
+        url
+        items {
+          id
+          title
+          url
+        }
+      }
     }
   }
 `;

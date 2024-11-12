@@ -3,8 +3,4 @@ export interface ShopKitConfig {
   storefrontAccessToken: string;
   apiVersion: string;
   adminAccessToken?: string;
-  judgeme?: {
-    privateToken: string;
-    publicToken: string;
-  };
 }
