@@ -15,6 +15,15 @@ export interface MetaObject {
     key: string;
     type: string;
     value: string;
+    references: Connection<
+      Product | Image | MetaObject | ProductVariant
+    > | null;
+    reference: {
+      image: Image;
+      product: Product;
+      metaobject: MetaObject;
+      productVariant: ProductVariant;
+    } | null;
   }[];
 }
 
