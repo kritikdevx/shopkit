@@ -17,6 +17,8 @@ export default function useCart() {
   }, [cart]);
 
   function getCart() {
+    if (loading) return;
+
     if (cart) {
       dispatch(cartActions.startGetCartRequest({ cartId: cart.id }));
     } else {

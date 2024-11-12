@@ -21,20 +21,18 @@ export function* getCartSaga(action: {
 
     yield put(getCartSuccess(cart));
   } catch (error) {
-    console.log('error', error);
     yield put(getCartFailure());
   }
 }
 
 export function* createCartSaga(action: { type: string }): Generator {
   try {
-    const { cartCreate } = (yield call(createCart, {
+    const { cart } = (yield call(createCart, {
       variables: {},
-    })) as CreateCartMutation;
+    })) as CreateCartMutation['cartCreate'];
 
-    yield put(getCartSuccess(cartCreate.cart));
+    yield put(getCartSuccess(cart));
   } catch (error) {
-    console.log('error', error);
     yield put(getCartFailure());
   }
 }
