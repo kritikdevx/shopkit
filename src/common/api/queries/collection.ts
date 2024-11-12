@@ -3,6 +3,7 @@ import imageFragment from '../fragments/image';
 import metafieldFragment from '../fragments/metafield';
 import productFragment from '../fragments/product';
 import seoFragment from '../fragments/seo';
+import productVariantFragment from '../fragments/product-variant';
 
 export const listCollectionsQuery = /* GraphQL */ `
   query ListCollections(
@@ -65,6 +66,7 @@ export const getCollectionByIdWithMetafieldsQuery = /* GraphQL */ `
   ${metafieldFragment}
   ${productFragment}
   ${collectionFragment}
+  ${productVariantFragment}
 `;
 
 export const getCollectionByHandleWithMetafieldsQuery = /* GraphQL */ `
@@ -84,6 +86,7 @@ export const getCollectionByHandleWithMetafieldsQuery = /* GraphQL */ `
   ${metafieldFragment}
   ${productFragment}
   ${collectionFragment}
+  ${productVariantFragment}
 `;
 
 export const getCollectionByHandleQuery = /* GraphQL */ `
@@ -183,6 +186,7 @@ export const listCollectionProductsByIdWithMetafieldsQuery = /* GraphQL */ `
   ${imageFragment}
   ${seoFragment}
   ${metafieldFragment}
+  ${productVariantFragment}
   ${productFragment}
 `;
 
@@ -270,5 +274,6 @@ export const listCollectionProductsByHandleWithMetafieldsQuery = /* GraphQL */ `
   ${imageFragment}
   ${seoFragment}
   ${metafieldFragment}
+  ${productVariantFragment}
   ${productFragment}
 `;

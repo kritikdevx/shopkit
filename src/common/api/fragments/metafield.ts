@@ -20,6 +20,9 @@ const metafieldFragment = /* GraphQL */ `
       ... on Product {
         ...product
       }
+      ... on ProductVariant {
+        ...productVariant
+      }
       ... on Metaobject {
         id
         handle
@@ -45,6 +48,9 @@ const metafieldFragment = /* GraphQL */ `
           }
           ... on Product {
             ...product
+          }
+          ... on ProductVariant {
+            ...productVariant
           }
           ... on Metaobject {
             id

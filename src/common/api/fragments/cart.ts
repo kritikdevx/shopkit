@@ -32,6 +32,55 @@ const cartFragment = /* GraphQL */ `
             }
             amountPerQuantity {
               amount
+              currencyCode
+            }
+          }
+          discountAllocations {
+            discountedAmount {
+              amount
+              currencyCode
+            }
+            ... on CartCodeDiscountAllocation {
+              __typename
+              code
+              discountedAmount {
+                amount
+                currencyCode
+              }
+            }
+            ... on CartCustomDiscountAllocation {
+              __typename
+              title
+              discountedAmount {
+                amount
+                currencyCode
+              }
+            }
+            ... on CartAutomaticDiscountAllocation {
+              __typename
+              discountedAmount {
+                amount
+                currencyCode
+              }
+              title
+            }
+          }
+          estimatedCost {
+            amount {
+              amount
+              currencyCode
+            }
+            compareAtAmount {
+              amount
+              currencyCode
+            }
+            totalAmount {
+              amount
+              currencyCode
+            }
+            subtotalAmount {
+              amount
+              currencyCode
             }
           }
           merchandise {

@@ -1,5 +1,5 @@
 import { Connection, Image } from './common';
-import { Product } from './product';
+import { Product, ProductVariant } from './product';
 
 export interface HasMetafieldsIdentifier {
   key: string;
@@ -31,6 +31,7 @@ export interface Metafield {
     image: Image;
     product: Product;
     metaobject: MetaObject;
+    productVariant: ProductVariant;
   } | null;
-  references: Connection<Product | Image | MetaObject> | null;
+  references: Connection<Product | Image | MetaObject | ProductVariant> | null;
 }

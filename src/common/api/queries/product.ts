@@ -52,6 +52,7 @@ export const getProductByIdWithMetafieldsQuery = /* GraphQL */ `
   ${seoFragment}
   ${imageFragment}
   ${metafieldFragment}
+  ${productVariantFragment}
   ${productFragment}
 `;
 
@@ -81,6 +82,7 @@ export const getProductByHandleWithMetafieldsQuery = /* GraphQL */ `
   ${seoFragment}
   ${imageFragment}
   ${metafieldFragment}
+  ${productVariantFragment}
   ${productFragment}
 `;
 

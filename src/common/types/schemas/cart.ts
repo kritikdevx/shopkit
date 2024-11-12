@@ -25,6 +25,17 @@ export interface CartLine {
     totalAmount: Money;
     amountPerQuantity: Money;
   };
+  estimatedCost: {
+    amount: Money;
+    compareAtAmount: Money;
+    totalAmount: Money;
+    subtotalAmount: Money;
+  };
+  discountAllocations: {
+    discountedAmount: Money;
+    code?: string;
+    title?: string;
+  }[];
   merchandise: {
     id: string;
     title: string;
