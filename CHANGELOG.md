@@ -1,5 +1,11 @@
 # shopkit
 
+## 1.0.16
+
+### Patch Changes
+
+- update menu type
+
 ## 1.0.15
 
 ### Patch Changes
