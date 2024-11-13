@@ -19,6 +19,16 @@ interface UseCartActionState {
   error: string;
 }
 
+interface LineToUpdate {
+  id: string;
+  quantity: number;
+}
+
+interface LineToAdd {
+  merchandiseId: string;
+  quantity: number;
+}
+
 export default function useCartAction() {
   const dispatch = useAppDispatch();
   const [state, setState] = useState<UseCartActionState>({
@@ -29,62 +39,69 @@ export default function useCartAction() {
 
   const { cart } = useAppSelector((state) => state.cart);
 
-  const handleAddToCart = async (id: string, quantity: number) => {
+  const handleAddToCart = async (lines: { id: string; quantity: number }[]) => {
     try {
       setState({ loading: true, success: '', error: '' });
 
       let updatedCart = cart;
-      // If the cart already exists, check if the product is already in the cart
-      if (cart) {
-        const line = cart.lines.edges.find(
-          (edge) => edge.node.merchandise.id === id,
-        )?.node;
 
-        // If the product is already in the cart, update the quantity
-        if (line) {
+      if (cart) {
+        const existingLines = cart.lines.edges.map((edge) => edge.node);
+        const linesToUpdate: LineToUpdate[] = [];
+        const linesToAdd: LineToAdd[] = [];
+
+        lines.forEach(({ id, quantity }) => {
+          const existingLine = existingLines.find(
+            (line) => line.merchandise.id === id,
+          );
+
+          if (existingLine) {
+            linesToUpdate.push({
+              id: existingLine.id,
+              quantity: existingLine.quantity + quantity,
+            });
+          } else {
+            linesToAdd.push({
+              merchandiseId: id,
+              quantity,
+            });
+          }
+        });
+
+        if (linesToUpdate.length > 0) {
           const cartLinesUpdate = await updateCart({
             variables: {
               cartId: cart.id,
-              lines: [
-                {
-                  id: line.id,
-                  quantity: line.quantity + quantity,
-                },
-              ],
+              lines: linesToUpdate,
             },
           });
           updatedCart = cartLinesUpdate.cart;
-        } else {
-          // If the product is not in the cart, add it
+        }
+
+        if (linesToAdd.length > 0) {
           const cartLinesAdd = await addToCart({
             variables: {
               cartId: cart.id,
-              lines: [
-                {
-                  merchandiseId: id,
-                  quantity,
-                },
-              ],
+              lines: linesToAdd,
             },
           });
           updatedCart = cartLinesAdd.cart;
         }
       } else {
-        // If the cart does not exist, create a new cart
         const cartCreate = await createCart({
           variables: {
-            lineItems: [
-              {
-                merchandiseId: id,
-                quantity,
-              },
-            ],
+            lineItems: lines.map(({ id, quantity }) => ({
+              merchandiseId: id,
+              quantity,
+            })),
           },
         });
         updatedCart = cartCreate.cart;
       }
 
-      dispatch(setCart(updatedCart));
+      if (updatedCart) {
+        dispatch(setCart(updatedCart));
+      }
 
       setState((prev) => ({
         ...prev,
@@ -106,9 +123,11 @@ export default function useCartAction() {
     try {
       setState({ loading: true, success: '', error: '' });
 
+      if (!cart) return; // Check if cart exists
+
       const cartLinesUpdate = await updateCart({
         variables: {
-          cartId: cart?.id as string,
+          cartId: cart.id,
           lines: [
             {
               id: line.id,
@@ -119,7 +138,6 @@ export default function useCartAction() {
       });
 
       dispatch(setCart(cartLinesUpdate.cart));
-
       setState((prev) => ({
         ...prev,
         success: 'Product updated in cart',
@@ -139,15 +157,17 @@ export default function useCartAction() {
   const handleRemoveFromCart = async (lineId: string) => {
     try {
       setState({ loading: true, success: '', error: '' });
+
+      if (!cart) return; // Check if cart exists
+
       const cartLinesRemove = await removeFromCart({
         variables: {
-          cartId: cart?.id as string,
+          cartId: cart.id,
           lineIds: [lineId],
         },
       });
 
       dispatch(setCart(cartLinesRemove.cart));
-
       setState((prev) => ({
         ...prev,
         success: 'Product removed from cart',

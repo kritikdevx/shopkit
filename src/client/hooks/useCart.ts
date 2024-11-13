@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
 
 import { useAppDispatch, useAppSelector } from '../store';
 import { cartActions } from '../store/actions';
@@ -16,7 +16,7 @@ export default function useCart() {
     );
   }, [cart]);
 
-  function getCart() {
+  const getCart = useCallback(() => {
     if (loading) return;
 
     if (cart) {
@@ -24,7 +24,7 @@ export default function useCart() {
     } else {
       dispatch(cartActions.startCreateCartRequest());
     }
-  }
+  }, [loading, cart]);
 
   return {
     loading,
