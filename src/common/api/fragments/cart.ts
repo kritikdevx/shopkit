@@ -87,6 +87,9 @@ const cartFragment = /* GraphQL */ `
             ... on ProductVariant {
               id
               title
+              image {
+                ...image
+              }
               price {
                 amount
               }
