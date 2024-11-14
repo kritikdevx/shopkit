@@ -1,5 +1,11 @@
 # shopkit
 
+## 1.0.21
+
+### Patch Changes
+
+- update getcart function
+
 ## 1.0.20
 
 ### Patch Changes
