@@ -15,6 +15,7 @@ const metafieldFragment = /* GraphQL */ `
           altText
           width
           height
+          src
         }
       }
       ... on Product {
@@ -39,6 +40,7 @@ const metafieldFragment = /* GraphQL */ `
                 altText
                 width
                 height
+                src
               }
             }
             ... on Product {
@@ -68,6 +70,7 @@ const metafieldFragment = /* GraphQL */ `
                     altText
                     width
                     height
+                    src
                   }
                 }
                 ... on Product {
@@ -106,6 +109,7 @@ const metafieldFragment = /* GraphQL */ `
               altText
               width
               height
+              src
             }
           }
           ... on Product {
@@ -130,6 +134,7 @@ const metafieldFragment = /* GraphQL */ `
                     altText
                     width
                     height
+                    src
                   }
                 }
                 ... on Product {
@@ -159,6 +164,7 @@ const metafieldFragment = /* GraphQL */ `
                         altText
                         width
                         height
+                        src
                       }
                     }
                     ... on Product {

@@ -1,5 +1,11 @@
 # shopkit
 
+## 1.0.22
+
+### Patch Changes
+
+- add image field on meta
+
 ## 1.0.21
 
 ### Patch Changes
