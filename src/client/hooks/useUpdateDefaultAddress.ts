@@ -11,8 +11,8 @@ import { updateCustomerDefaultAddress } from '@/common/api/services';
 
 interface UseUpdateDefaultAddressState {
   loading: boolean;
-  error: string;
-  success: string;
+  error: string | null;
+  success: string | null;
   data:
     | UpdateCustomerDefaultAddressMutation['customerDefaultAddressUpdate']
     | null;
@@ -21,15 +21,15 @@ interface UseUpdateDefaultAddressState {
 const useUpdateDefaultAddress = () => {
   const [state, setState] = useState<UseUpdateDefaultAddressState>({
     loading: false,
-    error: '',
-    success: '',
+    error: null,
+    success: null,
     data: null,
   });
 
   const handleUpdateDefaultAddress = async (
     variables: UpdateCustomerDefaultAddressMutationVariables,
   ) => {
-    setState({ loading: true, error: '', success: '', data: null });
+    setState({ loading: true, error: null, success: null, data: null });
 
     try {
       const customerDefaultAddressUpdate = await updateCustomerDefaultAddress({
@@ -46,7 +46,7 @@ const useUpdateDefaultAddress = () => {
         ...prev,
         error: (error as Error).message,
         data: null,
-        success: '',
+        success: null,
       }));
     } finally {
       setState((prev) => ({ ...prev, loading: false }));

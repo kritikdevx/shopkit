@@ -12,7 +12,7 @@ import { useState, useCallback } from 'react';
 
 interface UseProductsState {
   loading: boolean;
-  error: string;
+  error: string | null;
   products: Connection<Product> & {
     pageInfo: PageInfo;
   };
@@ -21,7 +21,7 @@ interface UseProductsState {
 export default function useProducts() {
   const [state, setState] = useState<UseProductsState>({
     loading: false,
-    error: '',
+    error: null,
     products: {
       edges: [],
       pageInfo: {
@@ -34,13 +34,13 @@ export default function useProducts() {
   const fetchProducts = useCallback(
     async (variables: ListProductsQueryVariables) => {
       try {
-        setState((prev) => ({ ...prev, loading: true, error: '' }));
+        setState((prev) => ({ ...prev, loading: true, error: null }));
 
         const products = await listProducts({
           variables,
         });
 
-        setState((prev) => ({ ...prev, products, error: '' }));
+        setState((prev) => ({ ...prev, products, error: null }));
       } catch (error) {
         setState((prev) => ({ ...prev, error: (error as Error).message }));
       } finally {

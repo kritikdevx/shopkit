@@ -10,25 +10,25 @@ import { listCollectionProducts } from '@/common/api/services';
 
 interface UseCollectionProductsState {
   loading: boolean;
-  error: string;
+  error: string | null;
   collection: CollectionProducts | null;
 }
 
 export default function useCollectionProducts() {
   const [state, setState] = useState<UseCollectionProductsState>({
     loading: false,
-    error: '',
+    error: null,
     collection: null,
   });
 
   const fetchCollectionProducts = useCallback(
     async (variables: ListCollectionProductsQueryVariables) => {
       try {
-        setState((prev) => ({ ...prev, loading: true, error: '' }));
+        setState((prev) => ({ ...prev, loading: true, error: null }));
 
         const collection = await listCollectionProducts({ variables });
 
-        setState((prev) => ({ ...prev, collection, error: '' }));
+        setState((prev) => ({ ...prev, collection, error: null }));
       } catch (error) {
         setState((prev) => ({ ...prev, error: (error as Error).message }));
       } finally {

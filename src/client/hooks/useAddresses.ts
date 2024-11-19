@@ -11,7 +11,7 @@ import { listCustomerAddresses } from '@/server';
 
 interface UseAddressesState {
   loading: boolean;
-  error: string;
+  error: string | null;
   addresses: Connection<Address> & {
     pageInfo: PageInfo;
   };
@@ -21,7 +21,7 @@ interface UseAddressesState {
 export default function useAddresses() {
   const [state, setState] = useState<UseAddressesState>({
     loading: false,
-    error: '',
+    error: null,
     addresses: {
       edges: [],
       pageInfo: {
@@ -35,7 +35,7 @@ export default function useAddresses() {
   const fetchAddresses = useCallback(
     async (variables: ListAddressesQueryVariables) => {
       try {
-        setState((prev) => ({ ...prev, loading: true, error: '' }));
+        setState((prev) => ({ ...prev, loading: true, error: null }));
 
         const { addresses, defaultAddress } = await listCustomerAddresses({
           variables,
@@ -45,7 +45,7 @@ export default function useAddresses() {
           ...prev,
           addresses,
           defaultAddress,
-          error: '',
+          error: null,
         }));
       } catch (error) {
         setState((prev) => ({

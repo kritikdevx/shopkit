@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
 import { CartLine } from '@/common';
 import { removeFromCart, updateCart } from '@/common/api/services';
@@ -24,7 +24,7 @@ export default function useCartProduct({ line }: { line: CartLine }) {
 
   const { cart } = useAppSelector((state) => state.cart);
 
-  const handleRemoveFromCart = async () => {
+  const handleRemoveFromCart = useCallback(async () => {
     try {
       setState({ loading: true, success: '', error: '' });
       const cartLinesRemove = await removeFromCart({
@@ -50,42 +50,45 @@ export default function useCartProduct({ line }: { line: CartLine }) {
     } finally {
       setState((prev) => ({ ...prev, loading: false }));
     }
-  };
+  }, [dispatch, cart, line]);
 
-  const handleUpdateCart = async (quantity: number) => {
-    try {
-      setState({ loading: true, success: '', error: '' });
+  const handleUpdateCart = useCallback(
+    async (quantity: number) => {
+      try {
+        setState({ loading: true, success: '', error: '' });
 
-      const cartLinesUpdate = await updateCart({
-        variables: {
-          cartId: cart?.id as string,
-          lines: [
-            {
-              id: line.id,
-              merchandiseId: line.merchandise.id,
-              quantity,
-            },
-          ],
-        },
-      });
+        const cartLinesUpdate = await updateCart({
+          variables: {
+            cartId: cart?.id as string,
+            lines: [
+              {
+                id: line.id,
+                merchandiseId: line.merchandise.id,
+                quantity,
+              },
+            ],
+          },
+        });
 
-      dispatch(setCart(cartLinesUpdate.cart));
+        dispatch(setCart(cartLinesUpdate.cart));
 
-      setState((prev) => ({
-        ...prev,
-        success: 'Product updated in cart',
-        error: '',
-      }));
-    } catch (error) {
-      setState((prev) => ({
-        ...prev,
-        success: '',
-        error: (error as Error).message,
-      }));
-    } finally {
-      setState((prev) => ({ ...prev, loading: false }));
-    }
-  };
+        setState((prev) => ({
+          ...prev,
+          success: 'Product updated in cart',
+          error: '',
+        }));
+      } catch (error) {
+        setState((prev) => ({
+          ...prev,
+          success: '',
+          error: (error as Error).message,
+        }));
+      } finally {
+        setState((prev) => ({ ...prev, loading: false }));
+      }
+    },
+    [dispatch, cart, line],
+  );
 
   return {
     ...state,

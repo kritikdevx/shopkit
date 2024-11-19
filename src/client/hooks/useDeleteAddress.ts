@@ -10,23 +10,23 @@ import { deleteCustomerAddress } from '@/common/api/services';
 
 interface UseDeleteAddressState {
   loading: boolean;
-  error: string;
-  success: string;
+  error: string | null;
+  success: string | null;
   data: DeleteCustomerAddressMutation['customerAddressDelete'] | null;
 }
 
 const useDeleteAddress = () => {
   const [state, setState] = useState<UseDeleteAddressState>({
     loading: false,
-    error: '',
-    success: '',
+    error: null,
+    success: null,
     data: null,
   });
 
   const handleDeleteAddress = async (
     variables: DeleteCustomerAddressMutationVariables,
   ) => {
-    setState({ loading: true, error: '', success: '', data: null });
+    setState({ loading: true, error: null, success: null, data: null });
 
     try {
       const customerAddressDelete = await deleteCustomerAddress({
@@ -43,7 +43,7 @@ const useDeleteAddress = () => {
         ...prev,
         error: (error as Error).message,
         data: null,
-        success: '',
+        success: null,
       }));
     } finally {
       setState((prev) => ({ ...prev, loading: false }));

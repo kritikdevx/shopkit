@@ -9,14 +9,14 @@ import { useAppDispatch, useAppSelector } from '../store';
 
 interface UseProductState {
   loading: boolean;
-  error: string;
+  error: string | null;
   product: Product | null;
 }
 
 export default function useProduct() {
   const [state, setState] = useState<UseProductState>({
     loading: false,
-    error: '',
+    error: null,
     product: null,
   });
 
@@ -24,13 +24,13 @@ export default function useProduct() {
     variables: GetProductQueryVariables,
   ) {
     try {
-      setState((prev) => ({ ...prev, loading: true, error: '' }));
+      setState((prev) => ({ ...prev, loading: true, error: null }));
 
       const product = await getProduct({
         variables,
       });
 
-      setState((prev) => ({ ...prev, product, error: '' }));
+      setState((prev) => ({ ...prev, product, error: null }));
     } catch (error) {
       setState((prev) => ({ ...prev, error: (error as Error).message }));
     } finally {

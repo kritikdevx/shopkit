@@ -1,5 +1,11 @@
 # shopkit
 
+## 1.0.23
+
+### Patch Changes
+
+- Update errors
+
 ## 1.0.22
 
 ### Patch Changes

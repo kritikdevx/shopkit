@@ -13,16 +13,16 @@ import {
 
 interface UserUpdateAddressState {
   loading: boolean;
-  error: string;
-  success: string;
+  error: string | null;
+  success: string | null;
   data: UpdateCustomerAddressMutation['customerAddressUpdate'] | null;
 }
 
 const useUpdateAddress = () => {
   const [state, setState] = useState<UserUpdateAddressState>({
     loading: false,
-    error: '',
-    success: '',
+    error: null,
+    success: null,
     data: null,
   });
 
@@ -30,7 +30,7 @@ const useUpdateAddress = () => {
     variables: UpdateCustomerAddressMutationVariables,
     isDefault?: boolean,
   ) => {
-    setState({ loading: true, error: '', success: '', data: null });
+    setState({ loading: true, error: null, success: null, data: null });
 
     try {
       const customerAddressUpdate = await updateCustomerAddress({
@@ -56,7 +56,7 @@ const useUpdateAddress = () => {
         ...prev,
         error: (error as Error).message,
         data: null,
-        success: '',
+        success: null,
       }));
     } finally {
       setState((prev) => ({ ...prev, loading: false }));

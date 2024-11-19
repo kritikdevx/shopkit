@@ -14,8 +14,8 @@ import { useAppDispatch } from '../store';
 
 interface UserCreateAddressState {
   loading: boolean;
-  error: string;
-  success: string;
+  error: string | null;
+  success: string | null;
   data: CreateCustomerAddressMutation['customerAddressCreate'] | null;
 }
 
@@ -24,8 +24,8 @@ const useCreateAddress = () => {
 
   const [state, setState] = useState<UserCreateAddressState & {}>({
     loading: false,
-    error: '',
-    success: '',
+    error: null,
+    success: null,
     data: null,
   });
 
@@ -33,7 +33,7 @@ const useCreateAddress = () => {
     variables: CreateCustomerAddressMutationVariables,
     isDefault?: boolean,
   ) => {
-    setState({ loading: true, error: '', success: '', data: null });
+    setState({ loading: true, error: null, success: null, data: null });
 
     try {
       const createdAddress = await createCustomerAddress({
@@ -66,7 +66,7 @@ const useCreateAddress = () => {
         ...prev,
         error: (error as Error).message,
         data: null,
-        success: '',
+        success: null,
       }));
     } finally {
       setState((prev) => ({ ...prev, loading: false }));

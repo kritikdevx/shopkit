@@ -8,20 +8,20 @@ import { Menu } from '@/common/types/schemas/menu';
 
 interface UseMenuState {
   loading: boolean;
-  error: string;
+  error: string | null;
   menu: Menu | null;
 }
 
 export default function useMenu() {
   const [state, setState] = useState<UseMenuState>({
     loading: false,
-    error: '',
+    error: null,
     menu: null,
   });
 
   const fetchMenu = useCallback(async (variables: GetMenuQueryVariables) => {
     try {
-      setState((prev) => ({ ...prev, loading: true, error: '' }));
+      setState((prev) => ({ ...prev, loading: true, error: null }));
 
       const menu = await getMenu({
         variables,
@@ -31,13 +31,13 @@ export default function useMenu() {
         ...prev,
         menu,
         success: 'Menu fetched successfully',
-        error: '',
+        error: null,
       }));
     } catch (error) {
       setState((prev) => ({
         ...prev,
         error: (error as Error).message,
-        success: '',
+        success: null,
       }));
     } finally {
       setState((prev) => ({ ...prev, loading: false }));
