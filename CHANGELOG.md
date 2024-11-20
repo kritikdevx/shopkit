@@ -1,5 +1,11 @@
 # shopkit
 
+## 1.0.25
+
+### Patch Changes
+
+- react native async storage support
+
 ## 1.0.24
 
 ### Patch Changes

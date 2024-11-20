@@ -3,4 +3,5 @@ export interface ShopKitConfig {
   storefrontAccessToken: string;
   apiVersion: string;
   adminAccessToken?: string;
+  origin: 'web' | 'native';
 }
