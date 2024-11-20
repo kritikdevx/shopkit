@@ -14,6 +14,11 @@
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
     "./client": {
       "types": "./dist/client/index.d.ts",
       "import": "./dist/client/index.js",
@@ -44,9 +49,10 @@
   "peerDependencies": {
     "react": ">=18.0.0",
     "react-dom": ">=18.0.0",
-    "react-native": ">=0.60.0"
+    "react-native": ">=0.76.2"
   },
   "dependencies": {
+    "@react-native-async-storage/async-storage": "^2.1.0",
     "@reduxjs/toolkit": "^2.3.0",
     "react-redux": "^9.1.2",
     "redux-persist": "^6.0.0",
@@ -59,8 +65,8 @@
     "@types/react-dom": "^18",
     "prettier": "^3.2.5",
     "rimraf": "^5.0.0",
-    "typescript": "^5.0.0",
-    "tsc-alias": "^1.8.10"
+    "tsc-alias": "^1.8.10",
+    "typescript": "^5.0.0"
   },
   "packageManager": "npm@10.8.3",
   "engines": {
