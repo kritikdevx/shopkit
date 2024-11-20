@@ -1,5 +1,4 @@
-import { Platform } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+// import AsyncStorage from '@react-native-async-storage/async-storage';
 
 interface PersistStorage {
   getItem(key: string): Promise<string | null>;
@@ -54,9 +53,7 @@ const createLocalStorageAdapter = (storage: Storage): PersistStorage => ({
 // Initialize storage based on environment
 const storage: PersistStorage =
   typeof window !== 'undefined'
-    ? Platform.OS === 'web'
-      ? createLocalStorageAdapter(window.localStorage)
-      : AsyncStorage
+    ? createLocalStorageAdapter(window.localStorage)
     : createNoopStorage();
 
 export default storage;

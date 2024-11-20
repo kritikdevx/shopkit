@@ -1,5 +1,11 @@
 # shopkit
 
+## 1.0.30
+
+### Patch Changes
+
+- removing react native for now
+
 ## 1.0.29
 
 ### Patch Changes
