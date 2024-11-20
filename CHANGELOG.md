@@ -1,5 +1,11 @@
 # shopkit
 
+## 1.0.24
+
+### Patch Changes
+
+- fix hooks
+
 ## 1.0.23
 
 ### Patch Changes

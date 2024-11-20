@@ -92,6 +92,8 @@ export const getProductByHandleQuery = /* GraphQL */ `
       ...product
     }
   }
+  ${seoFragment}
+  ${imageFragment}
   ${productFragment}
 `;
 

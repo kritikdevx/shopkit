@@ -5,8 +5,6 @@ import { useCallback, useState } from 'react';
 import { GetProductQueryVariables, Product } from '@/common';
 import { getProduct } from '@/common/api/services';
 
-import { useAppDispatch, useAppSelector } from '../store';
-
 interface UseProductState {
   loading: boolean;
   error: string | null;
