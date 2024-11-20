@@ -51,12 +51,44 @@ const createLocalStorageAdapter = (storage: Storage): PersistStorage => ({
   },
 });
 
+const createAsyncStorageAdapter = (
+  storage: typeof AsyncStorage,
+): PersistStorage => ({
+  async getItem(key: string): Promise<string | null> {
+    try {
+      const item = await storage.getItem(key);
+      return item;
+    } catch (err) {
+      console.error('Error reading from storage:', err);
+      return null;
+    }
+  },
+  async setItem(key: string, value: string): Promise<void> {
+    try {
+      await storage.setItem(key, value);
+      return;
+    } catch (err) {
+      console.error('Error writing to storage:', err);
+      return;
+    }
+  },
+  async removeItem(key: string): Promise<void> {
+    try {
+      await storage.removeItem(key);
+      return;
+    } catch (err) {
+      console.error('Error removing from storage:', err);
+      return;
+    }
+  },
+});
+
 // Initialize storage based on environment
 const storage: PersistStorage =
   typeof window !== 'undefined'
     ? ShopKit.getConfig().origin === 'web'
       ? createLocalStorageAdapter(window.localStorage)
-      : AsyncStorage
+      : createAsyncStorageAdapter(AsyncStorage)
     : createNoopStorage();
 
 export default storage;
