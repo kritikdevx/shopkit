@@ -87,6 +87,7 @@ const cartFragment = /* GraphQL */ `
             ... on ProductVariant {
               id
               title
+              sku
               image {
                 ...image
               }
