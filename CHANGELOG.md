@@ -1,5 +1,11 @@
 # shopkit
 
+## 1.0.32
+
+### Patch Changes
+
+- update package.json
+
 ## 1.0.31
 
 ### Patch Changes
