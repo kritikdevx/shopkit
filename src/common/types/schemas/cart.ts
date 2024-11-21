@@ -21,7 +21,6 @@ export interface CartLineUpdateInput {
 export interface CartLine {
   id: string;
   quantity: number;
-  sku: string;
   cost: {
     totalAmount: Money;
     amountPerQuantity: Money;

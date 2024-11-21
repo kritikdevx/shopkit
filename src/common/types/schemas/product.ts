@@ -65,6 +65,7 @@ export interface ProductVariant {
     minimum: number | null;
   };
   image: Image | null;
+  sku: string;
 }
 
 export interface Product {

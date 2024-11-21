@@ -1,5 +1,11 @@
 # shopkit
 
+## 1.0.34
+
+### Patch Changes
+
+- fix types
+
 ## 1.0.33
 
 ### Patch Changes
