@@ -4,6 +4,7 @@ const productVariantFragment = /* GraphQL */ `
     title
     weight
     weightUnit
+    sku
     image {
       ...image
     }

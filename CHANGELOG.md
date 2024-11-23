@@ -1,5 +1,11 @@
 # shopkit
 
+## 1.0.35
+
+### Patch Changes
+
+- product variant query fix
+
 ## 1.0.34
 
 ### Patch Changes
