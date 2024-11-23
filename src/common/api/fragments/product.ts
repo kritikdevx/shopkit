@@ -28,6 +28,7 @@ const productFragment = /* GraphQL */ `
           id
           title
           weight
+          sku
           availableForSale
           quantityAvailable
           selectedOptions {

@@ -1,5 +1,11 @@
 # shopkit
 
+## 1.0.36
+
+### Patch Changes
+
+- add sku to variant
+
 ## 1.0.35
 
 ### Patch Changes
