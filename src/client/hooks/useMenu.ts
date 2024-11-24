@@ -23,7 +23,7 @@ export default function useMenu() {
     try {
       setState((prev) => ({ ...prev, loading: true, error: null }));
 
-      const menu = await getMenu({
+      const { menu } = await getMenu({
         variables,
       });
 

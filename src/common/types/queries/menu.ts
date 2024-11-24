@@ -6,4 +6,6 @@ export interface GetMenuQueryVariables {
 }
 
 // Queries
-export interface GetMenuQuery extends Menu {}
+export interface GetMenuQuery {
+  menu: Menu;
+}

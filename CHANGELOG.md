@@ -1,5 +1,11 @@
 # shopkit
 
+## 1.0.38
+
+### Patch Changes
+
+- fix GetMenuQuery types
+
 ## 1.0.37
 
 ### Patch Changes
