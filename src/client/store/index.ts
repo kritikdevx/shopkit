@@ -24,9 +24,8 @@ const rootReducer = combineReducers({
 
 export type RootState = ReturnType<typeof rootReducer>;
 
-// Persist Configuration with custom storage
 const persistConfig = {
-  key: 'root',
+  key: 'shopkit-root',
   storage,
   whitelist: [cartSlice.name],
 };

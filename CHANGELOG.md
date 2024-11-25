@@ -1,5 +1,11 @@
 # shopkit
 
+## 1.0.39
+
+### Patch Changes
+
+- rename persist config key
+
 ## 1.0.38
 
 ### Patch Changes
