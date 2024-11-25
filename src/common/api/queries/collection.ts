@@ -186,6 +186,7 @@ export const listCollectionProductsByIdWithMetafieldsQuery = /* GraphQL */ `
   ${imageFragment}
   ${seoFragment}
   ${metafieldFragment}
+  ${collectionFragment}
   ${productVariantFragment}
   ${productFragment}
 `;
@@ -274,6 +275,7 @@ export const listCollectionProductsByHandleWithMetafieldsQuery = /* GraphQL */ `
   ${imageFragment}
   ${seoFragment}
   ${metafieldFragment}
+  ${collectionFragment}
   ${productVariantFragment}
   ${productFragment}
 `;

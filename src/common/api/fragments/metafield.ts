@@ -24,6 +24,9 @@ const metafieldFragment = /* GraphQL */ `
       ... on ProductVariant {
         ...productVariant
       }
+      ... on Collection {
+        ...collection
+      }
       ... on Metaobject {
         id
         handle
@@ -48,6 +51,9 @@ const metafieldFragment = /* GraphQL */ `
             }
             ... on ProductVariant {
               ...productVariant
+            }
+            ... on Collection {
+              ...collection
             }
             ... on Metaobject {
               id
@@ -78,6 +84,9 @@ const metafieldFragment = /* GraphQL */ `
                 }
                 ... on ProductVariant {
                   ...productVariant
+                }
+                ... on Collection {
+                  ...collection
                 }
                 ... on Metaobject {
                   id
@@ -118,6 +127,9 @@ const metafieldFragment = /* GraphQL */ `
           ... on ProductVariant {
             ...productVariant
           }
+          ... on Collection {
+            ...collection
+          }
           ... on Metaobject {
             id
             handle
@@ -142,6 +154,9 @@ const metafieldFragment = /* GraphQL */ `
                 }
                 ... on ProductVariant {
                   ...productVariant
+                }
+                ... on Collection {
+                  ...collection
                 }
                 ... on Metaobject {
                   id
@@ -172,6 +187,9 @@ const metafieldFragment = /* GraphQL */ `
                     }
                     ... on ProductVariant {
                       ...productVariant
+                    }
+                    ... on Collection {
+                      ...collection
                     }
                     ... on Metaobject {
                       id

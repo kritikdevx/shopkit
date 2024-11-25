@@ -1,5 +1,11 @@
 # shopkit
 
+## 1.0.40
+
+### Patch Changes
+
+- add get page query
+
 ## 1.0.39
 
 ### Patch Changes

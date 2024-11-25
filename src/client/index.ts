@@ -14,3 +14,4 @@ export { default as useDeleteAddress } from './hooks/useDeleteAddress';
 export { default as useUpdateDefaultAddress } from './hooks/useUpdateDefaultAddress';
 export { default as useCartAction } from './hooks/useCartAction';
 export { default as useCartProduct } from './hooks/useCartProduct';
+export { default as usePage } from './hooks/usePage';

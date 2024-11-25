@@ -1,3 +1,4 @@
+import { Collection } from './collection';
 import { Connection, Image } from './common';
 import { Product, ProductVariant } from './product';
 
@@ -41,6 +42,9 @@ export interface Metafield {
     product: Product;
     metaobject: MetaObject;
     productVariant: ProductVariant;
+    collection: Collection;
   } | null;
-  references: Connection<Product | Image | MetaObject | ProductVariant> | null;
+  references: Connection<
+    Product | Image | MetaObject | ProductVariant | Collection
+  > | null;
 }

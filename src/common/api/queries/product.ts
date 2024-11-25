@@ -1,3 +1,4 @@
+import collectionFragment from '../fragments/collection';
 import imageFragment from '../fragments/image';
 import metafieldFragment from '../fragments/metafield';
 import productFragment from '../fragments/product';
@@ -52,6 +53,7 @@ export const getProductByIdWithMetafieldsQuery = /* GraphQL */ `
   ${seoFragment}
   ${imageFragment}
   ${metafieldFragment}
+  ${collectionFragment}
   ${productVariantFragment}
   ${productFragment}
 `;
@@ -82,6 +84,7 @@ export const getProductByHandleWithMetafieldsQuery = /* GraphQL */ `
   ${seoFragment}
   ${imageFragment}
   ${metafieldFragment}
+  ${collectionFragment}
   ${productVariantFragment}
   ${productFragment}
 `;

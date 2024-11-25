@@ -33,3 +33,9 @@ export {
 export { listOrders } from '@/common/api/services/order';
 
 export { getMenu } from '@/common/api/services/menu';
+
+export {
+  getPage,
+  getPageByHandle,
+  getPageById,
+} from '@/common/api/services/page';
