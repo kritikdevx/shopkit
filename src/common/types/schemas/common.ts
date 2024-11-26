@@ -11,6 +11,25 @@ export interface Image {
   src: string;
 }
 
+export interface Video {
+  id: string;
+  mediaContentType: string;
+  previewImage: {
+    altText: string;
+    height: number;
+    id: string;
+    url: string;
+    width: number;
+  };
+  sources: Array<{
+    format: string;
+    height: number;
+    mimeType: string;
+    url: string;
+    width: number;
+  }>;
+}
+
 export interface SEO {
   title: string;
   description: string;

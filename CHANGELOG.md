@@ -1,5 +1,11 @@
 # shopkit
 
+## 1.0.41
+
+### Patch Changes
+
+- add video reference in meta
+
 ## 1.0.40
 
 ### Patch Changes

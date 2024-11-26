@@ -1,5 +1,5 @@
 import { Collection } from './collection';
-import { Connection, Image } from './common';
+import { Connection, Image, Video } from './common';
 import { Product, ProductVariant } from './product';
 
 export interface HasMetafieldsIdentifier {
@@ -17,13 +17,15 @@ export interface MetaObject {
     type: string;
     value: string;
     references: Connection<
-      Product | Image | MetaObject | ProductVariant
+      Product | Image | MetaObject | ProductVariant | Video | Collection
     > | null;
     reference: {
       image: Image;
       product: Product;
       metaobject: MetaObject;
       productVariant: ProductVariant;
+      video: Video;
+      collection: Collection;
     } | null;
   }[];
 }
@@ -43,8 +45,9 @@ export interface Metafield {
     metaobject: MetaObject;
     productVariant: ProductVariant;
     collection: Collection;
+    video: Video;
   } | null;
   references: Connection<
-    Product | Image | MetaObject | ProductVariant | Collection
+    Product | Image | MetaObject | ProductVariant | Collection | Video
   > | null;
 }
