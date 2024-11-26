@@ -1,5 +1,11 @@
 # shopkit
 
+## 1.0.43
+
+### Patch Changes
+
+- add one more level of meta reference
+
 ## 1.0.42
 
 ### Patch Changes
