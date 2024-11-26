@@ -129,13 +129,15 @@ const metafieldFragment = /* GraphQL */ `
                     }
                   }
                   ... on Product {
-                    ...product
+                    id
+                    handle
                   }
                   ... on ProductVariant {
-                    ...productVariant
+                    id
                   }
                   ... on Collection {
-                    ...collection
+                    id
+                    handle
                   }
                   ... on Metaobject {
                     id
@@ -180,13 +182,15 @@ const metafieldFragment = /* GraphQL */ `
                         }
                       }
                       ... on Product {
-                        ...product
+                        id
+                        handle
                       }
                       ... on ProductVariant {
-                        ...productVariant
+                        id
                       }
                       ... on Collection {
-                        ...collection
+                        id
+                        handle
                       }
                       ... on Metaobject {
                         id
@@ -286,13 +290,15 @@ const metafieldFragment = /* GraphQL */ `
                         }
                       }
                       ... on Product {
-                        ...product
+                        id
+                        handle
                       }
                       ... on ProductVariant {
-                        ...productVariant
+                        id
                       }
                       ... on Collection {
-                        ...collection
+                        id
+                        handle
                       }
                       ... on Metaobject {
                         id
@@ -337,13 +343,15 @@ const metafieldFragment = /* GraphQL */ `
                             }
                           }
                           ... on Product {
-                            ...product
+                            id
+                            handle
                           }
                           ... on ProductVariant {
-                            ...productVariant
+                            id
                           }
                           ... on Collection {
-                            ...collection
+                            id
+                            handle
                           }
                           ... on Metaobject {
                             id
@@ -498,13 +506,15 @@ const metafieldFragment = /* GraphQL */ `
                         }
                       }
                       ... on Product {
-                        ...product
+                        id
+                        handle
                       }
                       ... on ProductVariant {
-                        ...productVariant
+                        id
                       }
                       ... on Collection {
-                        ...collection
+                        id
+                        handle
                       }
                       ... on Metaobject {
                         id
@@ -549,13 +559,15 @@ const metafieldFragment = /* GraphQL */ `
                             }
                           }
                           ... on Product {
-                            ...product
+                            id
+                            handle
                           }
                           ... on ProductVariant {
-                            ...productVariant
+                            id
                           }
                           ... on Collection {
-                            ...collection
+                            id
+                            handle
                           }
                           ... on Metaobject {
                             id
@@ -655,13 +667,15 @@ const metafieldFragment = /* GraphQL */ `
                             }
                           }
                           ... on Product {
-                            ...product
+                            id
+                            handle
                           }
                           ... on ProductVariant {
-                            ...productVariant
+                            id
                           }
                           ... on Collection {
-                            ...collection
+                            id
+                            handle
                           }
                           ... on Metaobject {
                             id
@@ -706,13 +720,15 @@ const metafieldFragment = /* GraphQL */ `
                                 }
                               }
                               ... on Product {
-                                ...product
+                                id
+                                handle
                               }
                               ... on ProductVariant {
-                                ...productVariant
+                                id
                               }
                               ... on Collection {
-                                ...collection
+                                id
+                                handle
                               }
                               ... on Metaobject {
                                 id
