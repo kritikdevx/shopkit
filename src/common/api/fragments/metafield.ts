@@ -19,23 +19,21 @@ const metafieldFragment = /* GraphQL */ `
         }
       }
       ... on Video {
-        video {
+        id
+        mediaContentType
+        previewImage {
+          altText
+          height
           id
-          mediaContentType
-          previewImage {
-            altText
-            height
-            id
-            url
-            width
-          }
-          sources {
-            format
-            height
-            mimeType
-            url
-            width
-          }
+          url
+          width
+        }
+        sources {
+          format
+          height
+          mimeType
+          url
+          width
         }
       }
       ... on Product {
@@ -67,23 +65,21 @@ const metafieldFragment = /* GraphQL */ `
               }
             }
             ... on Video {
-              video {
+              id
+              mediaContentType
+              previewImage {
+                altText
+                height
                 id
-                mediaContentType
-                previewImage {
-                  altText
-                  height
-                  id
-                  url
-                  width
-                }
-                sources {
-                  format
-                  height
-                  mimeType
-                  url
-                  width
-                }
+                url
+                width
+              }
+              sources {
+                format
+                height
+                mimeType
+                url
+                width
               }
             }
             ... on Product {
@@ -120,23 +116,21 @@ const metafieldFragment = /* GraphQL */ `
                   }
                 }
                 ... on Video {
-                  video {
+                  id
+                  mediaContentType
+                  previewImage {
+                    altText
+                    height
                     id
-                    mediaContentType
-                    previewImage {
-                      altText
-                      height
-                      id
-                      url
-                      width
-                    }
-                    sources {
-                      format
-                      height
-                      mimeType
-                      url
-                      width
-                    }
+                    url
+                    width
+                  }
+                  sources {
+                    format
+                    height
+                    mimeType
+                    url
+                    width
                   }
                 }
                 ... on Product {
@@ -182,23 +176,21 @@ const metafieldFragment = /* GraphQL */ `
             }
           }
           ... on Video {
-            video {
+            id
+            mediaContentType
+            previewImage {
+              altText
+              height
               id
-              mediaContentType
-              previewImage {
-                altText
-                height
-                id
-                url
-                width
-              }
-              sources {
-                format
-                height
-                mimeType
-                url
-                width
-              }
+              url
+              width
+            }
+            sources {
+              format
+              height
+              mimeType
+              url
+              width
             }
           }
           ... on Product {
@@ -230,23 +222,21 @@ const metafieldFragment = /* GraphQL */ `
                   }
                 }
                 ... on Video {
-                  video {
+                  id
+                  mediaContentType
+                  previewImage {
+                    altText
+                    height
                     id
-                    mediaContentType
-                    previewImage {
-                      altText
-                      height
-                      id
-                      url
-                      width
-                    }
-                    sources {
-                      format
-                      height
-                      mimeType
-                      url
-                      width
-                    }
+                    url
+                    width
+                  }
+                  sources {
+                    format
+                    height
+                    mimeType
+                    url
+                    width
                   }
                 }
                 ... on Product {
@@ -283,23 +273,21 @@ const metafieldFragment = /* GraphQL */ `
                       }
                     }
                     ... on Video {
-                      video {
+                      id
+                      mediaContentType
+                      previewImage {
+                        altText
+                        height
                         id
-                        mediaContentType
-                        previewImage {
-                          altText
-                          height
-                          id
-                          url
-                          width
-                        }
-                        sources {
-                          format
-                          height
-                          mimeType
-                          url
-                          width
-                        }
+                        url
+                        width
+                      }
+                      sources {
+                        format
+                        height
+                        mimeType
+                        url
+                        width
                       }
                     }
                     ... on Product {
