@@ -30,5 +30,9 @@ export const createCustomerMutation = /* GraphQL */ `
         updatedAt
       }
     }
+    customerUserErrors {
+      code
+      message
+    }
   }
 `;
