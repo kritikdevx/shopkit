@@ -1,5 +1,11 @@
 # shopkit
 
+## 1.0.50
+
+### Patch Changes
+
+- reverting metafields fragment changes
+
 ## 1.0.49
 
 ### Patch Changes
