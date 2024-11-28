@@ -1,5 +1,11 @@
 # shopkit
 
+## 1.0.49
+
+### Patch Changes
+
+- fix customer mutation queries
+
 ## 1.0.48
 
 ### Patch Changes

@@ -29,10 +29,10 @@ export const createCustomerMutation = /* GraphQL */ `
         tags
         updatedAt
       }
-    }
-    customerUserErrors {
-      code
-      message
+      customerUserErrors {
+        code
+        message
+      }
     }
   }
 `;
