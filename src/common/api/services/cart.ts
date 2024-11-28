@@ -21,6 +21,13 @@ import {
 } from '../mutations/cart';
 import { getCartQuery } from '../queries/cart';
 
+/**
+ * Get a cart
+ * @param variables - The variables for the query
+ * @param options - The options for the fetch request
+ * @returns The cart
+ * @category API
+ */
 export async function getCart({
   variables,
   options,

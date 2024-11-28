@@ -39,3 +39,8 @@ export {
   getPageByHandle,
   getPageById,
 } from '@/common/api/services/page';
+
+export {
+  createCustomer,
+  createCustomerAccessToken,
+} from '@/common/api/services/customer';
