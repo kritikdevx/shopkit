@@ -1,5 +1,11 @@
 # shopkit
 
+## 1.0.51
+
+### Patch Changes
+
+- fix queries
+
 ## 1.0.50
 
 ### Patch Changes
