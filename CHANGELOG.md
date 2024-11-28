@@ -1,5 +1,11 @@
 # shopkit
 
+## 1.0.52
+
+### Patch Changes
+
+- fix customer types
+
 ## 1.0.51
 
 ### Patch Changes

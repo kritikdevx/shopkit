@@ -16,20 +16,24 @@ export interface CreateCustomerAccessTokenMutationVariables {
 // Mutations
 
 export interface CreateCustomerMutation {
-  customer: Customer;
-  customerUserErrors: {
-    code: string;
-    message: string;
-  }[];
+  customerCreate: {
+    customer: Customer;
+    customerUserErrors: {
+      code: string;
+      message: string;
+    }[];
+  };
 }
 
 export interface CreateCustomerAccessTokenMutation {
-  customerAccessToken: {
-    accessToken: string;
-    expiresAt: string;
+  customerAccessTokenCreate: {
+    customerAccessToken: {
+      accessToken: string;
+      expiresAt: string;
+    };
+    customerUserErrors: {
+      code: string;
+      message: string;
+    }[];
   };
-  customerUserErrors: {
-    code: string;
-    message: string;
-  }[];
 }

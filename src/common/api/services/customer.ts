@@ -22,7 +22,7 @@ export async function createCustomer({
     query: createCustomerMutation,
     variables,
     options,
-  });
+  }).then((res) => res.customerCreate);
 }
 
 export async function createCustomerAccessToken({
@@ -39,5 +39,5 @@ export async function createCustomerAccessToken({
     query: createCustomerAccessTokenMutation,
     variables,
     options,
-  });
+  }).then((res) => res.customerAccessTokenCreate);
 }
