@@ -1,5 +1,11 @@
 # shopkit
 
+## 1.0.46
+
+### Patch Changes
+
+- fix customer requests
+
 ## 1.0.45
 
 ### Patch Changes

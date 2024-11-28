@@ -1,5 +1,5 @@
 import { ShopifyRequest } from '@/common/types';
-import { shopifyAdminFetch } from '../fetch';
+import { shopifyFetch } from '../fetch';
 import { createCustomerMutation } from '../mutations/customer';
 import {
   CreateCustomerAccessTokenMutation,
@@ -15,10 +15,7 @@ export async function createCustomer({
   variables: CreateCustomerMutationVariables;
   options?: ShopifyRequest;
 }) {
-  return shopifyAdminFetch<
-    CreateCustomerMutation,
-    CreateCustomerMutationVariables
-  >({
+  return shopifyFetch<CreateCustomerMutation, CreateCustomerMutationVariables>({
     query: createCustomerMutation,
     variables,
     options,
@@ -32,7 +29,7 @@ export async function createCustomerAccessToken({
   variables: CreateCustomerAccessTokenMutationVariables;
   options?: ShopifyRequest;
 }) {
-  return shopifyAdminFetch<
+  return shopifyFetch<
     CreateCustomerAccessTokenMutation,
     CreateCustomerAccessTokenMutationVariables
   >({
