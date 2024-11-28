@@ -1,5 +1,11 @@
 # shopkit
 
+## 1.0.47
+
+### Patch Changes
+
+- fix mutation query
+
 ## 1.0.46
 
 ### Patch Changes

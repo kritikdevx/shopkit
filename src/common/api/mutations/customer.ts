@@ -1,30 +1,34 @@
 export const createCustomerAccessTokenMutation = /* GraphQL */ `
-  mutation customerAccessTokenCreate(input:CustomerAccessTokenCreateInput!) {
-    customerAccessToken {
-      accessToken
-      expiresAt
-    }
-    customerUserErrors {
-      message
-      code
-      field
+  mutation CustomerAccessTokenCreate($input: CustomerAccessTokenCreateInput!) {
+    customerAccessTokenCreate(input: $input) {
+      customerAccessToken {
+        accessToken
+        expiresAt
+      }
+      customerUserErrors {
+        message
+        code
+        field
+      }
     }
   }
 `;
 
 export const createCustomerMutation = /* GraphQL */ `
-  mutation customerCreate(input : CustomerCreateInput!) {
-    customer {
-      acceptsMarketing
-      createdAt
-      displayName
-      email
-      firstName
-      id
-      lastName
-      phone
-      tags
-      updatedAt
+  mutation CustomerCreate($input: CustomerCreateInput!) {
+    customerCreate(input: $input) {
+      customer {
+        acceptsMarketing
+        createdAt
+        displayName
+        email
+        firstName
+        id
+        lastName
+        phone
+        tags
+        updatedAt
+      }
     }
   }
 `;
