@@ -108,7 +108,7 @@ export const listCollectionProductsByIdQuery = /* GraphQL */ `
     $after: String
     $before: String
     $last: Int
-    $sortKey: ProductSortKeys
+    $sortKey: ProductCollectionSortKeys
     $reverse: Boolean
     $filters: [ProductFilter!]
   ) {
