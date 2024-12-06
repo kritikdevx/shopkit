@@ -7,3 +7,4 @@ export * from './address';
 export * from './metafield';
 export * from './page';
 export * from './customer';
+export * from './menu';

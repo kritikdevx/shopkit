@@ -1,5 +1,11 @@
 # shopkit
 
+## 1.0.54
+
+### Patch Changes
+
+- export menu types
+
 ## 1.0.53
 
 ### Patch Changes
