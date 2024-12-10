@@ -1,5 +1,11 @@
 # shopkit
 
+## 1.0.56
+
+### Patch Changes
+
+- fix video
+
 ## 1.0.55
 
 ### Patch Changes
