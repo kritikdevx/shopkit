@@ -1,5 +1,17 @@
 # shopkit
 
+## 1.0.58
+
+### Patch Changes
+
+- fix video type
+
+## 1.0.57
+
+### Patch Changes
+
+- fix video type
+
 ## 1.0.56
 
 ### Patch Changes

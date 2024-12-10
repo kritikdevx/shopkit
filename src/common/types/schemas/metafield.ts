@@ -19,14 +19,16 @@ export interface MetaObject {
     references: Connection<
       Product | Image | MetaObject | ProductVariant | Video | Collection
     > | null;
-    reference: {
-      image: Image;
-      product: Product;
-      metaobject: MetaObject;
-      productVariant: ProductVariant;
-      video: Video;
-      collection: Collection;
-    } | null;
+    reference:
+      | {
+          image: Image;
+          product: Product;
+          metaobject: MetaObject;
+          productVariant: ProductVariant;
+          collection: Collection;
+        }
+      | Video
+      | null;
   }[];
 }
 
@@ -39,14 +41,16 @@ export interface Metafield {
   type: string;
   updatedAt: string;
   value: string;
-  reference: {
-    image: Image;
-    product: Product;
-    metaobject: MetaObject;
-    productVariant: ProductVariant;
-    collection: Collection;
-    video: Video;
-  } | null;
+  reference:
+    | {
+        image: Image;
+        product: Product;
+        metaobject: MetaObject;
+        productVariant: ProductVariant;
+        collection: Collection;
+      }
+    | Video
+    | null;
   references: Connection<
     Product | Image | MetaObject | ProductVariant | Collection | Video
   > | null;
