@@ -1,5 +1,11 @@
 # shopkit
 
+## 1.0.55
+
+### Patch Changes
+
+- add video reference
+
 ## 1.0.54
 
 ### Patch Changes
