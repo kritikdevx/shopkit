@@ -20,13 +20,10 @@ export interface MetaObject {
       Product | Image | MetaObject | ProductVariant | Video | Collection
     > | null;
     reference:
-      | {
-          image: Image;
-          product: Product;
-          metaobject: MetaObject;
-          productVariant: ProductVariant;
-          collection: Collection;
-        }
+      | { image: Image }
+      | Product
+      | MetaObject
+      | ProductVariant
       | Video
       | null;
   }[];
@@ -42,13 +39,10 @@ export interface Metafield {
   updatedAt: string;
   value: string;
   reference:
-    | {
-        image: Image;
-        product: Product;
-        metaobject: MetaObject;
-        productVariant: ProductVariant;
-        collection: Collection;
-      }
+    | { image: Image }
+    | Product
+    | MetaObject
+    | ProductVariant
     | Video
     | null;
   references: Connection<
