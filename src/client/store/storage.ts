@@ -1,3 +1,4 @@
+import { ShopKit } from '@/common';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 interface PersistStorage {
@@ -45,41 +46,6 @@ const createLocalStorageAdapter = (storage: Storage): PersistStorage => ({
   },
 });
 
-// Create a storage adapter for AsyncStorage in React Native
-const createAsyncStorageAdapter = (
-  storage: typeof AsyncStorage,
-): PersistStorage => ({
-  async getItem(key: string): Promise<string | null> {
-    try {
-      return await storage.getItem(key);
-    } catch (err) {
-      console.error('Error reading from AsyncStorage:', err);
-      return null;
-    }
-  },
-  async setItem(key: string, value: string): Promise<void> {
-    try {
-      await storage.setItem(key, value);
-    } catch (err) {
-      console.error('Error writing to AsyncStorage:', err);
-    }
-  },
-  async removeItem(key: string): Promise<void> {
-    try {
-      await storage.removeItem(key);
-    } catch (err) {
-      console.error('Error removing from AsyncStorage:', err);
-    }
-  },
-});
-
-// Detect if the environment is React Native
-const isReactNative = (): boolean =>
-  typeof navigator !== 'undefined' &&
-  typeof navigator.userAgent === 'string' &&
-  (navigator.userAgent.includes('ReactNative') ||
-    navigator.userAgent.includes('react-native'));
-
 // Initialize storage based on the environment
 const storage: PersistStorage = (() => {
   if (
@@ -88,9 +54,9 @@ const storage: PersistStorage = (() => {
   ) {
     // Web environment
     return createLocalStorageAdapter(window.localStorage);
-  } else if (isReactNative() && AsyncStorage !== null) {
+  } else if (ShopKit.getConfig().isReactNative && AsyncStorage !== null) {
     // React Native environment
-    return createAsyncStorageAdapter(AsyncStorage);
+    return AsyncStorage;
   } else {
     // Server or unsupported environment
     return createNoopStorage();
