@@ -1,5 +1,11 @@
 # shopkit
 
+## 1.0.62
+
+### Patch Changes
+
+- version bump
+
 ## 1.0.61
 
 ### Patch Changes
