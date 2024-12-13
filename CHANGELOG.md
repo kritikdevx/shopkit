@@ -1,5 +1,11 @@
 # shopkit
 
+## 1.0.61
+
+### Patch Changes
+
+- add product variant image
+
 ## 1.0.60
 
 ### Patch Changes
