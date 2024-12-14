@@ -2,7 +2,11 @@
 
 import { useCallback, useState } from 'react';
 
-import { CartLine } from '@/common';
+import {
+  CartLine,
+  CartLinesUpdateMutationVariables,
+  CartLineUpdateInput,
+} from '@/common';
 import {
   addToCart,
   createCart,
@@ -193,10 +197,44 @@ export default function useCartAction() {
     [dispatch, cart],
   );
 
+  const handeBulkUpdateCart = useCallback(
+    async (lines: CartLineUpdateInput[]) => {
+      try {
+        setState({ loading: true, success: '', error: '' });
+
+        if (!cart) return;
+
+        const cartLinesUpdate = await updateCart({
+          variables: {
+            cartId: cart.id,
+            lines,
+          },
+        });
+
+        dispatch(setCart(cartLinesUpdate.cart));
+        setState((prev) => ({
+          ...prev,
+          success: 'Cart updated',
+          error: '',
+        }));
+      } catch (error) {
+        setState((prev) => ({
+          ...prev,
+          success: '',
+          error: (error as Error).message,
+        }));
+      } finally {
+        setState((prev) => ({ ...prev, loading: false }));
+      }
+    },
+    [dispatch, cart],
+  );
+
   return {
     ...state,
     addToCart: handleAddToCart,
     updateCart: handleUpdateCart,
     removeFromCart: handleRemoveFromCart,
+    bulkUpdateCart: handeBulkUpdateCart,
   };
 }

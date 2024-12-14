@@ -1,5 +1,11 @@
 # shopkit
 
+## 1.0.63
+
+### Patch Changes
+
+- bulk update cart feature
+
 ## 1.0.62
 
 ### Patch Changes

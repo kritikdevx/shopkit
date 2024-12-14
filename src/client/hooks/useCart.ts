@@ -1,9 +1,10 @@
 'use client';
 
-import { useCallback, useMemo } from 'react';
+import { useMemo } from 'react';
 
 import { useAppDispatch, useAppSelector } from '../store';
 import { cartActions } from '../store/actions';
+import { resetCart as handleResetCart } from '../store/slices/cart.slice';
 
 export default function useCart() {
   const dispatch = useAppDispatch();
@@ -23,10 +24,15 @@ export default function useCart() {
     }
   };
 
+  const resetCart = () => {
+    dispatch(handleResetCart());
+  };
+
   return {
     loading,
     cart,
     cartCount,
     getCart,
+    resetCart,
   };
 }

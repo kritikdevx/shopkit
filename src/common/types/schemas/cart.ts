@@ -1,5 +1,5 @@
-import { Connection, Image, Money } from './common';
-import { Product, ProductVariant } from './product';
+import { Connection, Money } from './common';
+import { ProductVariant } from './product';
 
 export interface AttributeInput {
   key: string;
@@ -9,6 +9,7 @@ export interface AttributeInput {
 export interface CartLineInput {
   merchandiseId: string;
   quantity: number;
+  attributes?: AttributeInput[];
 }
 
 export interface CartLineUpdateInput {
@@ -16,6 +17,7 @@ export interface CartLineUpdateInput {
   quantity?: number;
   merchandiseId?: string;
   sellingPlanId?: string;
+  attributes?: AttributeInput[];
 }
 
 export interface CartLine {
