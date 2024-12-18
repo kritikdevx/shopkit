@@ -62,7 +62,7 @@ export function* cartSagaWatcher() {
   yield takeLatest(cartActions.startGetCartRequest, getCartSaga);
   yield takeLatest(cartActions.startCreateCartRequest, createCartSaga);
   yield takeLatest(
-    cartActions.startUpdateCartAttributes,
+    cartActions.startUpdateCartAttributesRequest,
     updateCartAttributesSaga,
   );
 }
