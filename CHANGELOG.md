@@ -1,5 +1,11 @@
 # shopkit
 
+## 1.0.67
+
+### Patch Changes
+
+- fix cart mutation
+
 ## 1.0.66
 
 ### Patch Changes

@@ -69,9 +69,9 @@ export const cartAttributesUpdateMutation = /* GraphQL */ `
         ...cart
       }
     }
-    ${seoFragment}
-    ${imageFragment}
-    ${productFragment}
-    ${cartFragment}
   }
+  ${seoFragment}
+  ${imageFragment}
+  ${productFragment}
+  ${cartFragment}
 `;
