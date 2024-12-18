@@ -9,8 +9,8 @@ export const cartActions = {
     'cart/startGetCartRequest',
   ),
   startCreateCartRequest: createAction('cart/startCreateCartRequest'),
-  startUpdateCartAttributes:
+  startUpdateCartAttributesRequest:
     createAction<CartAttributesUpdateMutationVariables>(
-      'cart/startUpdateCartAttributes',
+      'cart/startUpdateCartAttributesRequest',
     ),
 };

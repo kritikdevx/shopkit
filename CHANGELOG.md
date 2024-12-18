@@ -1,5 +1,11 @@
 # shopkit
 
+## 1.0.66
+
+### Patch Changes
+
+- fix cart attributes update
+
 ## 1.0.65
 
 ### Patch Changes

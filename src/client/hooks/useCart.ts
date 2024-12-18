@@ -28,7 +28,7 @@ export default function useCart() {
   const updateCartAttributes = (attributes: AttributeInput[]) => {
     if (cart) {
       dispatch(
-        cartActions.startUpdateCartAttributes({
+        cartActions.startUpdateCartAttributesRequest({
           cartId: cart.id,
           attributes,
         }),

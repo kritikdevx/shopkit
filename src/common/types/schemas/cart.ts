@@ -55,4 +55,5 @@ export interface Cart {
   };
   lines: Connection<CartLine>;
   totalQuantity: number;
+  attributes: { key: string; value: string }[];
 }
