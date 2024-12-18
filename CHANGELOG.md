@@ -1,5 +1,11 @@
 # shopkit
 
+## 1.0.65
+
+### Patch Changes
+
+- fix cart fragment
+
 ## 1.0.64
 
 ### Patch Changes

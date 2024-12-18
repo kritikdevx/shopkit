@@ -63,7 +63,7 @@ export const cartLinesRemoveMutation = /* GraphQL */ `
 `;
 
 export const cartAttributesUpdateMutation = /* GraphQL */ `
-  mutation cartAttributesUpdate($attributes: [AttributeInput!]!, $cartId: ID!) {
+  mutation CartAttributesUpdate($attributes: [AttributeInput!]!, $cartId: ID!) {
     cartAttributesUpdate(attributes: $attributes, cartId: $cartId) {
       cart {
         ...cart

@@ -106,8 +106,11 @@ const cartFragment = /* GraphQL */ `
         }
       }
     }
-
     totalQuantity
+    attributes {
+      key
+      value
+    }
   }
 `;
 
