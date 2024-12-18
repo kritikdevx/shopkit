@@ -27,6 +27,11 @@ export interface CartLinesUpdateMutationVariables {
   lines: CartLineUpdateInput[];
 }
 
+export interface CartAttributesUpdateMutationVariables {
+  cartId: string;
+  attributes: AttributeInput[];
+}
+
 // Mutations
 
 export interface CreateCartMutation {
@@ -67,6 +72,16 @@ export interface CartLinesUpdateMutation {
     cart: Cart;
     userErrors: {
       code: string;
+      field: string;
+      message: string;
+    }[];
+  };
+}
+
+export interface CartAttributesUpdateMutation {
+  cartAttributesUpdate: {
+    cart: Cart;
+    userErrors: {
       field: string;
       message: string;
     }[];

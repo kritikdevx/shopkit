@@ -26,6 +26,13 @@ export const cartSlice: Slice<
     startCreateCartRequest: (state: CartState) => void;
     createCartSuccess: (state: CartState, action: { payload: Cart }) => void;
     createCartFailure: (state: CartState) => void;
+
+    startUpdateCartAttributesRequest: (state: CartState) => void;
+    updateCartAttributesSuccess: (
+      state: CartState,
+      action: { payload: Cart },
+    ) => void;
+    updateCartAttributesFailure: (state: CartState) => void;
   },
   'cart'
 > = createSlice({
@@ -56,6 +63,16 @@ export const cartSlice: Slice<
       state.loading = false;
     },
     createCartFailure: (state) => {
+      state.loading = false;
+    },
+    startUpdateCartAttributesRequest: (state) => {
+      state.loading = true;
+    },
+    updateCartAttributesSuccess: (state, action) => {
+      state.cart = action.payload;
+      state.loading = false;
+    },
+    updateCartAttributesFailure: (state) => {
       state.loading = false;
     },
     resetCart: (state) => {

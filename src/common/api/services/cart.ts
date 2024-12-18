@@ -9,6 +9,8 @@ import {
   CreateCartMutationVariables,
   GetCartQuery,
   GetCartQueryVariables,
+  CartAttributesUpdateMutation,
+  CartAttributesUpdateMutationVariables,
   ShopifyRequest,
 } from '@/common';
 
@@ -18,6 +20,7 @@ import {
   cartLinesRemoveMutation,
   cartLinesUpdateMutation,
   createCartMutation,
+  cartAttributesUpdateMutation,
 } from '../mutations/cart';
 import { getCartQuery } from '../queries/cart';
 
@@ -130,4 +133,28 @@ export async function removeFromCart({
     variables,
     options,
   }).then((data) => data.cartLinesRemove);
+}
+
+/**
+ * Update cart attributes
+ * @param variables - The variables for the mutation
+ * @param options - The options for the fetch request
+ * @returns The cart after removing the product
+ * @category API
+ */
+export async function updateCartAttributes({
+  variables,
+  options,
+}: {
+  variables: CartAttributesUpdateMutationVariables;
+  options?: ShopifyRequest;
+}) {
+  return shopifyFetch<
+    CartAttributesUpdateMutation,
+    CartAttributesUpdateMutationVariables
+  >({
+    query: cartAttributesUpdateMutation,
+    variables,
+    options,
+  }).then((data) => data.cartAttributesUpdate);
 }

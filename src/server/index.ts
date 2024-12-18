@@ -20,6 +20,7 @@ export {
   removeFromCart,
   updateCart,
   getCart,
+  updateCartAttributes,
 } from '@/common/api/services/cart';
 
 export {
