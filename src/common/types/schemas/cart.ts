@@ -27,6 +27,7 @@ export interface CartLine {
     totalAmount: Money;
     amountPerQuantity: Money;
   };
+  attributes: { key: string; value: string }[];
   estimatedCost: {
     amount: Money;
     compareAtAmount: Money;

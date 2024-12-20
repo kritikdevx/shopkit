@@ -103,6 +103,10 @@ const cartFragment = /* GraphQL */ `
               }
             }
           }
+          attributes {
+            key
+            value
+          }
         }
       }
     }

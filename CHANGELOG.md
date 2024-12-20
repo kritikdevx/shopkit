@@ -1,5 +1,11 @@
 # shopkit
 
+## 1.0.68
+
+### Patch Changes
+
+- support for attributes on useCartAction hook
+
 ## 1.0.67
 
 ### Patch Changes

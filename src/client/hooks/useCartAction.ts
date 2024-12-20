@@ -2,11 +2,7 @@
 
 import { useCallback, useState } from 'react';
 
-import {
-  CartLine,
-  CartLinesUpdateMutationVariables,
-  CartLineUpdateInput,
-} from '@/common';
+import { CartLineUpdateInput } from '@/common';
 import {
   addToCart,
   createCart,
@@ -26,11 +22,13 @@ interface UseCartActionState {
 interface LineToUpdate {
   id: string;
   quantity: number;
+  attributes?: { key: string; value: string }[];
 }
 
 interface LineToAdd {
   merchandiseId: string;
   quantity: number;
+  attributes?: { key: string; value: string }[];
 }
 
 export default function useCartAction() {
@@ -44,7 +42,13 @@ export default function useCartAction() {
   const { cart } = useAppSelector((state) => state.cart);
 
   const handleAddToCart = useCallback(
-    async (lines: { id: string; quantity: number }[]) => {
+    async (
+      lines: {
+        id: string;
+        quantity: number;
+        attributes?: { key: string; value: string }[];
+      }[],
+    ) => {
       try {
         setState({ loading: true, success: '', error: '' });
 
@@ -55,7 +59,7 @@ export default function useCartAction() {
           const linesToUpdate: LineToUpdate[] = [];
           const linesToAdd: LineToAdd[] = [];
 
-          lines.forEach(({ id, quantity }) => {
+          lines.forEach(({ id, quantity, attributes }) => {
             const existingLine = existingLines.find(
               (line) => line.merchandise.id === id,
             );
@@ -64,11 +68,13 @@ export default function useCartAction() {
               linesToUpdate.push({
                 id: existingLine.id,
                 quantity: existingLine.quantity + quantity,
+                attributes,
               });
             } else {
               linesToAdd.push({
                 merchandiseId: id,
                 quantity,
+                attributes,
               });
             }
           });
@@ -127,7 +133,7 @@ export default function useCartAction() {
   );
 
   const handleUpdateCart = useCallback(
-    async (line: CartLine, quantity: number) => {
+    async (line: CartLineUpdateInput) => {
       try {
         setState({ loading: true, success: '', error: '' });
 
@@ -136,12 +142,7 @@ export default function useCartAction() {
         const cartLinesUpdate = await updateCart({
           variables: {
             cartId: cart.id,
-            lines: [
-              {
-                id: line.id,
-                quantity,
-              },
-            ],
+            lines: [{ ...line }],
           },
         });
 
