@@ -1,5 +1,11 @@
 # shopkit
 
+## 1.0.69
+
+### Patch Changes
+
+- fix reset cart
+
 ## 1.0.68
 
 ### Patch Changes

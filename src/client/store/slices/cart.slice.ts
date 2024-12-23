@@ -76,7 +76,8 @@ export const cartSlice: Slice<
       state.loading = false;
     },
     resetCart: (state) => {
-      state = initialState;
+      state.cart = null;
+      state.loading = false;
     },
   },
 });
