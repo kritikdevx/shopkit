@@ -1,5 +1,11 @@
 # shopkit
 
+## 1.0.70
+
+### Patch Changes
+
+- add media on pdp
+
 ## 1.0.69
 
 ### Patch Changes

@@ -1,6 +1,8 @@
 import {
+  Connection,
   Edge,
   HasMetafieldsIdentifier,
+  Image,
   PageInfo,
   Product,
   ProductVariant,
@@ -84,7 +86,16 @@ export interface ListProductsQuery {
 }
 
 export interface GetProductQuery {
-  product: Product;
+  product: Product & {
+    media: Connection<{
+      mediaContentType: string;
+      alt?: string;
+      image: Image;
+      sources: Array<{
+        url: string;
+      }>;
+    }>;
+  };
 }
 
 export interface ListProductVariantsQuery {

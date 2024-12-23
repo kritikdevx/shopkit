@@ -48,6 +48,26 @@ export const getProductByIdWithMetafieldsQuery = /* GraphQL */ `
       metafields(identifiers: $metafields) {
         ...metafield
       }
+      media(first: 250) {
+        edges {
+          node {
+            mediaContentType
+            ... on Video {
+              sources {
+                url
+              }
+              alt
+            }
+            ... on MediaImage {
+              alt
+              image {
+                url
+                altText
+              }
+            }
+          }
+        }
+      }
     }
   }
   ${seoFragment}
@@ -61,6 +81,27 @@ export const getProductByIdQuery = /* GraphQL */ `
   query GetProduct($id: ID!) {
     product(id: $id) {
       ...product
+      media(first: 250) {
+        edges {
+          node {
+            alt
+            mediaContentType
+            ... on Video {
+              sources {
+                url
+              }
+              alt
+            }
+            ... on MediaImage {
+              alt
+              image {
+                url
+                altText
+              }
+            }
+          }
+        }
+      }
     }
   }
   ${seoFragment}
@@ -78,6 +119,25 @@ export const getProductByHandleWithMetafieldsQuery = /* GraphQL */ `
       metafields(identifiers: $metafields) {
         ...metafield
       }
+      media(first: 250) {
+        edges {
+          node {
+            alt
+            mediaContentType
+            ... on Video {
+              sources {
+                url
+              }
+            }
+            ... on MediaImage {
+              image {
+                url
+                altText
+              }
+            }
+          }
+        }
+      }
     }
   }
   ${seoFragment}
@@ -91,6 +151,26 @@ export const getProductByHandleQuery = /* GraphQL */ `
   query GetProductByHandle($handle: String!) {
     product(handle: $handle) {
       ...product
+      media(first: 250) {
+        edges {
+          node {
+            mediaContentType
+            ... on Video {
+              sources {
+                url
+              }
+              alt
+            }
+            ... on MediaImage {
+              alt
+              image {
+                url
+                altText
+              }
+            }
+          }
+        }
+      }
     }
   }
   ${seoFragment}
