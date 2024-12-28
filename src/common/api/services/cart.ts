@@ -23,6 +23,7 @@ import {
   cartAttributesUpdateMutation,
 } from '../mutations/cart';
 import { getCartQuery } from '../queries/cart';
+import { Prettify } from '@/utils/prettify';
 
 /**
  * Get a cart
@@ -35,8 +36,8 @@ export async function getCart({
   variables,
   options,
 }: {
-  variables: GetCartQueryVariables;
-  options?: ShopifyRequest;
+  variables: Prettify<GetCartQueryVariables>;
+  options?: Prettify<ShopifyRequest>;
 }) {
   return shopifyFetch<GetCartQuery, GetCartQueryVariables>({
     query: getCartQuery,
@@ -56,8 +57,8 @@ export async function createCart({
   variables,
   options,
 }: {
-  variables: CreateCartMutationVariables;
-  options?: ShopifyRequest;
+  variables: Prettify<CreateCartMutationVariables>;
+  options?: Prettify<ShopifyRequest>;
 }) {
   return shopifyFetch<CreateCartMutation, CreateCartMutationVariables>({
     query: createCartMutation,
@@ -77,8 +78,8 @@ export async function addToCart({
   variables,
   options,
 }: {
-  variables: CartLinesAddMutationVariables;
-  options?: ShopifyRequest;
+  variables: Prettify<CartLinesAddMutationVariables>;
+  options?: Prettify<ShopifyRequest>;
 }) {
   return shopifyFetch<CartLinesAddMutation, CartLinesAddMutationVariables>({
     query: cartLinesAddMutation,
@@ -98,8 +99,8 @@ export async function updateCart({
   variables,
   options,
 }: {
-  variables: CartLinesUpdateMutationVariables;
-  options?: ShopifyRequest;
+  variables: Prettify<CartLinesUpdateMutationVariables>;
+  options?: Prettify<ShopifyRequest>;
 }) {
   return shopifyFetch<
     CartLinesUpdateMutation,
@@ -122,8 +123,8 @@ export async function removeFromCart({
   variables,
   options,
 }: {
-  variables: CartLinesRemoveMutationVariables;
-  options?: ShopifyRequest;
+  variables: Prettify<CartLinesRemoveMutationVariables>;
+  options?: Prettify<ShopifyRequest>;
 }) {
   return shopifyFetch<
     CartLinesRemoveMutation,
@@ -146,8 +147,8 @@ export async function updateCartAttributes({
   variables,
   options,
 }: {
-  variables: CartAttributesUpdateMutationVariables;
-  options?: ShopifyRequest;
+  variables: Prettify<CartAttributesUpdateMutationVariables>;
+  options?: Prettify<ShopifyRequest>;
 }) {
   return shopifyFetch<
     CartAttributesUpdateMutation,

@@ -20,6 +20,7 @@ import {
   listProductVariantsByHandleQuery,
   listProductVariantsByIdQuery,
 } from '../queries/product';
+import { Prettify } from '@/utils/prettify';
 
 /**
  * Fetches a list of products
@@ -38,8 +39,8 @@ export async function listProducts({
   variables,
   options,
 }: {
-  variables: ListProductsQueryVariables;
-  options?: ShopifyRequest;
+  variables: Prettify<ListProductsQueryVariables>;
+  options?: Prettify<ShopifyRequest>;
 }) {
   return shopifyFetch<ListProductsQuery, ListProductsQueryVariables>({
     query: listProductsQuery,
@@ -65,8 +66,8 @@ export async function getProductById({
   variables,
   options,
 }: {
-  variables: GetProductByIdQueryVariables;
-  options?: ShopifyRequest;
+  variables: Prettify<GetProductByIdQueryVariables>;
+  options?: Prettify<ShopifyRequest>;
 }) {
   if (variables.metafields) {
     return shopifyFetch<GetProductQuery, GetProductByIdQueryVariables>({
@@ -100,8 +101,8 @@ export async function getProductByHandle({
   variables,
   options,
 }: {
-  variables: GetProductByHandleQueryVariables;
-  options?: ShopifyRequest;
+  variables: Prettify<GetProductByHandleQueryVariables>;
+  options?: Prettify<ShopifyRequest>;
 }) {
   if (variables.metafields) {
     return shopifyFetch<GetProductQuery, GetProductByHandleQueryVariables>({
@@ -135,8 +136,8 @@ export async function getProduct({
   variables,
   options,
 }: {
-  variables: GetProductQueryVariables;
-  options?: ShopifyRequest;
+  variables: Prettify<GetProductQueryVariables>;
+  options?: Prettify<ShopifyRequest>;
 }) {
   if ('id' in variables) {
     return getProductById({ variables, options });
@@ -164,8 +165,8 @@ export async function listProductVariants({
   variables,
   options,
 }: {
-  variables: ListProductVariantsQueryVariables;
-  options?: ShopifyRequest;
+  variables: Prettify<ListProductVariantsQueryVariables>;
+  options?: Prettify<ShopifyRequest>;
 }) {
   if ('productId' in variables) {
     return shopifyFetch<

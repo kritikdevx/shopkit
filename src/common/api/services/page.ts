@@ -13,6 +13,7 @@ import {
   getPageByIdQuery,
   getPageByIdWithMetafieldsQuery,
 } from '../queries/page';
+import { Prettify } from '@/utils/prettify';
 
 /**
  * Fetches a page by its ID
@@ -31,8 +32,8 @@ export async function getPageById({
   variables,
   options,
 }: {
-  variables: GetPageByIdQueryVariables;
-  options?: ShopifyRequest;
+  variables: Prettify<GetPageByIdQueryVariables>;
+  options?: Prettify<ShopifyRequest>;
 }) {
   if (variables.metafields) {
     return shopifyFetch<GetPageQuery, GetPageByIdQueryVariables>({
@@ -66,8 +67,8 @@ export async function getPageByHandle({
   variables,
   options,
 }: {
-  variables: GetPageByHandleQueryVariables;
-  options?: ShopifyRequest;
+  variables: Prettify<GetPageByHandleQueryVariables>;
+  options?: Prettify<ShopifyRequest>;
 }) {
   if (variables.metafields) {
     return shopifyFetch<GetPageQuery, GetPageByHandleQueryVariables>({
@@ -101,8 +102,8 @@ export async function getPage({
   variables,
   options,
 }: {
-  variables: GetPageQueryVariables;
-  options?: ShopifyRequest;
+  variables: Prettify<GetPageQueryVariables>;
+  options?: Prettify<ShopifyRequest>;
 }) {
   if ('id' in variables) {
     return getPageById({ variables, options });

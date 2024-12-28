@@ -6,6 +6,7 @@ import {
 
 import { shopifyFetch } from '../fetch';
 import { listOrdersQuery } from '../queries/order';
+import { Prettify } from '@/utils/prettify';
 
 /**
  * Fetches a list of orders
@@ -17,8 +18,8 @@ export async function listOrders({
   options,
   variables,
 }: {
-  options?: ShopifyRequest;
-  variables: ListOrdersQueryVariables;
+  options?: Prettify<ShopifyRequest>;
+  variables: Prettify<ListOrdersQueryVariables>;
 }) {
   return shopifyFetch<ListOrdersQuery, ListOrdersQueryVariables>({
     query: listOrdersQuery,

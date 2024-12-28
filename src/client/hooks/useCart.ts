@@ -2,10 +2,14 @@
 
 import { useMemo } from 'react';
 
+import { AttributeInput, Cart } from '@/common';
+
 import { useAppDispatch, useAppSelector } from '../store';
 import { cartActions } from '../store/actions';
-import { resetCart as handleResetCart } from '../store/slices/cart.slice';
-import { AttributeInput } from '@/common';
+import {
+  resetCart as handleResetCart,
+  setCart as handleSetCart,
+} from '../store/slices/cart.slice';
 
 export default function useCart() {
   const dispatch = useAppDispatch();
@@ -40,12 +44,17 @@ export default function useCart() {
     dispatch(handleResetCart());
   };
 
+  const setCart = (cart: Cart) => {
+    dispatch(handleSetCart(cart));
+  };
+
   return {
     loading,
     cart,
     cartCount,
     getCart,
     resetCart,
+    setCart,
     updateCartAttributes,
   };
 }

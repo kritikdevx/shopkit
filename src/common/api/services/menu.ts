@@ -5,6 +5,7 @@ import {
 } from '@/common/types/queries/menu';
 import { shopifyFetch } from '../fetch';
 import { getMenuQuery } from '../queries/menu';
+import { Prettify } from '@/utils/prettify';
 
 /**
  * Fetches a menu by handle
@@ -23,8 +24,8 @@ export async function getMenu({
   variables,
   options,
 }: {
-  variables: GetMenuQueryVariables;
-  options?: ShopifyRequest;
+  variables: Prettify<GetMenuQueryVariables>;
+  options?: Prettify<ShopifyRequest>;
 }) {
   return shopifyFetch<GetMenuQuery, GetMenuQueryVariables>({
     query: getMenuQuery,

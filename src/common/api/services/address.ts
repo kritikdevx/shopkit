@@ -20,6 +20,7 @@ import {
   updateCustomerAddressMutation,
   updateCustomerDefaultAddressMutation,
 } from '../mutations/address';
+import { Prettify } from '@/utils/prettify';
 
 /**
  * Fetches a list of addresses
@@ -31,8 +32,8 @@ export async function listCustomerAddresses({
   options,
   variables,
 }: {
-  options?: ShopifyRequest;
-  variables: ListAddressesQueryVariables;
+  options?: Prettify<ShopifyRequest>;
+  variables: Prettify<ListAddressesQueryVariables>;
 }) {
   return shopifyFetch<ListAddressesQuery, ListAddressesQueryVariables>({
     query: listAddressesQuery,
@@ -51,8 +52,8 @@ export async function createCustomerAddress({
   options,
   variables,
 }: {
-  options?: ShopifyRequest;
-  variables: CreateCustomerAddressMutationVariables;
+  options?: Prettify<ShopifyRequest>;
+  variables: Prettify<CreateCustomerAddressMutationVariables>;
 }) {
   return shopifyFetch<
     CreateCustomerAddressMutation,
@@ -74,8 +75,8 @@ export async function updateCustomerAddress({
   variables,
   options,
 }: {
-  variables: UpdateCustomerAddressMutationVariables;
-  options?: ShopifyRequest;
+  variables: Prettify<UpdateCustomerAddressMutationVariables>;
+  options?: Prettify<ShopifyRequest>;
 }) {
   return shopifyFetch<
     UpdateCustomerAddressMutation,
@@ -98,8 +99,8 @@ export async function deleteCustomerAddress({
   variables,
   options,
 }: {
-  options?: ShopifyRequest;
-  variables: DeleteCustomerAddressMutationVariables;
+  options?: Prettify<ShopifyRequest>;
+  variables: Prettify<DeleteCustomerAddressMutationVariables>;
 }) {
   return shopifyFetch<
     DeleteCustomerAddressMutation,
@@ -121,8 +122,8 @@ export async function updateCustomerDefaultAddress({
   variables,
   options,
 }: {
-  variables: UpdateCustomerDefaultAddressMutationVariables;
-  options?: ShopifyRequest;
+  variables: Prettify<UpdateCustomerDefaultAddressMutationVariables>;
+  options?: Prettify<ShopifyRequest>;
 }) {
   return shopifyFetch<
     UpdateCustomerDefaultAddressMutation,

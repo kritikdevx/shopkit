@@ -24,6 +24,7 @@ import {
   listCollectionProductsByIdWithMetafieldsQuery,
   listCollectionProductsByHandleWithMetafieldsQuery,
 } from '../queries/collection';
+import { Prettify } from '@/utils/prettify';
 
 /**
  * Fetches a list of collections
@@ -42,8 +43,8 @@ export async function listCollections({
   variables,
   options,
 }: {
-  variables: ListCollectionsQueryVariables;
-  options?: ShopifyRequest;
+  variables: Prettify<ListCollectionsQueryVariables>;
+  options?: Prettify<ShopifyRequest>;
 }) {
   return shopifyFetch<ListCollectionsQuery, ListCollectionsQueryVariables>({
     query: listCollectionsQuery,
@@ -69,8 +70,8 @@ export async function getCollectionById({
   variables,
   options,
 }: {
-  variables: GetCollectionByIdQueryVariables;
-  options?: ShopifyRequest;
+  variables: Prettify<GetCollectionByIdQueryVariables>;
+  options?: Prettify<ShopifyRequest>;
 }) {
   if (variables.metafields) {
     return shopifyFetch<GetCollectionQuery, GetCollectionByIdQueryVariables>({
@@ -104,8 +105,8 @@ export async function getCollectionByHandle({
   variables,
   options,
 }: {
-  variables: GetCollectionByHandleQueryVariables;
-  options?: ShopifyRequest;
+  variables: Prettify<GetCollectionByHandleQueryVariables>;
+  options?: Prettify<ShopifyRequest>;
 }) {
   if (variables.metafields) {
     return shopifyFetch<
@@ -145,8 +146,8 @@ export async function getCollection({
   variables,
   options,
 }: {
-  variables: GetCollectionQueryVariables;
-  options?: ShopifyRequest;
+  variables: Prettify<GetCollectionQueryVariables>;
+  options?: Prettify<ShopifyRequest>;
 }) {
   if ('id' in variables) {
     return getCollectionById({ variables, options });
@@ -175,8 +176,8 @@ export async function listCollectionProductsById({
   variables,
   options,
 }: {
-  variables: ListCollectionProductsByIdQueryVariables;
-  options?: ShopifyRequest;
+  variables: Prettify<ListCollectionProductsByIdQueryVariables>;
+  options?: Prettify<ShopifyRequest>;
 }) {
   if (variables.metafields) {
     return shopifyFetch<
@@ -217,8 +218,8 @@ export async function listCollectionProductsByHandle({
   variables,
   options,
 }: {
-  variables: ListCollectionProductsByHandleQueryVariables;
-  options?: ShopifyRequest;
+  variables: Prettify<ListCollectionProductsByHandleQueryVariables>;
+  options?: Prettify<ShopifyRequest>;
 }) {
   if (variables.metafields) {
     return shopifyFetch<
@@ -259,8 +260,8 @@ export async function listCollectionProducts({
   variables,
   options,
 }: {
-  variables: ListCollectionProductsQueryVariables;
-  options?: ShopifyRequest;
+  variables: Prettify<ListCollectionProductsQueryVariables>;
+  options?: Prettify<ShopifyRequest>;
 }) {
   if ('collectionId' in variables) {
     return listCollectionProductsById({ variables, options });

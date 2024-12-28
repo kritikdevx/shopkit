@@ -10,13 +10,14 @@ import {
   CreateCustomerMutation,
   CreateCustomerMutationVariables,
 } from '@/common/types/mutations/customer';
+import { Prettify } from '@/utils/prettify';
 
 export async function createCustomer({
   variables,
   options,
 }: {
-  variables: CreateCustomerMutationVariables;
-  options?: ShopifyRequest;
+  variables: Prettify<CreateCustomerMutationVariables>;
+  options?: Prettify<ShopifyRequest>;
 }) {
   return shopifyFetch<CreateCustomerMutation, CreateCustomerMutationVariables>({
     query: createCustomerMutation,
@@ -29,8 +30,8 @@ export async function createCustomerAccessToken({
   variables,
   options,
 }: {
-  variables: CreateCustomerAccessTokenMutationVariables;
-  options?: ShopifyRequest;
+  variables: Prettify<CreateCustomerAccessTokenMutationVariables>;
+  options?: Prettify<ShopifyRequest>;
 }) {
   return shopifyFetch<
     CreateCustomerAccessTokenMutation,

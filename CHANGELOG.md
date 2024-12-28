@@ -1,5 +1,11 @@
 # shopkit
 
+## 1.0.71
+
+### Patch Changes
+
+- prettify types and add setCart to useCart hook
+
 ## 1.0.70
 
 ### Patch Changes
