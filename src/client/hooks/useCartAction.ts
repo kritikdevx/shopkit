@@ -231,11 +231,42 @@ export default function useCartAction() {
     [dispatch, cart],
   );
 
+  const handleEmptyCart = useCallback(async () => {
+    if (!cart) return;
+
+    try {
+      setState({ loading: true, success: '', error: '' });
+
+      const bulkUpdates = cart.lines.edges.map((line) => ({
+        id: line.node.id,
+        quantity: 0,
+        merchandiseId: line.node.merchandise.id,
+      }));
+
+      if (bulkUpdates && bulkUpdates?.length > 0) {
+        await handeBulkUpdateCart(bulkUpdates);
+      }
+
+      setState((prev) => ({
+        ...prev,
+        success: 'Cart emptied',
+        error: '',
+      }));
+    } catch (error) {
+      setState((prev) => ({
+        ...prev,
+        success: '',
+        error: (error as Error).message,
+      }));
+    }
+  }, [cart, handeBulkUpdateCart]);
+
   return {
     ...state,
     addToCart: handleAddToCart,
     updateCart: handleUpdateCart,
     removeFromCart: handleRemoveFromCart,
     bulkUpdateCart: handeBulkUpdateCart,
+    emptyCart: handleEmptyCart,
   };
 }
