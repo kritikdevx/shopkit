@@ -28,15 +28,19 @@ interface VariantOptionFilter {
   value: string;
 }
 
-export interface ProductOption {
-  id: string;
-  name: string;
-  values: string[];
-}
-
 export interface SelectedOption {
   name: string;
   value: string;
+}
+
+export interface ProductOption {
+  id: string;
+  name: string;
+  optionValues: {
+    name: string;
+    firstSelectableVariant: ProductVariant;
+  }[];
+  values: string[];
 }
 
 export interface ProductVariant {

@@ -22,6 +22,30 @@ const productFragment = /* GraphQL */ `
         currencyCode
       }
     }
+    options {
+      id
+      name
+      optionValues {
+        name
+        firstSelectableVariant {
+          id
+          image {
+            url
+            id
+          }
+          availableForSale
+          quantityAvailable
+          selectedOptions {
+            name
+            value
+          }
+          price {
+            amount
+            currencyCode
+          }
+        }
+      }
+    }
     variants(first: 250) {
       edges {
         node {

@@ -1,5 +1,11 @@
 # shopkit
 
+## 1.0.73
+
+### Patch Changes
+
+- add production options
+
 ## 1.0.72
 
 ### Patch Changes
