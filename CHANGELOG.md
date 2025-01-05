@@ -1,5 +1,11 @@
 # shopkit
 
+## 1.0.74
+
+### Patch Changes
+
+- add title on firstSelectableVariant
+
 ## 1.0.73
 
 ### Patch Changes

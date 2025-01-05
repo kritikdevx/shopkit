@@ -29,6 +29,7 @@ const productFragment = /* GraphQL */ `
         name
         firstSelectableVariant {
           id
+          title
           image {
             url
             id
