@@ -12,6 +12,8 @@ import {
   CartAttributesUpdateMutation,
   CartAttributesUpdateMutationVariables,
   ShopifyRequest,
+  CartDiscountCodesUpdateMutationVariables,
+  CartDiscountCodesUpdateMutation,
 } from '@/common';
 
 import { shopifyFetch } from '../fetch';
@@ -21,6 +23,7 @@ import {
   cartLinesUpdateMutation,
   createCartMutation,
   cartAttributesUpdateMutation,
+  cartDiscountCodesUpdateMutation,
 } from '../mutations/cart';
 import { getCartQuery } from '../queries/cart';
 import { Prettify } from '@/utils/prettify';
@@ -158,4 +161,26 @@ export async function updateCartAttributes({
     variables,
     options,
   }).then((data) => data.cartAttributesUpdate);
+}
+
+/**
+ * Update cart discount codes
+ * @param variables - The variables for the mutation
+ * @param options - The options for the fetch request
+ */
+export async function updateCartDiscountCodes({
+  variables,
+  options,
+}: {
+  variables: Prettify<CartDiscountCodesUpdateMutationVariables>;
+  options?: Prettify<ShopifyRequest>;
+}) {
+  return shopifyFetch<
+    CartDiscountCodesUpdateMutation,
+    CartDiscountCodesUpdateMutationVariables
+  >({
+    query: cartDiscountCodesUpdateMutation,
+    variables,
+    options,
+  }).then((data) => data.cartDiscountCodesUpdate);
 }

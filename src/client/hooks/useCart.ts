@@ -40,6 +40,17 @@ export default function useCart() {
     }
   };
 
+  const updateCartDiscountCodes = (discountCodes: string[]) => {
+    if (cart) {
+      dispatch(
+        cartActions.startUpdateCartDiscountCodesRequest({
+          cartId: cart.id,
+          discountCodes,
+        }),
+      );
+    }
+  };
+
   const resetCart = () => {
     dispatch(handleResetCart());
   };
@@ -56,5 +67,6 @@ export default function useCart() {
     resetCart,
     setCart,
     updateCartAttributes,
+    updateCartDiscountCodes,
   };
 }

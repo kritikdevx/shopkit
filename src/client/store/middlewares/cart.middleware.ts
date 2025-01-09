@@ -3,6 +3,8 @@ import { call, put, takeLatest } from 'redux-saga/effects';
 import {
   CartAttributesUpdateMutation,
   CartAttributesUpdateMutationVariables,
+  CartDiscountCodesUpdateMutation,
+  CartDiscountCodesUpdateMutationVariables,
   CreateCartMutation,
   GetCartQuery,
   GetCartQueryVariables,
@@ -11,9 +13,15 @@ import {
   createCart,
   getCart,
   updateCartAttributes,
+  updateCartDiscountCodes,
 } from '@/common/api/services';
 
-import { getCartSuccess, getCartFailure } from '../slices/cart.slice';
+import {
+  getCartSuccess,
+  getCartFailure,
+  updateCartDiscountCodesSuccess,
+  updateCartDiscountCodesFailure,
+} from '../slices/cart.slice';
 import { cartActions } from '../actions/cart.action';
 
 export function* getCartSaga(action: {
@@ -58,11 +66,30 @@ export function* updateCartAttributesSaga(action: {
   }
 }
 
+export function* updateCartDiscountCodesSaga(action: {
+  type: string;
+  payload: CartDiscountCodesUpdateMutationVariables;
+}): Generator {
+  try {
+    const { cart } = (yield call(updateCartDiscountCodes, {
+      variables: action.payload,
+    })) as CartDiscountCodesUpdateMutation['cartDiscountCodesUpdate'];
+
+    yield put(updateCartDiscountCodesSuccess(cart));
+  } catch (error) {
+    yield put(updateCartDiscountCodesFailure());
+  }
+}
+
 export function* cartSagaWatcher() {
   yield takeLatest(cartActions.startGetCartRequest, getCartSaga);
   yield takeLatest(cartActions.startCreateCartRequest, createCartSaga);
   yield takeLatest(
     cartActions.startUpdateCartAttributesRequest,
     updateCartAttributesSaga,
+  );
+  yield takeLatest(
+    cartActions.startUpdateCartDiscountCodesRequest,
+    updateCartDiscountCodesSaga,
   );
 }

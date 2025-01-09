@@ -1,6 +1,7 @@
 import { createAction } from '@reduxjs/toolkit';
 import {
   CartAttributesUpdateMutationVariables,
+  CartDiscountCodesUpdateMutationVariables,
   GetCartQueryVariables,
 } from '@/common';
 
@@ -12,5 +13,9 @@ export const cartActions = {
   startUpdateCartAttributesRequest:
     createAction<CartAttributesUpdateMutationVariables>(
       'cart/startUpdateCartAttributesRequest',
+    ),
+  startUpdateCartDiscountCodesRequest:
+    createAction<CartDiscountCodesUpdateMutationVariables>(
+      'cart/startUpdateCartDiscountCodesRequest',
     ),
 };

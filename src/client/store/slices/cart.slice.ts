@@ -33,6 +33,12 @@ export const cartSlice: Slice<
       action: { payload: Cart },
     ) => void;
     updateCartAttributesFailure: (state: CartState) => void;
+    startUpdateCartDiscountCodesRequest: (state: CartState) => void;
+    updateCartDiscountCodesSuccess: (
+      state: CartState,
+      action: { payload: Cart | null },
+    ) => void;
+    updateCartDiscountCodesFailure: (state: CartState) => void;
   },
   'cart'
 > = createSlice({
@@ -75,6 +81,16 @@ export const cartSlice: Slice<
     updateCartAttributesFailure: (state) => {
       state.loading = false;
     },
+    startUpdateCartDiscountCodesRequest: (state) => {
+      state.loading = true;
+    },
+    updateCartDiscountCodesSuccess: (state, action) => {
+      state.cart = action.payload;
+      state.loading = false;
+    },
+    updateCartDiscountCodesFailure: (state) => {
+      state.loading = false;
+    },
     resetCart: (state) => {
       state.cart = null;
       state.loading = false;
@@ -89,6 +105,15 @@ export const {
   startGetCartRequest,
   getCartSuccess,
   getCartFailure,
+  startCreateCartRequest,
+  createCartSuccess,
+  createCartFailure,
+  startUpdateCartAttributesRequest,
+  updateCartAttributesSuccess,
+  updateCartAttributesFailure,
+  startUpdateCartDiscountCodesRequest,
+  updateCartDiscountCodesSuccess,
+  updateCartDiscountCodesFailure,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;

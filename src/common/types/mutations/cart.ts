@@ -32,6 +32,11 @@ export interface CartAttributesUpdateMutationVariables {
   attributes: AttributeInput[];
 }
 
+export interface CartDiscountCodesUpdateMutationVariables {
+  cartId: string;
+  discountCodes: string[];
+}
+
 // Mutations
 
 export interface CreateCartMutation {
@@ -85,5 +90,11 @@ export interface CartAttributesUpdateMutation {
       field: string;
       message: string;
     }[];
+  };
+}
+
+export interface CartDiscountCodesUpdateMutation {
+  cartDiscountCodesUpdate: {
+    cart: Cart | null;
   };
 }

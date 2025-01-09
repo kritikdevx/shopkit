@@ -1,5 +1,11 @@
 # shopkit
 
+## 1.0.75
+
+### Patch Changes
+
+- cart update discount codes
+
 ## 1.0.74
 
 ### Patch Changes
