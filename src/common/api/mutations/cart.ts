@@ -79,7 +79,7 @@ export const cartAttributesUpdateMutation = /* GraphQL */ `
 export const cartDiscountCodesUpdateMutation = /* GraphQL */ `
   mutation CartDiscountCodesUpdate(
     $cartId: ID!
-    discountCodes: [String!]!
+    discountCodes: [String!]
   ) {
     cartDiscountCodesUpdate( cartId: $cartId, discountCodes: $discountCodes) {
       cart {

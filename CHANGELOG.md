@@ -1,5 +1,11 @@
 # shopkit
 
+## 1.0.76
+
+### Patch Changes
+
+- update cartDiscountCodesUpdateMutation identifiers
+
 ## 1.0.75
 
 ### Patch Changes

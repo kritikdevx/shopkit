@@ -110,6 +110,16 @@ const cartFragment = /* GraphQL */ `
         }
       }
     }
+    discountCodes {
+      applicable
+      code
+    }
+    discountAllocations {
+      discountedAmount {
+        amount
+        currencyCode
+      }
+    }
     totalQuantity
     attributes {
       key

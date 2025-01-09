@@ -54,6 +54,8 @@ export interface Cart {
     totalAmount: Money;
     totalTaxAmount: Money;
   };
+  discountCodes: { applicable: boolean; code: string }[];
+  discountAllocations: { discountedAmount: Money }[];
   lines: Connection<CartLine>;
   totalQuantity: number;
   attributes: { key: string; value: string }[];
