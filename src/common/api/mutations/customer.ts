@@ -36,3 +36,18 @@ export const createCustomerMutation = /* GraphQL */ `
     }
   }
 `;
+
+export const customerAccessTokenCreateWithMultipassMutation = /* GraphQL */ `
+  mutation CustomerAccessTokenCreateWithMultipass($multipassToken: String!) {
+    customerAccessTokenCreateWithMultipass(multipassToken: $multipassToken) {
+      customerAccessToken {
+        accessToken
+        expiresAt
+      }
+      customerUserErrors {
+        code
+        message
+      }
+    }
+  }
+`;

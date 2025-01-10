@@ -1,5 +1,11 @@
 # shopkit
 
+## 1.0.78
+
+### Patch Changes
+
+- created useCustomer hook
+
 ## 1.0.77
 
 ### Patch Changes

@@ -15,6 +15,7 @@ import {
   CartDiscountCodesUpdateMutationVariables,
   CartDiscountCodesUpdateMutation,
 } from '@/common';
+import { Prettify } from '@/utils/prettify';
 
 import { shopifyFetch } from '../fetch';
 import {
@@ -26,7 +27,6 @@ import {
   cartDiscountCodesUpdateMutation,
 } from '../mutations/cart';
 import { getCartQuery } from '../queries/cart';
-import { Prettify } from '@/utils/prettify';
 
 /**
  * Get a cart

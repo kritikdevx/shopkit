@@ -17,9 +17,11 @@ import createSagaMiddleware from 'redux-saga';
 import storage from './storage';
 import rootSaga from './middlewares';
 import { cartSlice } from './slices/cart.slice';
+import { customerSlice } from './slices/customer.slice';
 
 const rootReducer = combineReducers({
   [cartSlice.name]: cartSlice.reducer,
+  [customerSlice.name]: customerSlice.reducer,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

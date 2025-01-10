@@ -1,4 +1,3 @@
-import { MailingAddressInput, Address } from '../schemas/address';
 import {
   Customer,
   CustomerAccessTokenCreateInput,
@@ -13,6 +12,9 @@ export interface CreateCustomerAccessTokenMutationVariables {
   input: CustomerAccessTokenCreateInput;
 }
 
+export interface CustomerAccessTokenCreateWithMultipassMutationVariables {
+  multipassToken: string;
+}
 // Mutations
 
 export interface CreateCustomerMutation {
@@ -27,6 +29,19 @@ export interface CreateCustomerMutation {
 
 export interface CreateCustomerAccessTokenMutation {
   customerAccessTokenCreate: {
+    customerAccessToken: {
+      accessToken: string;
+      expiresAt: string;
+    };
+    customerUserErrors: {
+      code: string;
+      message: string;
+    }[];
+  };
+}
+
+export interface CustomerAccessTokenCreateWithMultipassMutation {
+  customerAccessTokenCreateWithMultipass: {
     customerAccessToken: {
       accessToken: string;
       expiresAt: string;
