@@ -14,8 +14,8 @@ export interface Order {
   phone: string;
   orderNumber: number;
   edited: boolean;
-  originalTotalPrice: Money;
   lineItems: Connection<{
+    originalTotalPrice: Money;
     currentQuantity: number;
     quantity: number;
     title: string;
