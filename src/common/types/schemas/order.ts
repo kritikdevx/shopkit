@@ -1,6 +1,6 @@
 //TODO: Update order
 
-import { Connection } from './common';
+import { Connection, Money } from './common';
 import { ProductVariant } from './product';
 
 export interface Order {
@@ -14,6 +14,7 @@ export interface Order {
   phone: string;
   orderNumber: number;
   edited: boolean;
+  originalTotalPrice: Money;
   lineItems: Connection<{
     currentQuantity: number;
     quantity: number;
