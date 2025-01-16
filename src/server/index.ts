@@ -21,6 +21,7 @@ export {
   updateCart,
   getCart,
   updateCartAttributes,
+  updateCartDiscountCodes,
 } from '@/common/api/services/cart';
 
 export {
@@ -44,4 +45,5 @@ export {
 export {
   createCustomer,
   createCustomerAccessToken,
+  customerAccessTokenWithMultipass,
 } from '@/common/api/services/customer';

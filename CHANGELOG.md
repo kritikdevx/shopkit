@@ -1,5 +1,11 @@
 # shopkit
 
+## 1.0.81
+
+### Patch Changes
+
+- export functions
+
 ## 1.0.80
 
 ### Patch Changes
