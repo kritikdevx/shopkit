@@ -15,3 +15,4 @@ export { default as useUpdateDefaultAddress } from './hooks/useUpdateDefaultAddr
 export { default as useCartAction } from './hooks/useCartAction';
 export { default as useCartProduct } from './hooks/useCartProduct';
 export { default as usePage } from './hooks/usePage';
+export { default as useCustomAttributes } from './hooks/useCustomAttributes';

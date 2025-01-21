@@ -18,10 +18,12 @@ import storage from './storage';
 import rootSaga from './middlewares';
 import { cartSlice } from './slices/cart.slice';
 import { customerSlice } from './slices/customer.slice';
+import { customSlice } from './slices/custom.slice';
 
 const rootReducer = combineReducers({
   [cartSlice.name]: cartSlice.reducer,
   [customerSlice.name]: customerSlice.reducer,
+  [customSlice.name]: customSlice.reducer,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;
