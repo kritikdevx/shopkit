@@ -1,5 +1,11 @@
 # shopkit
 
+## 1.0.82
+
+### Patch Changes
+
+- add custom attributes slice
+
 ## 1.0.81
 
 ### Patch Changes
