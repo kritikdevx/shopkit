@@ -22,6 +22,7 @@ export const customSlice: Slice<
       state: CustomState,
       action: { payload: { key: string; value: string } },
     ) => void;
+    removeAttribute: (state: CustomState, action: { payload: string }) => void;
   },
   'custom'
 > = createSlice({
@@ -38,9 +39,13 @@ export const customSlice: Slice<
       const { key, value } = action.payload;
       state.attributes[key] = value;
     },
+    removeAttribute: (state, action) => {
+      delete state.attributes[action.payload];
+    },
   },
 });
 
-export const { setAttributes, setAttribute } = customSlice.actions;
+export const { setAttributes, setAttribute, removeAttribute } =
+  customSlice.actions;
 
 export default customSlice.reducer;

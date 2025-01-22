@@ -1,7 +1,11 @@
 'use client';
 
 import { useAppDispatch, useAppSelector } from '../store';
-import { setAttribute, setAttributes } from '../store/slices/custom.slice';
+import {
+  setAttribute,
+  setAttributes,
+  removeAttribute,
+} from '../store/slices/custom.slice';
 
 export default function useCustomAttributes() {
   const { attributes } = useAppSelector((state) => state.custom);
@@ -15,9 +19,14 @@ export default function useCustomAttributes() {
     dispatch(setAttributes(attributes));
   };
 
+  const removeAttributeAction = (key: string) => {
+    dispatch(removeAttribute(key));
+  };
+
   return {
     attributes,
     setAttribute: setAttributeAction,
     setAttributes: setAttributesAction,
+    removeAttribute: removeAttributeAction,
   };
 }

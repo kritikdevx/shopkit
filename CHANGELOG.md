@@ -1,5 +1,11 @@
 # shopkit
 
+## 1.0.83
+
+### Patch Changes
+
+- remove custom attribute function
+
 ## 1.0.82
 
 ### Patch Changes
