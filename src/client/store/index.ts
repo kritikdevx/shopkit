@@ -31,7 +31,7 @@ export type RootState = ReturnType<typeof rootReducer>;
 const persistConfig = {
   key: 'shopkit-root',
   storage,
-  whitelist: [cartSlice.name],
+  whitelist: [cartSlice.name, customSlice.name, customerSlice.name],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

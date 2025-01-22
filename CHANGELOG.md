@@ -1,5 +1,11 @@
 # shopkit
 
+## 1.0.84
+
+### Patch Changes
+
+- perist customer and custom
+
 ## 1.0.83
 
 ### Patch Changes
