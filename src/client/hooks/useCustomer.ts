@@ -10,9 +10,8 @@ import { customerAccessTokenWithMultipass } from '@/common/api/services';
 
 export default function useCustomer() {
   const dispatch = useAppDispatch();
-  const { loading, customerAccessToken, customer } = useAppSelector(
-    (state) => state.customer,
-  );
+  const { loading, customerAccessToken, customer, isNewCustomer } =
+    useAppSelector((state) => state.customer);
 
   const generateCTAWithMultipass = useCallback(
     async (multipassToken: string) => {
@@ -57,6 +56,7 @@ export default function useCustomer() {
     loading,
     customerAccessToken,
     customer,
+    isNewCustomer,
     generateCTAWithMultipass,
     setCustomer: handleSetCustomer,
     setLoading: handleSetLoading,

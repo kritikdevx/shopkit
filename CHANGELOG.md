@@ -1,5 +1,11 @@
 # shopkit
 
+## 1.0.86
+
+### Patch Changes
+
+- add isNewCustomer field
+
 ## 1.0.85
 
 ### Patch Changes
