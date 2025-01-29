@@ -3,13 +3,15 @@ import { createSlice, Slice } from '@reduxjs/toolkit';
 export interface CustomerState {
   customerAccessToken: string | null;
   loading: boolean;
-  customer?: {} | null;
+  customer: {} | null;
+  isNewCustomer: boolean;
 }
 
 const initialState: CustomerState = {
   customerAccessToken: null,
   customer: null,
   loading: false,
+  isNewCustomer: false,
 };
 
 export const customerSlice: Slice<
@@ -21,6 +23,10 @@ export const customerSlice: Slice<
     ) => void;
     setLoading: (state: CustomerState, action: { payload: boolean }) => void;
     setCustomer: (state: CustomerState, action: { payload: {} | null }) => void;
+    setIsNewCustomer: (
+      state: CustomerState,
+      action: { payload: boolean },
+    ) => void;
   },
   'customer'
 > = createSlice({
@@ -36,9 +42,17 @@ export const customerSlice: Slice<
     setCustomer: (state, action) => {
       state.customer = action.payload;
     },
+    setIsNewCustomer: (state, action) => {
+      state.isNewCustomer = action.payload;
+    },
   },
 });
 
-export const { setCustomerAccessToken, setLoading } = customerSlice.actions;
+export const {
+  setCustomerAccessToken,
+  setLoading,
+  setCustomer,
+  setIsNewCustomer,
+} = customerSlice.actions;
 
 export default customerSlice.reducer;

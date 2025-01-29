@@ -3,6 +3,7 @@ export { default as useProducts } from './hooks/useProducts';
 export { default as useCollections } from './hooks/useCollections';
 export { default as useCollection } from './hooks/useCollection';
 export { default as useProduct } from './hooks/useProduct';
+export { default as useCustomer } from './hooks/useCustomer';
 export { default as useCollectionProducts } from './hooks/useCollectionProducts';
 export { default as useCart } from './hooks/useCart';
 export { default as useOrders } from './hooks/useOrders';

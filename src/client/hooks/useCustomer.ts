@@ -3,6 +3,8 @@ import { useAppDispatch, useAppSelector } from '../store';
 import {
   setCustomerAccessToken,
   setLoading,
+  setCustomer,
+  setIsNewCustomer,
 } from '../store/slices/customer.slice';
 import { customerAccessTokenWithMultipass } from '@/common/api/services';
 
@@ -34,15 +36,31 @@ export default function useCustomer() {
     [dispatch],
   );
 
+  const handleSetCustomer = (customer: {} | null) => {
+    dispatch(setCustomer(customer));
+  };
+
+  const handleSetLoading = (loading: boolean) => {
+    dispatch(setLoading(loading));
+  };
+
   const logout = useCallback(() => {
     dispatch(setCustomerAccessToken(null));
+    dispatch(setCustomer(null));
   }, [dispatch]);
+
+  const handleSetIsNewCustomer = (isNewCustomer: boolean) => {
+    dispatch(setIsNewCustomer(isNewCustomer));
+  };
 
   return {
     loading,
     customerAccessToken,
     customer,
     generateCTAWithMultipass,
+    setCustomer: handleSetCustomer,
+    setLoading: handleSetLoading,
+    setIsNewCustomer: handleSetIsNewCustomer,
     logout,
   };
 }
