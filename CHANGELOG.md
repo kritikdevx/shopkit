@@ -1,5 +1,11 @@
 # shopkit
 
+## 1.0.87
+
+### Patch Changes
+
+- add getProfile query
+
 ## 1.0.86
 
 ### Patch Changes
