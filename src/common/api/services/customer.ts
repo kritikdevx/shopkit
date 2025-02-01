@@ -14,6 +14,14 @@ import {
   CustomerAccessTokenCreateWithMultipassMutationVariables,
 } from '@/common/types/mutations/customer';
 import { Prettify } from '@/utils/prettify';
+import {
+  GetProfileQuery,
+  GetProfileQueryVariables,
+} from '@/common/types/queries/customer';
+import {
+  getProfileQuery,
+  getProfileWithMetaFieldsQuery,
+} from '../queries/customer';
 
 /**
  * Create a new customer
@@ -82,4 +90,33 @@ export async function customerAccessTokenWithMultipass({
     variables,
     options,
   }).then((res) => res.customerAccessTokenCreateWithMultipass);
+}
+
+/**
+ * Create a new customer access token with multipass
+ * @param variables - The variables for the mutation
+ * @param options - The options for the fetch request
+ * @returns
+ * @category API
+ */
+export async function getCustomerProfile({
+  variables,
+  options,
+}: {
+  variables: Prettify<GetProfileQueryVariables>;
+  options?: Prettify<ShopifyRequest>;
+}) {
+  if (variables.metafields) {
+    return shopifyFetch<GetProfileQuery, GetProfileQueryVariables>({
+      query: getProfileWithMetaFieldsQuery,
+      variables,
+      options,
+    }).then((res) => res.customer);
+  } else {
+    return shopifyFetch<GetProfileQuery, GetProfileQueryVariables>({
+      query: getProfileQuery,
+      variables,
+      options,
+    }).then((res) => res.customer);
+  }
 }

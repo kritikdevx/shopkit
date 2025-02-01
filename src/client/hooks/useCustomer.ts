@@ -7,6 +7,9 @@ import {
   setIsNewCustomer,
 } from '../store/slices/customer.slice';
 import { customerAccessTokenWithMultipass } from '@/common/api/services';
+import { Customer, HasMetafieldsIdentifier } from '@/common';
+import { customerActions } from '../store/actions/customer.action';
+import { GetProfileQueryVariables } from '@/common/types/queries/customer';
 
 export default function useCustomer() {
   const dispatch = useAppDispatch();
@@ -35,7 +38,7 @@ export default function useCustomer() {
     [dispatch],
   );
 
-  const handleSetCustomer = (customer: {} | null) => {
+  const handleSetCustomer = (customer: Customer | null) => {
     dispatch(setCustomer(customer));
   };
 
@@ -52,6 +55,14 @@ export default function useCustomer() {
     dispatch(setIsNewCustomer(isNewCustomer));
   };
 
+  const handleSetIsAuthenticated = (isNewCustomer: boolean) => {
+    dispatch(setIsNewCustomer(isNewCustomer));
+  };
+
+  const getProfile = (variables: GetProfileQueryVariables) => {
+    dispatch(customerActions.startGetProfile(variables));
+  };
+
   return {
     loading,
     customerAccessToken,
@@ -62,5 +73,7 @@ export default function useCustomer() {
     setLoading: handleSetLoading,
     setIsNewCustomer: handleSetIsNewCustomer,
     logout,
+    getProfile,
+    setAuthenticated: handleSetIsAuthenticated,
   };
 }

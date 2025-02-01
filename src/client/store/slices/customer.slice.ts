@@ -1,17 +1,20 @@
+import { Customer } from '@/common';
 import { createSlice, Slice } from '@reduxjs/toolkit';
 
 export interface CustomerState {
   customerAccessToken: string | null;
   loading: boolean;
-  customer: {} | null;
+  customer: Customer | null;
   isNewCustomer: boolean;
+  isAuthenticated: boolean;
 }
 
 const initialState: CustomerState = {
   customerAccessToken: null,
   customer: null,
   loading: false,
-  isNewCustomer: false,
+  isNewCustomer: true,
+  isAuthenticated: false,
 };
 
 export const customerSlice: Slice<
@@ -22,8 +25,22 @@ export const customerSlice: Slice<
       action: { payload: string | null },
     ) => void;
     setLoading: (state: CustomerState, action: { payload: boolean }) => void;
-    setCustomer: (state: CustomerState, action: { payload: {} | null }) => void;
+    setCustomer: (
+      state: CustomerState,
+      action: { payload: Customer | null },
+    ) => void;
     setIsNewCustomer: (
+      state: CustomerState,
+      action: { payload: boolean },
+    ) => void;
+
+    startGetProfile: (state: CustomerState) => void;
+    getProfileSuccess: (
+      state: CustomerState,
+      action: { payload: Customer },
+    ) => void;
+    getProfileFailure: (state: CustomerState) => void;
+    setAuthenticated: (
       state: CustomerState,
       action: { payload: boolean },
     ) => void;
@@ -45,6 +62,20 @@ export const customerSlice: Slice<
     setIsNewCustomer: (state, action) => {
       state.isNewCustomer = action.payload;
     },
+
+    startGetProfile: (state) => {
+      state.loading = true;
+    },
+    getProfileSuccess: (state, action) => {
+      state.customer = action.payload;
+      state.loading = false;
+    },
+    getProfileFailure: (state) => {
+      state.loading = false;
+    },
+    setAuthenticated: (state, action) => {
+      state.isAuthenticated = action.payload;
+    },
   },
 });
 
@@ -53,6 +84,10 @@ export const {
   setLoading,
   setCustomer,
   setIsNewCustomer,
+
+  startGetProfile,
+  getProfileSuccess,
+  getProfileFailure,
 } = customerSlice.actions;
 
 export default customerSlice.reducer;
