@@ -1,4 +1,3 @@
-import collectionFragment from '../fragments/collection';
 import customerFragment from '../fragments/customer';
 import imageFragment from '../fragments/image';
 import metafieldFragment from '../fragments/metafield';
@@ -31,7 +30,6 @@ export const getProfileWithMetaFieldsQuery = /* GraphQL */ `
   ${seoFragment}
   ${metafieldFragment}
   ${productFragment}
-  ${collectionFragment}
   ${productVariantFragment}
   ${customerFragment}
 `;

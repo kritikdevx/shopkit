@@ -1,5 +1,11 @@
 # shopkit
 
+## 1.0.88
+
+### Patch Changes
+
+- customer redux slice
+
 ## 1.0.87
 
 ### Patch Changes

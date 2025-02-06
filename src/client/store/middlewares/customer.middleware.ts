@@ -1,8 +1,8 @@
+import { call, put, takeLatest } from 'redux-saga/effects';
 import { getCustomerProfile } from '@/common/api/services';
 import { GetProfileQueryVariables } from '@/common/types/queries/customer';
-import { customerActions } from '../actions/customer.action';
 import { getProfileFailure, getProfileSuccess } from '../slices/customer.slice';
-import { call, put, takeLatest } from 'redux-saga/effects';
+import { customerActions } from '../actions';
 
 export function* getProfileSaga(action: {
   type: string;
