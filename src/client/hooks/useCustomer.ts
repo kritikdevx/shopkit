@@ -7,7 +7,7 @@ import {
   setIsNewCustomer,
 } from '../store/slices/customer.slice';
 import { customerAccessTokenWithMultipass } from '@/common/api/services';
-import { Customer, HasMetafieldsIdentifier } from '@/common';
+import { Customer } from '@/common';
 import { customerActions } from '../store/actions/customer.action';
 import { GetProfileQueryVariables } from '@/common/types/queries/customer';
 

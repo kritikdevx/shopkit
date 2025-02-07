@@ -1,5 +1,6 @@
 //TODO: Update order
 
+import { Address } from './address';
 import { Connection, Money } from './common';
 import { ProductVariant } from './product';
 
@@ -15,11 +16,24 @@ export interface Order {
   orderNumber: number;
   edited: boolean;
   lineItems: Connection<{
-    originalTotalPrice: Money;
     currentQuantity: number;
     quantity: number;
     title: string;
     variant: ProductVariant;
     cursor: string;
   }>;
+  billingAddress: Address;
+  shippingAddress: Address;
+  currentSubtotalPrice: Money;
+  currentTotalDuties: Money;
+  currentTotalPrice: Money;
+  currentTotalShippingPrice: Money;
+  currentTotalTax: Money;
+  shippingDiscountAllocations: {
+    allocatedAmount: Money;
+  }[];
+  totalPrice: Money;
+  totalRefunded: Money;
+  totalShippingPrice: Money;
+  totalTax: Money;
 }
