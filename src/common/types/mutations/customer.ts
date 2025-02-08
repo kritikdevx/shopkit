@@ -1,3 +1,4 @@
+import { HasMetafieldsIdentifier } from '../schemas';
 import {
   Customer,
   CustomerAccessTokenCreateInput,
@@ -15,6 +16,19 @@ export interface CreateCustomerAccessTokenMutationVariables {
 export interface CustomerAccessTokenCreateWithMultipassMutationVariables {
   multipassToken: string;
 }
+
+export interface UpdateCustomerProfileMutationVariables {
+  customerAccessToken: string;
+  customer: {
+    email?: string;
+    firstName?: string;
+    lastName?: string;
+    password?: string;
+    acceptsMarketing?: boolean;
+  };
+  metafields?: HasMetafieldsIdentifier[];
+}
+
 // Mutations
 
 export interface CreateCustomerMutation {
@@ -42,6 +56,20 @@ export interface CreateCustomerAccessTokenMutation {
 
 export interface CustomerAccessTokenCreateWithMultipassMutation {
   customerAccessTokenCreateWithMultipass: {
+    customerAccessToken: {
+      accessToken: string;
+      expiresAt: string;
+    };
+    customerUserErrors: {
+      code: string;
+      message: string;
+    }[];
+  };
+}
+
+export interface UpdateCustomerProfileMutation {
+  customerUpdate: {
+    customer: Customer;
     customerAccessToken: {
       accessToken: string;
       expiresAt: string;

@@ -24,7 +24,7 @@ export interface ListCustomersQueryVariables {
   sortKey?: CustomerSortKeys;
 }
 
-export interface GetProfileQueryVariables {
+export interface GetCustomerProfileQueryVariables {
   customerAccessToken: string;
   metafields?: HasMetafieldsIdentifier[];
 }
@@ -37,6 +37,6 @@ export interface ListCustomersQuery {
   };
 }
 
-export interface GetProfileQuery {
+export interface GetCustomerProfileQuery {
   customer: Customer;
 }

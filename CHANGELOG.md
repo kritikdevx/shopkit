@@ -1,5 +1,11 @@
 # shopkit
 
+## 1.0.90
+
+### Patch Changes
+
+- add updateCustomerProfile
+
 ## 1.0.89
 
 ### Patch Changes

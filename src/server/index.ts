@@ -46,4 +46,6 @@ export {
   createCustomer,
   createCustomerAccessToken,
   customerAccessTokenWithMultipass,
+  getCustomerProfile,
+  updateCustomerProfile,
 } from '@/common/api/services/customer';

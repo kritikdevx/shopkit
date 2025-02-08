@@ -1,3 +1,10 @@
+import customerFragment from '../fragments/customer';
+import imageFragment from '../fragments/image';
+import metafieldFragment from '../fragments/metafield';
+import productFragment from '../fragments/product';
+import productVariantFragment from '../fragments/product-variant';
+import seoFragment from '../fragments/seo';
+
 export const createCustomerAccessTokenMutation = /* GraphQL */ `
   mutation CustomerAccessTokenCreate($input: CustomerAccessTokenCreateInput!) {
     customerAccessTokenCreate(input: $input) {
@@ -50,4 +57,63 @@ export const customerAccessTokenCreateWithMultipassMutation = /* GraphQL */ `
       }
     }
   }
+`;
+
+export const updateCustomerProfileMutation = /* GraphQL */ `
+  mutation CustomerUpdate(
+    $customer: CustomerUpdateInput!
+    $customerAccessToken: String!
+  ) {
+    customerUpdate(
+      customer: $customer
+      customerAccessToken: $customerAccessToken
+    ) {
+      customer {
+        ...customer
+      }
+      customerAccessToken {
+        accessToken
+        expiresAt
+      }
+      customerUserErrors {
+        field
+        message
+      }
+    }
+  }
+  ${customerFragment}
+`;
+
+export const updateCustomerProfileWithMetaFieldsMutation = /* GraphQL */ `
+  mutation CustomerUpdate(
+    $customer: CustomerUpdateInput!
+    $customerAccessToken: String!
+    $metafields: [HasMetafieldsIdentifier!]!
+  ) {
+    customerUpdate(
+      customer: $customer
+      customerAccessToken: $customerAccessToken
+    ) {
+      customer {
+        ...customer
+        metafields(identifiers: $metafields) {
+          ...metafield
+        }
+      }
+      customerAccessToken {
+        accessToken
+        expiresAt
+      }
+      customerUserErrors {
+        field
+        message
+      }
+    }
+  }
+  ${imageFragment}
+  ${seoFragment}
+  ${metafieldFragment}
+  ${productFragment}
+  ${productVariantFragment}
+  ${customerFragment}
 `;

@@ -5,15 +5,16 @@ import {
   setLoading,
   setCustomer,
   setIsNewCustomer,
+  clearError,
 } from '../store/slices/customer.slice';
 import { customerAccessTokenWithMultipass } from '@/common/api/services';
-import { Customer } from '@/common';
+import { Customer, UpdateCustomerProfileMutationVariables } from '@/common';
 import { customerActions } from '../store/actions/customer.action';
-import { GetProfileQueryVariables } from '@/common/types/queries/customer';
+import { GetCustomerProfileQueryVariables } from '@/common/types/queries/customer';
 
 export default function useCustomer() {
   const dispatch = useAppDispatch();
-  const { loading, customerAccessToken, customer, isNewCustomer } =
+  const { loading, customerAccessToken, customer, isNewCustomer, error } =
     useAppSelector((state) => state.customer);
 
   const generateCTAWithMultipass = useCallback(
@@ -59,11 +60,20 @@ export default function useCustomer() {
     dispatch(setIsNewCustomer(isNewCustomer));
   };
 
-  const getProfile = (variables: GetProfileQueryVariables) => {
+  const getProfile = (variables: GetCustomerProfileQueryVariables) => {
     dispatch(customerActions.startGetProfile(variables));
   };
 
+  const updateProfile = (variables: UpdateCustomerProfileMutationVariables) => {
+    dispatch(customerActions.startUpdateProfile(variables));
+  };
+
+  const handleClearError = () => {
+    dispatch(clearError());
+  };
+
   return {
+    error,
     loading,
     customerAccessToken,
     customer,
@@ -74,6 +84,8 @@ export default function useCustomer() {
     setIsNewCustomer: handleSetIsNewCustomer,
     logout,
     getProfile,
+    updateProfile,
+    clearError: handleClearError,
     setAuthenticated: handleSetIsAuthenticated,
   };
 }

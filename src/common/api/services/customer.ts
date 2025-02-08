@@ -4,6 +4,8 @@ import {
   createCustomerAccessTokenMutation,
   createCustomerMutation,
   customerAccessTokenCreateWithMultipassMutation,
+  updateCustomerProfileMutation,
+  updateCustomerProfileWithMetaFieldsMutation,
 } from '../mutations/customer';
 import {
   CreateCustomerAccessTokenMutation,
@@ -12,15 +14,17 @@ import {
   CreateCustomerMutationVariables,
   CustomerAccessTokenCreateWithMultipassMutation,
   CustomerAccessTokenCreateWithMultipassMutationVariables,
+  UpdateCustomerProfileMutation,
+  UpdateCustomerProfileMutationVariables,
 } from '@/common/types/mutations/customer';
 import { Prettify } from '@/utils/prettify';
 import {
-  GetProfileQuery,
-  GetProfileQueryVariables,
+  GetCustomerProfileQuery,
+  GetCustomerProfileQueryVariables,
 } from '@/common/types/queries/customer';
 import {
-  getProfileQuery,
-  getProfileWithMetaFieldsQuery,
+  getCustomerProfileQuery,
+  getCustomerProfileWithMetaFieldsQuery,
 } from '../queries/customer';
 
 /**
@@ -103,20 +107,61 @@ export async function getCustomerProfile({
   variables,
   options,
 }: {
-  variables: Prettify<GetProfileQueryVariables>;
+  variables: Prettify<GetCustomerProfileQueryVariables>;
   options?: Prettify<ShopifyRequest>;
 }) {
   if (variables.metafields) {
-    return shopifyFetch<GetProfileQuery, GetProfileQueryVariables>({
-      query: getProfileWithMetaFieldsQuery,
+    return shopifyFetch<
+      GetCustomerProfileQuery,
+      GetCustomerProfileQueryVariables
+    >({
+      query: getCustomerProfileWithMetaFieldsQuery,
       variables,
       options,
     }).then((res) => res.customer);
   } else {
-    return shopifyFetch<GetProfileQuery, GetProfileQueryVariables>({
-      query: getProfileQuery,
+    return shopifyFetch<
+      GetCustomerProfileQuery,
+      GetCustomerProfileQueryVariables
+    >({
+      query: getCustomerProfileQuery,
       variables,
       options,
     }).then((res) => res.customer);
+  }
+}
+
+/**
+ * Create a new customer access token with multipass
+ * @param variables - The variables for the mutation
+ * @param options - The options for the fetch request
+ * @returns
+ * @category API
+ */
+export async function updateCustomerProfile({
+  variables,
+  options,
+}: {
+  variables: Prettify<UpdateCustomerProfileMutationVariables>;
+  options?: Prettify<ShopifyRequest>;
+}) {
+  if (variables.metafields) {
+    return shopifyFetch<
+      UpdateCustomerProfileMutation,
+      UpdateCustomerProfileMutationVariables
+    >({
+      query: updateCustomerProfileWithMetaFieldsMutation,
+      variables,
+      options,
+    }).then((res) => res.customerUpdate);
+  } else {
+    return shopifyFetch<
+      UpdateCustomerProfileMutation,
+      UpdateCustomerProfileMutationVariables
+    >({
+      query: updateCustomerProfileMutation,
+      variables,
+      options,
+    }).then((res) => res.customerUpdate);
   }
 }

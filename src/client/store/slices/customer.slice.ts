@@ -7,6 +7,7 @@ export interface CustomerState {
   customer: Customer | null;
   isNewCustomer: boolean;
   isAuthenticated: boolean;
+  error: string;
 }
 
 const initialState: CustomerState = {
@@ -15,6 +16,7 @@ const initialState: CustomerState = {
   loading: false,
   isNewCustomer: true,
   isAuthenticated: false,
+  error: '',
 };
 
 export const customerSlice: Slice<
@@ -40,10 +42,29 @@ export const customerSlice: Slice<
       action: { payload: Customer },
     ) => void;
     getProfileFailure: (state: CustomerState) => void;
+    startUpdateProfile: (state: CustomerState) => void;
+    updateProfileSuccess: (
+      state: CustomerState,
+      action: {
+        payload: {
+          customer: Customer;
+          customerAccessToken: {
+            accessToken: string;
+            expiresAt: string;
+          };
+        };
+      },
+    ) => void;
+    updateProfileFailure: (
+      state: CustomerState,
+      action: { payload: string },
+    ) => void;
     setAuthenticated: (
       state: CustomerState,
       action: { payload: boolean },
     ) => void;
+
+    clearError: (state: CustomerState) => void;
   },
   'customer'
 > = createSlice({
@@ -73,8 +94,28 @@ export const customerSlice: Slice<
     getProfileFailure: (state) => {
       state.loading = false;
     },
+
+    startUpdateProfile: (state) => {
+      state.loading = true;
+      state.error = '';
+    },
+    updateProfileSuccess: (state, action) => {
+      state.customer = action.payload.customer;
+      state.customerAccessToken =
+        action.payload.customerAccessToken.accessToken;
+      state.loading = false;
+      state.error = '';
+    },
+    updateProfileFailure: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    },
+
     setAuthenticated: (state, action) => {
       state.isAuthenticated = action.payload;
+    },
+    clearError: (state) => {
+      state.error = '';
     },
   },
 });
@@ -88,6 +129,12 @@ export const {
   startGetProfile,
   getProfileSuccess,
   getProfileFailure,
+
+  startUpdateProfile,
+  updateProfileSuccess,
+  updateProfileFailure,
+
+  clearError,
 } = customerSlice.actions;
 
 export default customerSlice.reducer;

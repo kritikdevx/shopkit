@@ -5,7 +5,7 @@ import productFragment from '../fragments/product';
 import productVariantFragment from '../fragments/product-variant';
 import seoFragment from '../fragments/seo';
 
-export const getProfileQuery = /* GraphQL */ `
+export const getCustomerProfileQuery = /* GraphQL */ `
   query GetProfile($customerAccessToken: String!) {
     customer(customerAccessToken: $customerAccessToken) {
       ...customer
@@ -14,7 +14,7 @@ export const getProfileQuery = /* GraphQL */ `
   ${customerFragment}
 `;
 
-export const getProfileWithMetaFieldsQuery = /* GraphQL */ `
+export const getCustomerProfileWithMetaFieldsQuery = /* GraphQL */ `
   query GetProfile(
     $customerAccessToken: String!
     $metafields: [HasMetafieldsIdentifier!]!
