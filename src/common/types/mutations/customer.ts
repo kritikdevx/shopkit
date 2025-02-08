@@ -70,10 +70,6 @@ export interface CustomerAccessTokenCreateWithMultipassMutation {
 export interface UpdateCustomerProfileMutation {
   customerUpdate: {
     customer: Customer;
-    customerAccessToken: {
-      accessToken: string;
-      expiresAt: string;
-    };
     customerUserErrors: {
       code: string;
       message: string;

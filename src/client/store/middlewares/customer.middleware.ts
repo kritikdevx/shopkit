@@ -34,20 +34,18 @@ export function* updateProfileSaga(action: {
   payload: UpdateCustomerProfileMutationVariables;
 }): Generator {
   try {
-    const customer = yield call(updateCustomerProfile, {
+    const { customer, customerUserErrors } = yield call(updateCustomerProfile, {
       variables: action.payload,
     });
 
-    if (customer.customerUserErrors.length > 0) {
+    if (customerUserErrors.length > 0) {
       throw new Error(
-        customer.customerUserErrors[0].code +
-          customer.customerUserErrors[0].message,
+        customerUserErrors[0].code + customerUserErrors[0].message,
       );
     }
 
     yield put(updateProfileSuccess(customer));
   } catch (error) {
-    console.error(error);
     yield put(
       updateProfileFailure(
         (error as Error).message || 'Failed to update profile',

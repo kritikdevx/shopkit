@@ -45,15 +45,7 @@ export const customerSlice: Slice<
     startUpdateProfile: (state: CustomerState) => void;
     updateProfileSuccess: (
       state: CustomerState,
-      action: {
-        payload: {
-          customer: Customer;
-          customerAccessToken: {
-            accessToken: string;
-            expiresAt: string;
-          };
-        };
-      },
+      action: { payload: Customer },
     ) => void;
     updateProfileFailure: (
       state: CustomerState,
@@ -100,9 +92,7 @@ export const customerSlice: Slice<
       state.error = '';
     },
     updateProfileSuccess: (state, action) => {
-      state.customer = action.payload.customer;
-      state.customerAccessToken =
-        action.payload.customerAccessToken.accessToken;
+      state.customer = action.payload;
       state.loading = false;
       state.error = '';
     },

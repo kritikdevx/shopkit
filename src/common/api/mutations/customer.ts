@@ -71,10 +71,6 @@ export const updateCustomerProfileMutation = /* GraphQL */ `
       customer {
         ...customer
       }
-      customerAccessToken {
-        accessToken
-        expiresAt
-      }
       customerUserErrors {
         field
         message
@@ -99,10 +95,6 @@ export const updateCustomerProfileWithMetaFieldsMutation = /* GraphQL */ `
         metafields(identifiers: $metafields) {
           ...metafield
         }
-      }
-      customerAccessToken {
-        accessToken
-        expiresAt
       }
       customerUserErrors {
         field

@@ -1,5 +1,11 @@
 # shopkit
 
+## 1.0.91
+
+### Patch Changes
+
+- refactor: customer profile update
+
 ## 1.0.90
 
 ### Patch Changes
