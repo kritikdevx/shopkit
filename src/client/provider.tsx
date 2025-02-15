@@ -25,15 +25,17 @@ import { ShopKit, ShopKitConfig } from '@/common';
 export function ShopKitProvider({
   children,
   config,
+  loading = null,
 }: {
   children: React.ReactNode;
   config: ShopKitConfig;
+  loading?: React.ReactNode;
 }) {
   ShopKit.configure(config);
 
   return (
     <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
+      <PersistGate loading={loading} persistor={persistor}>
         {children}
       </PersistGate>
     </Provider>

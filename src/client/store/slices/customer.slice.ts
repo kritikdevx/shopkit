@@ -6,7 +6,6 @@ export interface CustomerState {
   loading: boolean;
   customer: Customer | null;
   isNewCustomer: boolean;
-  isAuthenticated: boolean;
   error: string;
 }
 
@@ -15,7 +14,6 @@ const initialState: CustomerState = {
   customer: null,
   loading: false,
   isNewCustomer: true,
-  isAuthenticated: false,
   error: '',
 };
 
@@ -50,10 +48,6 @@ export const customerSlice: Slice<
     updateProfileFailure: (
       state: CustomerState,
       action: { payload: string },
-    ) => void;
-    setAuthenticated: (
-      state: CustomerState,
-      action: { payload: boolean },
     ) => void;
 
     clearError: (state: CustomerState) => void;
@@ -101,9 +95,6 @@ export const customerSlice: Slice<
       state.error = action.payload;
     },
 
-    setAuthenticated: (state, action) => {
-      state.isAuthenticated = action.payload;
-    },
     clearError: (state) => {
       state.error = '';
     },

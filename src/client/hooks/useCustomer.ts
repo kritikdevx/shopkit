@@ -56,10 +56,6 @@ export default function useCustomer() {
     dispatch(setIsNewCustomer(isNewCustomer));
   };
 
-  const handleSetIsAuthenticated = (isNewCustomer: boolean) => {
-    dispatch(setIsNewCustomer(isNewCustomer));
-  };
-
   const getProfile = (variables: GetCustomerProfileQueryVariables) => {
     dispatch(customerActions.startGetProfile(variables));
   };
@@ -86,6 +82,5 @@ export default function useCustomer() {
     getProfile,
     updateProfile,
     clearError: handleClearError,
-    setAuthenticated: handleSetIsAuthenticated,
   };
 }

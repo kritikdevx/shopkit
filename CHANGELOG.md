@@ -1,5 +1,11 @@
 # shopkit
 
+## 1.0.92
+
+### Patch Changes
+
+- add loading
+
 ## 1.0.91
 
 ### Patch Changes
