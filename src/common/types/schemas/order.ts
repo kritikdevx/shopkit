@@ -20,7 +20,7 @@ export interface Order {
     quantity: number;
     title: string;
     variant: ProductVariant;
-    cursor: string;
+    originalTotalPrice: Money;
   }>;
   billingAddress: Address;
   shippingAddress: Address;

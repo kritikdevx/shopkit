@@ -1,5 +1,11 @@
 # shopkit
 
+## 1.0.93
+
+### Patch Changes
+
+- fix order type
+
 ## 1.0.92
 
 ### Patch Changes
