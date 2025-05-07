@@ -6,6 +6,12 @@
 
 - add numberOfOrders in customer
 
+## 1.0.94
+
+### Patch Changes
+
+- add numberOfOrders in customer
+
 ## 1.0.93
 
 ### Patch Changes
