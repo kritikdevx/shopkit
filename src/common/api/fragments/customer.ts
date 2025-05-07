@@ -9,6 +9,7 @@ const customerFragment = /* GraphQL */ `
     lastName
     phone
     tags
+    numberOfOrders
     updatedAt
   }
 `;

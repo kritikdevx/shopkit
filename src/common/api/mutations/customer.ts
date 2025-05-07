@@ -28,6 +28,7 @@ export const createCustomerMutation = /* GraphQL */ `
         acceptsMarketing
         createdAt
         displayName
+        numberOfOrders
         email
         firstName
         id

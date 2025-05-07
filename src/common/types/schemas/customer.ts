@@ -68,6 +68,7 @@ export interface Customer {
   lastName: string;
   phone: string;
   tags: string[];
+  numberOfOrders: number;
   updatedAt: string;
   metafields?: Metafield[] | [null];
 }
